@@ -12,4 +12,6 @@ public interface TextConstants {
     String UNBLOCK_BUTTON = "unblock.button";
     String USERNAME_TABLE_HEADER = "username.table.header";
     String STATUS_TABLE_HEADER = "status.table.header";
+    String USER_BLOCKED = "user.blocked";
+    String USER_NOT_BLOCKED = "user.not.blocked";
 }

@@ -21,6 +21,8 @@ public class FirstView {
     public static String unblockButton;
     public static String usernameTableHeader;
     public static String statusTableHeader;
+    public static String userBlocked;
+    public static String userNotBlocked;
 
     static {
         usersListString = bundle.getString(TextConstants.USERS_LIST_STRING);
@@ -34,6 +36,8 @@ public class FirstView {
         unblockButton = bundle.getString(TextConstants.UNBLOCK_BUTTON);
         usernameTableHeader = bundle.getString(TextConstants.USERNAME_TABLE_HEADER);
         statusTableHeader = bundle.getString(TextConstants.STATUS_TABLE_HEADER);
+        userBlocked = bundle.getString(TextConstants.USER_BLOCKED);
+        userNotBlocked = bundle.getString(TextConstants.USER_NOT_BLOCKED);
     }
 
     public static void initStringFields(ResourceBundle bundle) {
@@ -48,6 +52,8 @@ public class FirstView {
         unblockButton = bundle.getString(TextConstants.UNBLOCK_BUTTON);
         usernameTableHeader = bundle.getString(TextConstants.USERNAME_TABLE_HEADER);
         statusTableHeader = bundle.getString(TextConstants.STATUS_TABLE_HEADER);
+        userBlocked = bundle.getString(TextConstants.USER_BLOCKED);
+        userNotBlocked = bundle.getString(TextConstants.USER_NOT_BLOCKED);
     }
 
     public FirstView() {}
@@ -92,5 +98,13 @@ public class FirstView {
 
     public String getStatusTableHeader() {
         return statusTableHeader;
+    }
+
+    public String getUserBlocked() {
+        return userBlocked;
+    }
+
+    public String getUserNotBlocked() {
+        return userNotBlocked;
     }
 }

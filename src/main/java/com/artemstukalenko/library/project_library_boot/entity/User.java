@@ -1,5 +1,8 @@
 package com.artemstukalenko.library.project_library_boot.entity;
 
+import com.artemstukalenko.library.project_library_boot.view.FirstView;
+import com.artemstukalenko.library.project_library_boot.view.TextConstants;
+
 import javax.persistence.*;
 
 @Entity
@@ -47,8 +50,8 @@ public class User {
         this.password = password;
     }
 
-    public int getEnabled() {
-        return enabled;
+    public String getEnabled() {
+        return enabled == 0 ? FirstView.userBlocked : FirstView.userNotBlocked;
     }
 
     public void setEnabled(int enabled) {
