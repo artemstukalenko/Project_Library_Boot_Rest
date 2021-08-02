@@ -1,0 +1,6 @@
+package com.artemstukalenko.library.project_library_boot.security_configuration;
+
+import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+
+public class MySecurityInitializer extends AbstractSecurityWebApplicationInitializer {
+}
