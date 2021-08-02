@@ -18,7 +18,8 @@ public class UserDAOImpl implements UserDAO {
     @Override
     @Transactional
     public List<User> getAllUsers() {
-        Query queryForGettingAllUsers = entityManager.createQuery("from User");
+        Query queryForGettingAllUsers = entityManager.createQuery("from User where username not in (from Authority where authority = 'ROLE_ADMIN')");
+
         return queryForGettingAllUsers.getResultList();
     }
 
