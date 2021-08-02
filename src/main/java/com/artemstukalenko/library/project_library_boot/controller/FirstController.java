@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -58,7 +55,6 @@ public class FirstController {
     public String getAdminEntryPage(Model model) {
         model.addAttribute("locale", controlledView);
         List<User> allUsers = userService.getAllUsers();
-        System.out.println("USER LIST: " + allUsers);
         model.addAttribute("allUsers", allUsers);
 
         return "admin-entry-page";
@@ -69,6 +65,20 @@ public class FirstController {
         model.addAttribute("locale", controlledView);
 
         return "librarian-entry-page";
+    }
+
+    @RequestMapping("/blockUser")
+    public String blockUser(@RequestParam("userName") String username) {
+        userService.blockUser(username);
+
+        return "redirect:/";
+    }
+
+    @RequestMapping("/unblockUser")
+    public String unblockUser(@RequestParam("userName") String username) {
+        userService.unblockUser(username);
+
+        return "redirect:/";
     }
 
 }

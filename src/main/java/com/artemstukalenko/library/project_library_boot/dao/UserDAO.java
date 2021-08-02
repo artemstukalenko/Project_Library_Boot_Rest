@@ -7,4 +7,8 @@ public interface UserDAO {
 
     public List<User> getAllUsers();
 
+    public void blockUser(String username);
+
+    public void unblockUser(String username);
+
 }

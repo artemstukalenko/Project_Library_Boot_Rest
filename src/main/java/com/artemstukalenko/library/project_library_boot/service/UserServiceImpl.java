@@ -19,4 +19,16 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUsers() {
         return userDAO.getAllUsers();
     }
+
+    @Override
+    @Transactional
+    public void blockUser(String username) {
+        userDAO.blockUser(username);
+    }
+
+    @Override
+    @Transactional
+    public void unblockUser(String username) {
+        userDAO.unblockUser(username);
+    }
 }

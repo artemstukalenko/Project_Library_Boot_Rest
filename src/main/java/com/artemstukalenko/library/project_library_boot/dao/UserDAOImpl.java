@@ -22,4 +22,19 @@ public class UserDAOImpl implements UserDAO {
         return queryForGettingAllUsers.getResultList();
     }
 
+    @Override
+    public void blockUser(String username) {
+        Query queryForBlockingUser = entityManager.createQuery("update User set enabled = 0 where username =: userUsername");
+
+        queryForBlockingUser.setParameter("userUsername", username);
+        queryForBlockingUser.executeUpdate();
+    }
+
+    public void unblockUser(String username) {
+        Query queryForUnblockingUser = entityManager.createQuery("update User set enabled = 1 where username =: userUsername");
+
+        queryForUnblockingUser.setParameter("userUsername", username);
+        queryForUnblockingUser.executeUpdate();
+    }
+
 }

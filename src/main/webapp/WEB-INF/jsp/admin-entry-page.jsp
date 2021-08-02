@@ -14,12 +14,26 @@
 <table>
     <tr>
         <th>Username</th>
+        <th>Status</th>
     </tr>
 
     <c:forEach var="user" items="${allUsers}">
 
+        <c:url var="blockButton" value="/blockUser">
+            <c:param name="userName" value="${user.username}"/>
+        </c:url>
+        <c:url var="unblockButton" value="/unblockUser">
+            <c:param name="userName" value="${user.username}"/>
+        </c:url>
+
         <tr>
             <td>${user.username}</td>
+            <td>${user.enabled}</td>
+
+            <td>
+                <input type="button" value="block" onclick="window.location.href = '${blockButton}'"/>
+                <input type="button" value="unblock" onclick="window.location.href = '${unblockButton}'"/>
+            </td>
         </tr>
 
     </c:forEach>
