@@ -13,8 +13,8 @@
 
 <table>
     <tr>
-        <th>Username</th>
-        <th>Status</th>
+        <th>${locale.usernameTableHeader}</th>
+        <th>${locale.statusTableHeader}</th>
     </tr>
 
     <c:forEach var="user" items="${allUsers}">
@@ -31,8 +31,8 @@
             <td>${user.enabled}</td>
 
             <td>
-                <input type="button" value="block" onclick="window.location.href = '${blockButton}'"/>
-                <input type="button" value="unblock" onclick="window.location.href = '${unblockButton}'"/>
+                <input type="button" value="${locale.blockButton}" onclick="window.location.href = '${blockButton}'"/>
+                <input type="button" value="${locale.unblockButton}" onclick="window.location.href = '${unblockButton}'"/>
             </td>
         </tr>
 

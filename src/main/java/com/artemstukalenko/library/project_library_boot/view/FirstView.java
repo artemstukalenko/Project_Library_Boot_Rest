@@ -17,6 +17,10 @@ public class FirstView {
     public static String toHomePage;
     public static String seeSubscriptionsList;
     public static String subscriptionsListString;
+    public static String blockButton;
+    public static String unblockButton;
+    public static String usernameTableHeader;
+    public static String statusTableHeader;
 
     static {
         usersListString = bundle.getString(TextConstants.USERS_LIST_STRING);
@@ -26,6 +30,10 @@ public class FirstView {
         toHomePage = bundle.getString(TextConstants.TO_HOME_PAGE);
         seeSubscriptionsList = bundle.getString(TextConstants.SEE_SUBSCRIPTIONS_LIST);
         subscriptionsListString = bundle.getString(TextConstants.SUBSCRIPTIONS_LIST_STRING);
+        blockButton = bundle.getString(TextConstants.BLOCK_BUTTON);
+        unblockButton = bundle.getString(TextConstants.UNBLOCK_BUTTON);
+        usernameTableHeader = bundle.getString(TextConstants.USERNAME_TABLE_HEADER);
+        statusTableHeader = bundle.getString(TextConstants.STATUS_TABLE_HEADER);
     }
 
     public static void initStringFields(ResourceBundle bundle) {
@@ -36,6 +44,10 @@ public class FirstView {
         toHomePage = bundle.getString(TextConstants.TO_HOME_PAGE);
         seeSubscriptionsList = bundle.getString(TextConstants.SEE_SUBSCRIPTIONS_LIST);
         subscriptionsListString = bundle.getString(TextConstants.SUBSCRIPTIONS_LIST_STRING);
+        blockButton = bundle.getString(TextConstants.BLOCK_BUTTON);
+        unblockButton = bundle.getString(TextConstants.UNBLOCK_BUTTON);
+        usernameTableHeader = bundle.getString(TextConstants.USERNAME_TABLE_HEADER);
+        statusTableHeader = bundle.getString(TextConstants.STATUS_TABLE_HEADER);
     }
 
     public FirstView() {}
@@ -65,4 +77,20 @@ public class FirstView {
     public String getSeeSubscriptionsList() {return seeSubscriptionsList;}
 
     public String getSubscriptionsListString() {return subscriptionsListString;}
+
+    public String getBlockButton() {
+        return blockButton;
+    }
+
+    public String getUnblockButton() {
+        return unblockButton;
+    }
+
+    public String getUsernameTableHeader() {
+        return usernameTableHeader;
+    }
+
+    public String getStatusTableHeader() {
+        return statusTableHeader;
+    }
 }
