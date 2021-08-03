@@ -9,9 +9,9 @@
 
 <form:form action="/registerNewUser" modelAttribute="potentialUser" method="post">
 
-    Username: <form:input path="username"/>
+    ${locale.loginUsername}: <form:input path="username"/>
     <form:errors path="username"/>
-    Password: <form:input path="password"/>
+    ${locale.loginPassword}: <form:input path="password"/>
     <form:errors path="password"/>
 
 

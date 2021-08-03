@@ -31,7 +31,7 @@
 
 <br><br>
 
-<a href="/register">Register</a>
+<a href="/register">${locale.registration}</a>
 
 </body>
 
