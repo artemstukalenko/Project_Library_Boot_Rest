@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -42,7 +41,15 @@ public class FirstController {
     @RequestMapping("/register")
     public String getRegistrationPage(Model model) {
         model.addAttribute("locale", controlledView);
+        model.addAttribute("potentialUser", new User());
+
         return "register-page";
+    }
+
+    @RequestMapping("/registerNewUser")
+    public String registerNewUser(@ModelAttribute("potentialUser") User potentialUser) {
+        userService.registerUser(potentialUser);
+        return "redirect:/login";
     }
 
     @RequestMapping("/")

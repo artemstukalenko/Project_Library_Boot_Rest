@@ -7,21 +7,28 @@
 
 <h2>${locale.registration}</h2>
 
-<form:form action="/addNewUser">
+<form:form action="/registerNewUser" modelAttribute="potentialUser" method="post">
 
-    <input type="text" id="username" name="username" placeholder="${locale.loginUsername}"/>
-    <br>
-    <input type="password" id="password" name="password" placeholder="${locale.loginPassword}"/>
-    <br>
-    <input type="text" id="firstName" name="firstName" placeholder="${locale.userFirstName}"/>
-    <br>
-    <input type="text" id="lastName" name="lastName" placeholder="${locale.userLastName}"/>
-    <br>
-    <input type="text" id="email" name="email" placeholder="${locale.userEmail}"/>
-    <br>
-    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="${locale.userPhoneNumber}"/>
-    <br>
-    <input type="text" id="address" name="address" placeholder="${locale.userAddress}"/>
+    Username: <form:input path="username"/>
+    <form:errors path="username"/>
+    Password: <form:input path="password"/>
+    <form:errors path="password"/>
+
+
+
+<%--    <input type="text" id="username" name="username" placeholder="${locale.loginUsername}"/>--%>
+<%--    <br>--%>
+<%--    <input type="password" id="password" name="password" placeholder="${locale.loginPassword}"/>--%>
+<%--    <br>--%>
+<%--    <input type="text" id="firstName" name="firstName" placeholder="${locale.userFirstName}"/>--%>
+<%--    <br>--%>
+<%--    <input type="text" id="lastName" name="lastName" placeholder="${locale.userLastName}"/>--%>
+<%--    <br>--%>
+<%--    <input type="text" id="email" name="email" placeholder="${locale.userEmail}"/>--%>
+<%--    <br>--%>
+<%--    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="${locale.userPhoneNumber}"/>--%>
+<%--    <br>--%>
+<%--    <input type="text" id="address" name="address" placeholder="${locale.userAddress}"/>--%>
     <br>
 
     <input type="submit" value="OK">

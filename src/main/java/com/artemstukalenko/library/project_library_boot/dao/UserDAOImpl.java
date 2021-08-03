@@ -1,5 +1,6 @@
 package com.artemstukalenko.library.project_library_boot.dao;
 
+import com.artemstukalenko.library.project_library_boot.entity.Authority;
 import com.artemstukalenko.library.project_library_boot.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -48,5 +49,14 @@ public class UserDAOImpl implements UserDAO {
         queryForGettingUserRole.setParameter("usernameForSearch", username);
         return (String) queryForGettingUserRole.getSingleResult();
 
+    }
+
+    @Override
+    @Transactional
+    public void registerUser(User user) {
+        Authority newUserAuthority = new Authority(user.getUsername(), "ROLE_USER");
+
+        entityManager.merge(user);
+        entityManager.merge(newUserAuthority);
     }
 }

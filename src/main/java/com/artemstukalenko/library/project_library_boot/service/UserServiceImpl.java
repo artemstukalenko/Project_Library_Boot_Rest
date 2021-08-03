@@ -37,4 +37,10 @@ public class UserServiceImpl implements UserService {
     public String getUserRole(String username) {
         return userDAO.getUserRole(username);
     }
+
+    @Override
+    @Transactional
+    public void registerUser(User user) {
+        userDAO.registerUser(user);
+    }
 }

@@ -13,4 +13,6 @@ public interface UserDAO {
 
     public String getUserRole(String username);
 
+    public void registerUser(User user);
+
 }
