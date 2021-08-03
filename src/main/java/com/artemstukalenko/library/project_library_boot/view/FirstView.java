@@ -35,6 +35,11 @@ public class FirstView {
     public static String bookAuthor;
     public static String bookYearOfPublishing;
 
+    public static String loginUsername;
+    public static String loginPassword;
+    public static String loginWelcome;
+    public static String loginButton;
+
     static {
         usersListString = bundle.getString(TextConstants.USERS_LIST_STRING);
         seeUsersList = bundle.getString(TextConstants.SEE_USERS_LIST);
@@ -60,6 +65,11 @@ public class FirstView {
         bookTitle = bundle.getString(TextConstants.BOOK_TITLE);
         bookAuthor = bundle.getString(TextConstants.BOOK_AUTHOR);
         bookYearOfPublishing = bundle.getString(TextConstants.BOOK_YEAR_OF_PUBLISHING);
+
+        loginUsername = bundle.getString(TextConstants.LOGIN_USERNAME);
+        loginPassword = bundle.getString(TextConstants.LOGIN_PASSWORD);
+        loginWelcome = bundle.getString(TextConstants.LOGIN_WELCOME);
+        loginButton = bundle.getString(TextConstants.LOGIN_BUTTON);
     }
 
     public static void initStringFields(ResourceBundle bundle) {
@@ -87,6 +97,11 @@ public class FirstView {
         bookTitle = bundle.getString(TextConstants.BOOK_TITLE);
         bookAuthor = bundle.getString(TextConstants.BOOK_AUTHOR);
         bookYearOfPublishing = bundle.getString(TextConstants.BOOK_YEAR_OF_PUBLISHING);
+
+        loginUsername = bundle.getString(TextConstants.LOGIN_USERNAME);
+        loginPassword = bundle.getString(TextConstants.LOGIN_PASSWORD);
+        loginWelcome = bundle.getString(TextConstants.LOGIN_WELCOME);
+        loginButton = bundle.getString(TextConstants.LOGIN_BUTTON);
     }
 
     public FirstView() {}
@@ -175,5 +190,21 @@ public class FirstView {
 
     public String getBookYearOfPublishing() {
         return bookYearOfPublishing;
+    }
+
+    public String getLoginUsername() {
+        return loginUsername;
+    }
+
+    public String getLoginPassword() {
+        return loginPassword;
+    }
+
+    public String getLoginWelcome() {
+        return loginWelcome;
+    }
+
+    public String getLoginButton() {
+        return loginButton;
     }
 }

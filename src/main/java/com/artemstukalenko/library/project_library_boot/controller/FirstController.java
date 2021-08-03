@@ -30,6 +30,7 @@ public class FirstController {
                                Model model) {
         model.addAttribute("error", error != null);
         model.addAttribute("logout", logout != null);
+        model.addAttribute("locale", controlledView);
         return "login";
     }
 

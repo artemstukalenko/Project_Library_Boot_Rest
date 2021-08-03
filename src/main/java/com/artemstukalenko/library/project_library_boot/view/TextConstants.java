@@ -25,4 +25,9 @@ public interface TextConstants {
     String BOOK_TITLE = "book.title";
     String BOOK_AUTHOR = "book.author";
     String BOOK_YEAR_OF_PUBLISHING = "book.year.of.publishing";
+
+    String LOGIN_USERNAME = "login.username";
+    String LOGIN_PASSWORD = "login.password";
+    String LOGIN_WELCOME = "login.welcome";
+    String LOGIN_BUTTON = "login.button";
 }

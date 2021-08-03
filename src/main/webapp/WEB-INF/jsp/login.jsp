@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 
 <body>
@@ -18,14 +19,14 @@
 
 </form:form>
 <br><br><br>
-<h2>Welcome</h2>
+<h2>${locale.loginWelcome}</h2>
 
 <form:form method="post">
-    Username: <input type="text" id="username" placeholder="Username" name="username">
+    <input type="text" id="username" placeholder="${locale.loginUsername}" name="username">
     <br>
-    Password: <input type="password" id ="password" placeholder="Password" name="password">
+    <input type="password" id ="password" placeholder="${locale.loginPassword}" name="password">
     <br>
-    <input type="submit" value="Login">
+    <input type="submit" value="${locale.loginButton}">
 </form:form>
 
 <br><br>
