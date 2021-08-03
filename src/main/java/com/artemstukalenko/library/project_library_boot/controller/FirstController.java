@@ -23,6 +23,20 @@ public class FirstController {
 
     FirstView controlledView = new FirstView();
 
+    @RequestMapping("/login")
+    public String getLoginPage(@RequestParam(value = "error", required = false) String error,
+                               @RequestParam(value = "logout", required = false) String logout,
+                               Model model) {
+        model.addAttribute("error", error != null);
+        model.addAttribute("logout", logout != null);
+        return "login";
+    }
+
+    @RequestMapping("/logout")
+    public String whenLoggedOut() {
+        return "redirect:/login";
+    }
+
     @RequestMapping("/")
     public String getChangeLanguagePage(Model model) {
         model.addAttribute("locale", controlledView);

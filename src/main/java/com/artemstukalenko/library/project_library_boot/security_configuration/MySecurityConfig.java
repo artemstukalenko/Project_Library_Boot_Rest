@@ -33,7 +33,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").hasAnyRole("USER", "ADMIN", "LIBRARIAN")
                 .antMatchers("/librarian-entry-page").hasRole("LIBRARIAN")
                 .antMatchers("/admin-entry-page").hasRole("ADMIN")
-                .and().formLogin().permitAll();
+                .and().formLogin().loginPage("/login").permitAll();
     }
 
 }
