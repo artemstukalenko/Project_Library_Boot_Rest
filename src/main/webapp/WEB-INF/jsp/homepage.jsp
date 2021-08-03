@@ -44,6 +44,9 @@
 
 </security:authorize>
 
+<br><br><br>
+<input type="button" value="logout" onclick="window.location.href = 'logout'">
+
 </body>
 
 </html>
