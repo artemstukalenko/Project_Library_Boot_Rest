@@ -12,7 +12,7 @@
 
 </form:form>
 
-<br><br>
+<br>
 
 <form:form action="ua" modelAttribute="locale">
 
@@ -20,7 +20,9 @@
 
 </form:form>
 
-<br><br><br><br>
+<br><br>
+
+<%--<h2>Welcome! You have logged in as </h2>--%>
 
 <form:form action="booksList" modelAttribute="locale">
 

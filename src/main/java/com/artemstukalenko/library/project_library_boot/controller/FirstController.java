@@ -26,6 +26,8 @@ public class FirstController {
     @RequestMapping("/")
     public String getChangeLanguagePage(Model model) {
         model.addAttribute("locale", controlledView);
+//        String userRole = userService.getUserRole(username);
+//        model.addAttribute("userRole", userRole);
         return "homepage";
     }
 

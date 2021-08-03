@@ -31,6 +31,7 @@ public class UserDAOImpl implements UserDAO {
         queryForBlockingUser.executeUpdate();
     }
 
+    @Override
     public void unblockUser(String username) {
         Query queryForUnblockingUser = entityManager.createQuery("update User set enabled = 1 where username =: userUsername");
 
@@ -38,4 +39,14 @@ public class UserDAOImpl implements UserDAO {
         queryForUnblockingUser.executeUpdate();
     }
 
+    @Override
+    @Transactional
+    public String getUserRole(String username) {
+        Query queryForGettingUserRole = entityManager.createQuery("authority from Authority where username in " +
+                "(from User where username := usernameForSearch)");
+
+        queryForGettingUserRole.setParameter("usernameForSearch", username);
+        return (String) queryForGettingUserRole.getSingleResult();
+
+    }
 }

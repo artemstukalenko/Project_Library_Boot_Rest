@@ -31,4 +31,10 @@ public class UserServiceImpl implements UserService {
     public void unblockUser(String username) {
         userDAO.unblockUser(username);
     }
+
+    @Override
+    @Transactional
+    public String getUserRole(String username) {
+        return userDAO.getUserRole(username);
+    }
 }

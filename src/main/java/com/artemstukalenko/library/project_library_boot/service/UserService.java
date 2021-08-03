@@ -12,4 +12,6 @@ public interface UserService {
 
     public void unblockUser(String username);
 
+    public String getUserRole(String username);
+
 }
