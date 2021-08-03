@@ -8,6 +8,7 @@ public interface TextConstants {
     String TO_HOME_PAGE = "to.home.page";
     String SEE_SUBSCRIPTIONS_LIST = "see.subscriptions.list";
     String SUBSCRIPTIONS_LIST_STRING = "subscriptions.list";
+
     String BLOCK_BUTTON = "block.button";
     String UNBLOCK_BUTTON = "unblock.button";
     String USERNAME_TABLE_HEADER = "username.table.header";
@@ -19,4 +20,9 @@ public interface TextConstants {
     String USER_EMAIL = "user.email";
     String USER_PHONE_NUMBER = "user.phone.number";
     String USER_ADDRESS = "user.address";
+
+    String BOOK_ID = "book.id";
+    String BOOK_TITLE = "book.title";
+    String BOOK_AUTHOR = "book.author";
+    String BOOK_YEAR_OF_PUBLISHING = "book.year.of.publishing";
 }

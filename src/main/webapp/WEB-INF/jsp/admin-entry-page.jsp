@@ -11,7 +11,7 @@
 
 <br><br><br>
 
-<table>
+<table border="1">
     <tr>
         <th>${locale.usernameTableHeader}</th>
         <th>${locale.statusTableHeader}</th>

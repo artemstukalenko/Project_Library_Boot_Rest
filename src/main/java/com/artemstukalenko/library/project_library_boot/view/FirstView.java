@@ -17,6 +17,7 @@ public class FirstView {
     public static String toHomePage;
     public static String seeSubscriptionsList;
     public static String subscriptionsListString;
+
     public static String blockButton;
     public static String unblockButton;
     public static String usernameTableHeader;
@@ -29,6 +30,11 @@ public class FirstView {
     public static String userPhoneNumber;
     public static String userAddress;
 
+    public static String bookId;
+    public static String bookTitle;
+    public static String bookAuthor;
+    public static String bookYearOfPublishing;
+
     static {
         usersListString = bundle.getString(TextConstants.USERS_LIST_STRING);
         seeUsersList = bundle.getString(TextConstants.SEE_USERS_LIST);
@@ -37,6 +43,7 @@ public class FirstView {
         toHomePage = bundle.getString(TextConstants.TO_HOME_PAGE);
         seeSubscriptionsList = bundle.getString(TextConstants.SEE_SUBSCRIPTIONS_LIST);
         subscriptionsListString = bundle.getString(TextConstants.SUBSCRIPTIONS_LIST_STRING);
+
         blockButton = bundle.getString(TextConstants.BLOCK_BUTTON);
         unblockButton = bundle.getString(TextConstants.UNBLOCK_BUTTON);
         usernameTableHeader = bundle.getString(TextConstants.USERNAME_TABLE_HEADER);
@@ -48,6 +55,11 @@ public class FirstView {
         userEmail = bundle.getString(TextConstants.USER_EMAIL);
         userPhoneNumber = bundle.getString(TextConstants.USER_PHONE_NUMBER);
         userAddress = bundle.getString(TextConstants.USER_ADDRESS);
+
+        bookId = bundle.getString(TextConstants.BOOK_ID);
+        bookTitle = bundle.getString(TextConstants.BOOK_TITLE);
+        bookAuthor = bundle.getString(TextConstants.BOOK_AUTHOR);
+        bookYearOfPublishing = bundle.getString(TextConstants.BOOK_YEAR_OF_PUBLISHING);
     }
 
     public static void initStringFields(ResourceBundle bundle) {
@@ -58,6 +70,7 @@ public class FirstView {
         toHomePage = bundle.getString(TextConstants.TO_HOME_PAGE);
         seeSubscriptionsList = bundle.getString(TextConstants.SEE_SUBSCRIPTIONS_LIST);
         subscriptionsListString = bundle.getString(TextConstants.SUBSCRIPTIONS_LIST_STRING);
+
         blockButton = bundle.getString(TextConstants.BLOCK_BUTTON);
         unblockButton = bundle.getString(TextConstants.UNBLOCK_BUTTON);
         usernameTableHeader = bundle.getString(TextConstants.USERNAME_TABLE_HEADER);
@@ -69,6 +82,11 @@ public class FirstView {
         userEmail = bundle.getString(TextConstants.USER_EMAIL);
         userPhoneNumber = bundle.getString(TextConstants.USER_PHONE_NUMBER);
         userAddress = bundle.getString(TextConstants.USER_ADDRESS);
+
+        bookId = bundle.getString(TextConstants.BOOK_ID);
+        bookTitle = bundle.getString(TextConstants.BOOK_TITLE);
+        bookAuthor = bundle.getString(TextConstants.BOOK_AUTHOR);
+        bookYearOfPublishing = bundle.getString(TextConstants.BOOK_YEAR_OF_PUBLISHING);
     }
 
     public FirstView() {}
@@ -141,5 +159,21 @@ public class FirstView {
 
     public String getUserAddress() {
         return userAddress;
+    }
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public String getBookTitle() {
+        return bookTitle;
+    }
+
+    public String getBookAuthor() {
+        return bookAuthor;
+    }
+
+    public String getBookYearOfPublishing() {
+        return bookYearOfPublishing;
     }
 }

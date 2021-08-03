@@ -10,12 +10,12 @@
 
 <br><br><br>
 
-<table>
+<table border="1">
     <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Year of publishing</th>
+        <th>${locale.bookId}</th>
+        <th>${locale.bookTitle}</th>
+        <th>${locale.bookAuthor}</th>
+        <th>${locale.bookYearOfPublishing}</th>
     </tr>
 
     <c:forEach var="book" items="${allBooks}">
