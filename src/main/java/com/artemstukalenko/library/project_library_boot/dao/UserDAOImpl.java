@@ -3,6 +3,7 @@ package com.artemstukalenko.library.project_library_boot.dao;
 import com.artemstukalenko.library.project_library_boot.entity.Authority;
 import com.artemstukalenko.library.project_library_boot.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -56,7 +57,15 @@ public class UserDAOImpl implements UserDAO {
     public void registerUser(User user) {
         Authority newUserAuthority = new Authority(user.getUsername(), "ROLE_USER");
 
+        user.setPassword(getEncodedPassword(user.getPassword()));
+
         entityManager.merge(user);
         entityManager.merge(newUserAuthority);
+    }
+
+    public String getEncodedPassword(String rawPassword) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
+
+        return "{bcrypt}" + encoder.encode(rawPassword);
     }
 }
