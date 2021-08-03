@@ -59,8 +59,8 @@ public class UserDAOImpl implements UserDAO {
 
         user.setPassword(getEncodedPassword(user.getPassword()));
 
-        entityManager.merge(user);
-        entityManager.merge(newUserAuthority);
+        entityManager.persist(user);
+        entityManager.persist(newUserAuthority);
     }
 
     public String getEncodedPassword(String rawPassword) {

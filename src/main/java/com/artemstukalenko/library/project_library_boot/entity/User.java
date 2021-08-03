@@ -1,9 +1,11 @@
 package com.artemstukalenko.library.project_library_boot.entity;
 
+import com.artemstukalenko.library.project_library_boot.controller.RegexContainer;
 import com.artemstukalenko.library.project_library_boot.view.FirstView;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "users")
@@ -15,6 +17,7 @@ public class User {
 
     @Id
     @Column(name = "username")
+    @Pattern(regexp = RegexContainer.VALID_LOGIN)
     private String username;
     @Column(name = "password")
     private String password;
