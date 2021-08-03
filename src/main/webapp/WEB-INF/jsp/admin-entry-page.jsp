@@ -29,6 +29,11 @@
         <tr>
             <td>${user.username}</td>
             <td>${user.enabled}</td>
+            <td>${user.userDetails.userFirstName}</td>
+            <td>${user.userDetails.userLastName}</td>
+            <td>${user.userDetails.userEmail}</td>
+            <td>${user.userDetails.userPhoneNumber}</td>
+            <td>${user.userDetails.userAddress}</td>
 
             <td>
                 <input type="button" value="${locale.blockButton}" onclick="window.location.href = '${blockButton}'"/>

@@ -1,13 +1,17 @@
 package com.artemstukalenko.library.project_library_boot.entity;
 
 import com.artemstukalenko.library.project_library_boot.view.FirstView;
-import com.artemstukalenko.library.project_library_boot.view.TextConstants;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "username")
+    @Autowired
+    private UserDetails userDetails;
 
     @Id
     @Column(name = "username")
@@ -56,5 +60,13 @@ public class User {
 
     public void setEnabled(int enabled) {
         this.enabled = enabled;
+    }
+
+    public UserDetails getUserDetails() {
+        return userDetails;
+    }
+
+    public void setUserDetails(UserDetails userDetails) {
+        this.userDetails = userDetails;
     }
 }
