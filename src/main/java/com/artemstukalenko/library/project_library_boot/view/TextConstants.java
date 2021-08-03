@@ -14,4 +14,9 @@ public interface TextConstants {
     String STATUS_TABLE_HEADER = "status.table.header";
     String USER_BLOCKED = "user.blocked";
     String USER_NOT_BLOCKED = "user.not.blocked";
+    String USER_FIRST_NAME = "user.first.name";
+    String USER_LAST_NAME = "user.last.name";
+    String USER_EMAIL = "user.email";
+    String USER_PHONE_NUMBER = "user.phone.number";
+    String USER_ADDRESS = "user.address";
 }

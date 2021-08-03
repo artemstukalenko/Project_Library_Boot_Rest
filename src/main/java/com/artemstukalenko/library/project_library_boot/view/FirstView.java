@@ -23,6 +23,11 @@ public class FirstView {
     public static String statusTableHeader;
     public static String userBlocked;
     public static String userNotBlocked;
+    public static String userFirstName;
+    public static String userLastName;
+    public static String userEmail;
+    public static String userPhoneNumber;
+    public static String userAddress;
 
     static {
         usersListString = bundle.getString(TextConstants.USERS_LIST_STRING);
@@ -38,6 +43,11 @@ public class FirstView {
         statusTableHeader = bundle.getString(TextConstants.STATUS_TABLE_HEADER);
         userBlocked = bundle.getString(TextConstants.USER_BLOCKED);
         userNotBlocked = bundle.getString(TextConstants.USER_NOT_BLOCKED);
+        userFirstName = bundle.getString(TextConstants.USER_FIRST_NAME);
+        userLastName = bundle.getString(TextConstants.USER_LAST_NAME);
+        userEmail = bundle.getString(TextConstants.USER_EMAIL);
+        userPhoneNumber = bundle.getString(TextConstants.USER_PHONE_NUMBER);
+        userAddress = bundle.getString(TextConstants.USER_ADDRESS);
     }
 
     public static void initStringFields(ResourceBundle bundle) {
@@ -54,6 +64,11 @@ public class FirstView {
         statusTableHeader = bundle.getString(TextConstants.STATUS_TABLE_HEADER);
         userBlocked = bundle.getString(TextConstants.USER_BLOCKED);
         userNotBlocked = bundle.getString(TextConstants.USER_NOT_BLOCKED);
+        userFirstName = bundle.getString(TextConstants.USER_FIRST_NAME);
+        userLastName = bundle.getString(TextConstants.USER_LAST_NAME);
+        userEmail = bundle.getString(TextConstants.USER_EMAIL);
+        userPhoneNumber = bundle.getString(TextConstants.USER_PHONE_NUMBER);
+        userAddress = bundle.getString(TextConstants.USER_ADDRESS);
     }
 
     public FirstView() {}
@@ -106,5 +121,25 @@ public class FirstView {
 
     public String getUserNotBlocked() {
         return userNotBlocked;
+    }
+
+    public String getUserFirstName() {
+        return userFirstName;
+    }
+
+    public String getUserLastName() {
+        return userLastName;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public String getUserPhoneNumber() {
+        return userPhoneNumber;
+    }
+
+    public String getUserAddress() {
+        return userAddress;
     }
 }

@@ -87,12 +87,4 @@ public class FirstController {
 
         return "redirect:/";
     }
-
-    @RequestMapping("/showUserDetails")
-    public String showUserDetails(@RequestParam("userName") String username) {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-        return "redirect:/";
-    }
-
 }

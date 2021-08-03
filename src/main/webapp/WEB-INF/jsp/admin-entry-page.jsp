@@ -15,6 +15,11 @@
     <tr>
         <th>${locale.usernameTableHeader}</th>
         <th>${locale.statusTableHeader}</th>
+        <th>${locale.userFirstName}</th>
+        <th>${locale.userLastName}</th>
+        <th>${locale.userEmail}</th>
+        <th>${locale.userPhoneNumber}</th>
+        <th>${locale.userAddress}</th>
     </tr>
 
     <c:forEach var="user" items="${allUsers}">
