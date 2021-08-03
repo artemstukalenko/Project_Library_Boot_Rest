@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -37,6 +38,11 @@ public class FirstController {
         return "redirect:/login";
     }
 
+    @RequestMapping("/register")
+    public String getRegistrationPage() {
+        return "register-page";
+    }
+
     @RequestMapping("/")
     public String getChangeLanguagePage(Model model) {
         model.addAttribute("locale", controlledView);
@@ -51,7 +57,8 @@ public class FirstController {
 
         FirstView.changeLanguageToEn();
 
-        return "homepage";
+        //return "homepage";
+        return "redirect:/";
     }
 
     @RequestMapping("ua")
@@ -60,7 +67,8 @@ public class FirstController {
 
         FirstView.changeLanguageToUa();
 
-        return "homepage";
+        //return "homepage";
+        return "redirect:/";
     }
 
     @RequestMapping("/booksList")
