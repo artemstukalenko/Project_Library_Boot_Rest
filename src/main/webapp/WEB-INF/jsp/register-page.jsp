@@ -5,23 +5,23 @@
 
 <body>
 
-<h2>Registration</h2>
+<h2>${locale.registration}</h2>
 
 <form:form action="/addNewUser">
 
-    <input type="text" id="username" name="username" placeholder="username"/>
+    <input type="text" id="username" name="username" placeholder="${locale.loginUsername}"/>
     <br>
-    <input type="password" id="password" name="password" placeholder="password"/>
+    <input type="password" id="password" name="password" placeholder="${locale.loginPassword}"/>
     <br>
-    <input type="text" id="firstName" name="firstName" placeholder="first name"/>
+    <input type="text" id="firstName" name="firstName" placeholder="${locale.userFirstName}"/>
     <br>
-    <input type="text" id="lastName" name="lastName" placeholder="last name"/>
+    <input type="text" id="lastName" name="lastName" placeholder="${locale.userLastName}"/>
     <br>
-    <input type="text" id="email" name="email" placeholder="email"/>
+    <input type="text" id="email" name="email" placeholder="${locale.userEmail}"/>
     <br>
-    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="phone number"/>
+    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="${locale.userPhoneNumber}"/>
     <br>
-    <input type="text" id="address" name="address" placeholder="address"/>
+    <input type="text" id="address" name="address" placeholder="${locale.userAddress}"/>
     <br>
 
     <input type="submit" value="OK">

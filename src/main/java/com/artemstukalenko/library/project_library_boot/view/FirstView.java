@@ -40,6 +40,8 @@ public class FirstView {
     public static String loginWelcome;
     public static String loginButton;
 
+    public static String registration;
+
     static {
         usersListString = bundle.getString(TextConstants.USERS_LIST_STRING);
         seeUsersList = bundle.getString(TextConstants.SEE_USERS_LIST);
@@ -70,6 +72,8 @@ public class FirstView {
         loginPassword = bundle.getString(TextConstants.LOGIN_PASSWORD);
         loginWelcome = bundle.getString(TextConstants.LOGIN_WELCOME);
         loginButton = bundle.getString(TextConstants.LOGIN_BUTTON);
+
+        registration = bundle.getString(TextConstants.REGISTRATION);
     }
 
     public static void initStringFields(ResourceBundle bundle) {
@@ -102,6 +106,8 @@ public class FirstView {
         loginPassword = bundle.getString(TextConstants.LOGIN_PASSWORD);
         loginWelcome = bundle.getString(TextConstants.LOGIN_WELCOME);
         loginButton = bundle.getString(TextConstants.LOGIN_BUTTON);
+
+        registration = bundle.getString(TextConstants.REGISTRATION);
     }
 
     public FirstView() {}
@@ -206,5 +212,9 @@ public class FirstView {
 
     public String getLoginButton() {
         return loginButton;
+    }
+
+    public String getRegistration() {
+        return registration;
     }
 }

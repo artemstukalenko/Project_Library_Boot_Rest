@@ -40,7 +40,8 @@ public class FirstController {
     }
 
     @RequestMapping("/register")
-    public String getRegistrationPage() {
+    public String getRegistrationPage(Model model) {
+        model.addAttribute("locale", controlledView);
         return "register-page";
     }
 

@@ -30,4 +30,6 @@ public interface TextConstants {
     String LOGIN_PASSWORD = "login.password";
     String LOGIN_WELCOME = "login.welcome";
     String LOGIN_BUTTON = "login.button";
+
+    String REGISTRATION = "registration";
 }
