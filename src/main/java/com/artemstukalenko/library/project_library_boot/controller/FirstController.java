@@ -23,37 +23,8 @@ public class FirstController {
 
     FirstView controlledView = new FirstView();
 
-    @RequestMapping("/login")
-    public String getLoginPage(@RequestParam(value = "error", required = false) String error,
-                               @RequestParam(value = "logout", required = false) String logout,
-                               Model model) {
-        model.addAttribute("error", error != null);
-        model.addAttribute("logout", logout != null);
-        model.addAttribute("locale", controlledView);
-        return "login";
-    }
-
-    @RequestMapping("/logout")
-    public String whenLoggedOut() {
-        return "redirect:/login";
-    }
-
-    @RequestMapping("/register")
-    public String getRegistrationPage(Model model) {
-        model.addAttribute("locale", controlledView);
-        model.addAttribute("potentialUser", new User());
-
-        return "register-page";
-    }
-
-    @RequestMapping("/registerNewUser")
-    public String registerNewUser(@ModelAttribute("potentialUser") User potentialUser) {
-        userService.registerUser(potentialUser);
-        return "redirect:/login";
-    }
-
     @RequestMapping("/")
-    public String getChangeLanguagePage(Model model) {
+    public String getHomePage(Model model) {
         model.addAttribute("locale", controlledView);
 //        String userRole = userService.getUserRole(username);
 //        model.addAttribute("userRole", userRole);
@@ -89,33 +60,9 @@ public class FirstController {
         return "user-entry-page";
     }
 
-    @RequestMapping("/asAdmin")
-    public String getAdminEntryPage(Model model) {
-        model.addAttribute("locale", controlledView);
-        List<User> allUsers = userService.getAllUsers();
-        model.addAttribute("allUsers", allUsers);
 
-        return "admin-entry-page";
-    }
 
-    @RequestMapping("/asLibrarian")
-    public String getLibrarianEntryPage(Model model) {
-        model.addAttribute("locale", controlledView);
+    
 
-        return "librarian-entry-page";
-    }
 
-    @RequestMapping("/blockUser")
-    public String blockUser(@RequestParam("userName") String username) {
-        userService.blockUser(username);
-
-        return "redirect:/";
-    }
-
-    @RequestMapping("/unblockUser")
-    public String unblockUser(@RequestParam("userName") String username) {
-        userService.unblockUser(username);
-
-        return "redirect:/";
-    }
 }
