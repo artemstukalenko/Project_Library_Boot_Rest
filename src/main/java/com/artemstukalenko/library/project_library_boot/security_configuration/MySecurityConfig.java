@@ -5,7 +5,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
 
 import javax.sql.DataSource;
 
@@ -17,14 +16,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        User.UserBuilder userBuilder = User.withDefaultPasswordEncoder();
-
         auth.jdbcAuthentication().dataSource(dataSource);
-
-        /*auth.inMemoryAuthentication()
-                .withUser(userBuilder.username("artem").password("artem").roles("ADMIN"))
-                .withUser(userBuilder.username("valera").password("valera").roles("USER"))
-                .withUser(userBuilder.username("maria").password("maria").roles("LIBRARIAN"));*/
     }
 
     @Override
@@ -33,7 +25,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").hasAnyRole("USER", "ADMIN", "LIBRARIAN")
                 .antMatchers("/librarian-entry-page").hasRole("LIBRARIAN")
                 .antMatchers("/admin-entry-page").hasRole("ADMIN")
-                .and().formLogin().loginPage("/login").permitAll();
+                .and().formLogin().loginPage("/login").successForwardUrl("/homepage");
     }
 
 }

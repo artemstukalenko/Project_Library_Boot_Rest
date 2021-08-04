@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -23,11 +24,12 @@ public class FirstController {
 
     FirstView controlledView = new FirstView();
 
-    @RequestMapping("/")
-    public String getHomePage(Model model) {
+    @RequestMapping("/homepage")
+    public String getHomePage(Model model, HttpServletRequest request) {
         model.addAttribute("locale", controlledView);
-//        String userRole = userService.getUserRole(username);
-//        model.addAttribute("userRole", userRole);
+        String currentUsername = request.getParameter("username");
+        System.out.println("USERNAME: " + currentUsername);
+
         return "homepage";
     }
 

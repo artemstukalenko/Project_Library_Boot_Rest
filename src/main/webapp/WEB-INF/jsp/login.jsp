@@ -25,7 +25,7 @@
     <input type="text" id="username" placeholder="${locale.loginUsername}" name="username">
     <br>
     <input type="password" id ="password" placeholder="${locale.loginPassword}" name="password">
-    <br>
+    <br><br>
     <input type="submit" value="${locale.loginButton}">
 </form:form>
 

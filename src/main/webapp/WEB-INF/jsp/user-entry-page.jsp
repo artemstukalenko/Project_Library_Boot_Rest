@@ -31,7 +31,7 @@
 
 <br><br><br>
 
-<form:form action="." modelAttribute="locale">
+<form:form action="/homepage" modelAttribute="locale">
 
     <input type="submit" value="${locale.toHomePage}"/>
 

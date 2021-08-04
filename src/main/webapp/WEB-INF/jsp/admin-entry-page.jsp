@@ -48,8 +48,8 @@
 
     </c:forEach>
 </table>
-
-<form:form action="." modelAttribute="locale">
+<br>
+<form:form action="/homepage" modelAttribute="locale">
 
     <input type="submit" value="${locale.toHomePage}"/>
 
