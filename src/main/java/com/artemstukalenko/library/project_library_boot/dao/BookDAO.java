@@ -7,4 +7,6 @@ public interface BookDAO {
 
     public List<Book> getAllBooks();
 
+    public void deleteBook(int bookId);
+    
 }

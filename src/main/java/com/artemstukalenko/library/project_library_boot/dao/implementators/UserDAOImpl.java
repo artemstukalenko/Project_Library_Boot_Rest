@@ -1,5 +1,6 @@
-package com.artemstukalenko.library.project_library_boot.dao;
+package com.artemstukalenko.library.project_library_boot.dao.implementators;
 
+import com.artemstukalenko.library.project_library_boot.dao.UserDAO;
 import com.artemstukalenko.library.project_library_boot.entity.Authority;
 import com.artemstukalenko.library.project_library_boot.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;

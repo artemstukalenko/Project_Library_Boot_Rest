@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
@@ -19,11 +20,26 @@
     </tr>
 
     <c:forEach var="book" items="${allBooks}">
+
+        <c:url var="deleteBookButton" value="/deleteBook">
+            <c:param name="bookId" value="${book.bookId}"/>
+        </c:url>
+
         <tr>
             <td>${book.bookId}</td>
             <td>${book.bookTitle}</td>
             <td>${book.bookAuthor}</td>
             <td>${book.bookYearOfPublishing}</td>
+
+            <td>
+
+                <security:authorize access="hasRole('ADMIN')">
+
+                    <input type="button" value="delete book" onclick="window.location.href = '${deleteBookButton}'">
+
+                </security:authorize>
+
+            </td>
         </tr>
     </c:forEach>
 

@@ -1,7 +1,8 @@
-package com.artemstukalenko.library.project_library_boot.service;
+package com.artemstukalenko.library.project_library_boot.service.implementators;
 
 import com.artemstukalenko.library.project_library_boot.dao.UserDAO;
 import com.artemstukalenko.library.project_library_boot.entity.User;
+import com.artemstukalenko.library.project_library_boot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

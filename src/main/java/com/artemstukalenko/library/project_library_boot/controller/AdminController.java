@@ -1,6 +1,7 @@
 package com.artemstukalenko.library.project_library_boot.controller;
 
 import com.artemstukalenko.library.project_library_boot.entity.User;
+import com.artemstukalenko.library.project_library_boot.service.BookService;
 import com.artemstukalenko.library.project_library_boot.service.UserService;
 import com.artemstukalenko.library.project_library_boot.view.FirstView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class AdminController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    BookService bookService;
 
     FirstView controlledView = new FirstView();
 
@@ -45,6 +49,13 @@ public class AdminController {
     @RequestMapping("/deleteUser")
     public String deleteUser(@RequestParam("userName") String username) {
         userService.deleteUser(username);
+
+        return "redirect:/";
+    }
+
+    @RequestMapping("/deleteBook")
+    public String deleteBook(@RequestParam("bookId") int bookId) {
+        bookService.deleteBook(bookId);
 
         return "redirect:/";
     }

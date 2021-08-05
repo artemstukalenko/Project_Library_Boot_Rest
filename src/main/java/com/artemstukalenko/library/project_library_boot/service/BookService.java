@@ -8,4 +8,6 @@ public interface BookService {
 
     public List<Book> getAllBooks();
 
+    public void deleteBook(int bookId);
+
 }
