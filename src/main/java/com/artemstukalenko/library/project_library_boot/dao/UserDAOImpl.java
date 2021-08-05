@@ -66,6 +66,32 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     @Transactional
+    public void deleteUser(String username) {
+        deleteAuthority(username);
+
+        deleteUserDetails(username);
+
+        Query queryForDeletingUser = entityManager.createQuery("delete from User where username =: username");
+        queryForDeletingUser.setParameter("username", username);
+        queryForDeletingUser.executeUpdate();
+    }
+
+    @Transactional
+    protected void deleteAuthority(String username) {
+        Query queryForDeletingAuthority = entityManager.createQuery("delete from Authority where username =: username");
+        queryForDeletingAuthority.setParameter("username", username);
+        queryForDeletingAuthority.executeUpdate();
+    }
+
+    @Transactional
+    protected void deleteUserDetails(String username) {
+        Query queryForDeletingUserDetails = entityManager.createQuery("delete from UserDetails where username =: username");
+        queryForDeletingUserDetails.setParameter("username", username);
+        queryForDeletingUserDetails.executeUpdate();
+    }
+
+    @Override
+    @Transactional
     public void registerUser(User user) {
         Authority newUserAuthority = new Authority(user.getUsername(), "ROLE_USER");
 

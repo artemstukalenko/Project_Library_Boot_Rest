@@ -42,4 +42,10 @@ public class AdminController {
         return "redirect:/";
     }
 
+    @RequestMapping("/deleteUser")
+    public String deleteUser(@RequestParam("userName") String username) {
+        userService.deleteUser(username);
+
+        return "redirect:/";
+    }
 }

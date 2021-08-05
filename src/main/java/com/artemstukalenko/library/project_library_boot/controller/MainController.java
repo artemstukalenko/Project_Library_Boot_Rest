@@ -33,7 +33,6 @@ public class MainController {
         model.addAttribute("locale", controlledView);
 
         currentUser = userService.findUserByUsername(request.getParameter("username"));
-        System.out.println("USER: " + currentUser);
 
         model.addAttribute("currentUsername", currentUser.getUsername());
         currentUserAuthority = getUserAuthorityString(
