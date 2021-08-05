@@ -22,7 +22,7 @@
 
 <br><br>
 
-<h2>Welcome! You have logged in as ${currentUsername}${currentAuthority}</h2>
+<h2>${locale.loggedInAs} ${currentUsername}${currentAuthority}</h2>
 
 <form:form action="booksList" modelAttribute="locale">
 

@@ -35,6 +35,8 @@ public class FirstView {
     public static String bookTitle = bundle.getString(BOOK_TITLE);
     public static String bookAuthor = bundle.getString(BOOK_AUTHOR);
     public static String bookYearOfPublishing = bundle.getString(BOOK_YEAR_OF_PUBLISHING);
+    public static String addNewBook = bundle.getString(ADD_NEW_BOOK);
+    public static String deleteBook = bundle.getString(DELETE_BOOK);
 
     public static String loginUsername = bundle.getString(LOGIN_USERNAME);
     public static String loginPassword = bundle.getString(LOGIN_PASSWORD);
@@ -42,6 +44,8 @@ public class FirstView {
     public static String loginButton = bundle.getString(LOGIN_BUTTON);
 
     public static String registration = bundle.getString(REGISTRATION);
+
+    public static String loggedInAs = bundle.getString(LOGGED_IN_AS);
 
     public static void initStringFields(ResourceBundle bundle) {
         usersListString = bundle.getString(USERS_LIST_STRING);
@@ -69,6 +73,8 @@ public class FirstView {
         bookTitle = bundle.getString(BOOK_TITLE);
         bookAuthor = bundle.getString(BOOK_AUTHOR);
         bookYearOfPublishing = bundle.getString(BOOK_YEAR_OF_PUBLISHING);
+        addNewBook = bundle.getString(ADD_NEW_BOOK);
+        deleteBook = bundle.getString(DELETE_BOOK);
 
         loginUsername = bundle.getString(LOGIN_USERNAME);
         loginPassword = bundle.getString(LOGIN_PASSWORD);
@@ -76,6 +82,8 @@ public class FirstView {
         loginButton = bundle.getString(LOGIN_BUTTON);
 
         registration = bundle.getString(REGISTRATION);
+
+        loggedInAs = bundle.getString(LOGGED_IN_AS);
     }
 
     public FirstView() {}
@@ -188,5 +196,17 @@ public class FirstView {
 
     public String getDeleteUserButton() {
         return deleteUserButton;
+    }
+
+    public String getLoggedInAs() {
+        return loggedInAs;
+    }
+
+    public String getAddNewBook() {
+        return addNewBook;
+    }
+
+    public String getDeleteBook() {
+        return deleteBook;
     }
 }

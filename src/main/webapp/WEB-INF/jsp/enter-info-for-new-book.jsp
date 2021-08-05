@@ -1,16 +1,17 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 
 <body>
 
 <form:form action="/addNewBook" modelAttribute="newBook" method="post">
 
-    Book title: <form:input path="bookTitle"/>
+    ${locale.bookTitle}: <form:input path="bookTitle"/>
     <form:errors path="bookTitle"/>
-    Book author: <form:input path="bookAuthor"/>
+    ${locale.bookAuthor}: <form:input path="bookAuthor"/>
     <form:errors path="bookAuthor"/>
-    Book year of publishing: <form:input path="bookYearOfPublishing"/>
+    ${locale.bookYearOfPublishing}: <form:input path="bookYearOfPublishing"/>
     <form:errors path="bookYearOfPublishing"/>
 
     <br><br>

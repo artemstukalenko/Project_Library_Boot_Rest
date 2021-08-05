@@ -65,6 +65,7 @@ public class AdminController {
     @RequestMapping("/enterInfoForNewBook")
     public String enterInfoForNewBook(Model model) {
         model.addAttribute("newBook", new Book());
+        model.addAttribute("locale", controlledView);
 
         return "enter-info-for-new-book";
     }

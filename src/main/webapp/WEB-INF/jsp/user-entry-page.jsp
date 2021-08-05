@@ -34,9 +34,7 @@
             <td>
 
                 <security:authorize access="hasRole('ADMIN')">
-
-                    <input type="button" value="delete book" onclick="window.location.href = '${deleteBookButton}'">
-                    <input type="button" value="add book" onclick="window.location.href = '/enterInfoForNewBook'">
+                    <input type="button" value="${locale.deleteBook}" onclick="window.location.href = '${deleteBookButton}'">
                 </security:authorize>
 
             </td>
@@ -44,6 +42,11 @@
     </c:forEach>
 
 </table>
+
+<br><br>
+<security:authorize access="hasRole('ADMIN')">
+    <input type="button" value="${locale.addNewBook}" onclick="window.location.href = '/enterInfoForNewBook'">
+</security:authorize>
 
 <br><br><br>
 

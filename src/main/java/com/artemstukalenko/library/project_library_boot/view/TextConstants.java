@@ -26,6 +26,8 @@ public interface TextConstants {
     String BOOK_TITLE = "book.title";
     String BOOK_AUTHOR = "book.author";
     String BOOK_YEAR_OF_PUBLISHING = "book.year.of.publishing";
+    String ADD_NEW_BOOK = "add.new.book";
+    String DELETE_BOOK = "delete.book";
 
     String LOGIN_USERNAME = "login.username";
     String LOGIN_PASSWORD = "login.password";
@@ -33,4 +35,6 @@ public interface TextConstants {
     String LOGIN_BUTTON = "login.button";
 
     String REGISTRATION = "registration";
+
+    String LOGGED_IN_AS = "logged.in.as";
 }
