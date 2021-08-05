@@ -31,8 +31,7 @@ public class RegistrationController {
 
     @RequestMapping("/registerDetails")
     public String registerDetails(@ModelAttribute("newUserDetails") UserDetails newUserDetails) {
-        System.out.println("DETAILS: " + newUserDetails);
-        System.out.println("USER: " + potentialUser);
+
         newUserDetails.setUsername(potentialUser.getUsername());
         potentialUser.setUserDetails(newUserDetails);
         userService.updateUser(potentialUser);
@@ -42,10 +41,11 @@ public class RegistrationController {
 
     @RequestMapping("/registerNewUser")
     public String registerNewUser(@ModelAttribute("potentialUser") User potentialUser1, Model model) {
+        model.addAttribute("locale", controlledView);
         userService.registerUser(potentialUser1);
-        System.out.println("USER: " + potentialUser1);
+
         potentialUser1.setUserDetails(new UserDetails(potentialUser1));
-        System.out.println("DETAILS: " + potentialUser1.getUserDetails());
+
         potentialUser = potentialUser1;
 
         model.addAttribute("newUserDetails", potentialUser.getUserDetails());

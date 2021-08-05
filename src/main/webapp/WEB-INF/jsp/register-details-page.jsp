@@ -9,10 +9,21 @@
 
 <form:form action="/registerDetails" modelAttribute="newUserDetails" method="post">
 
-    First name: <form:input path="userFirstName"/>
+    ${locale.userFirstName}: <form:input path="userFirstName"/>
     <form:errors path="userFirstName"/>
-    Last name: <form:input path="userLastName"/>
+    <br>
+    ${locale.userLastName}: <form:input path="userLastName"/>
     <form:errors path="userLastName"/>
+    <br>
+    ${locale.userEmail}: <form:input path="userEmail"/>
+    <form:errors path="userEmail"/>
+    <br>
+    ${locale.userPhoneNumber}: <form:input path="userPhoneNumber"/>
+    <form:errors path="userPhoneNumber"/>
+    <br>
+    ${locale.userAddress}: <form:input path="userAddress"/>
+    <form:errors path="userAddress"/>
+    <br>
 
     <br>
 
