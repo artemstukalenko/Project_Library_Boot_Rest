@@ -102,7 +102,7 @@ public class UserDAOImpl implements UserDAO {
         entityManager.persist(newUserAuthority);
     }
 
-    public String getEncodedPassword(String rawPassword) {
+    private String getEncodedPassword(String rawPassword) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
 
         return "{bcrypt}" + encoder.encode(rawPassword);
