@@ -17,7 +17,7 @@ public class User {
 
     @Id
     @Column(name = "username")
-    @Pattern(regexp = RegexContainer.VALID_LOGIN)
+//    @Pattern(regexp = RegexContainer.VALID_LOGIN)
     private String username;
     @Column(name = "password")
     private String password;

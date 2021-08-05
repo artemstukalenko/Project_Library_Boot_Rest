@@ -27,6 +27,10 @@ public class UserDetails {
 
     public UserDetails() {}
 
+    public UserDetails(User user) {
+        this.username = user.getUsername();
+    }
+
     public UserDetails(String userFirstName, String userLastName, String userEmail, String userPhoneNumber, String userAddress) {
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;

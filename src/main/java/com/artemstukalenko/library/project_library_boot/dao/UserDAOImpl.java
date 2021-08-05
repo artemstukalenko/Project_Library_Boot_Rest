@@ -60,6 +60,12 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     @Transactional
+    public void updateUser(User user) {
+        entityManager.merge(user);
+    }
+
+    @Override
+    @Transactional
     public void registerUser(User user) {
         Authority newUserAuthority = new Authority(user.getUsername(), "ROLE_USER");
 

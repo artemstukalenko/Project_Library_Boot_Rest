@@ -16,4 +16,6 @@ public interface UserDAO {
     public void registerUser(User user);
 
     public User findUserByUsername(String username);
+
+    public void updateUser(User user);
 }
