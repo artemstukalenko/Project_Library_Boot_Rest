@@ -2,18 +2,17 @@ package com.artemstukalenko.library.project_library_boot.entity;
 
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Component
 @Entity
 @Table(name = "subscriptions")
 public class Subscription {
-
     @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int subscriptionId;
     @Column(name = "username")
     private String username;
     @Column(name = "book_id")
@@ -61,6 +60,10 @@ public class Subscription {
 
     public void setEndOfThePeriod(LocalDate endOfThePeriod) {
         this.endOfThePeriod = endOfThePeriod;
+    }
+
+    public int getSubscriptionId() {
+        return subscriptionId;
     }
 
     @Override
