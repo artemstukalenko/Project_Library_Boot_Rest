@@ -24,16 +24,20 @@ public class MainController {
 
     FirstView controlledView = new FirstView();
 
-    String currentUsername;
+    User currentUser;
+
     String currentUserAuthority;
 
     @RequestMapping("/homepage")
     public String getHomePage(Model model, HttpServletRequest request) {
         model.addAttribute("locale", controlledView);
-        currentUsername = request.getParameter("username");
-        model.addAttribute("currentUsername", currentUsername);
+
+        currentUser = userService.findUserByUsername(request.getParameter("username"));
+        System.out.println("USER: " + currentUser);
+
+        model.addAttribute("currentUsername", currentUser.getUsername());
         currentUserAuthority = getUserAuthorityString(
-                userService.getUserRole(currentUsername));
+                userService.getUserRole(currentUser.getUsername()));
         model.addAttribute("currentAuthority", currentUserAuthority);
 
         return "homepage";
@@ -42,7 +46,7 @@ public class MainController {
     @RequestMapping("/homepage_again")
     public String getHomePageAgain(Model model) {
         model.addAttribute("locale", controlledView);
-        model.addAttribute("currentUsername", currentUsername);
+        model.addAttribute("currentUsername", currentUser.getUsername());
         model.addAttribute("currentAuthority", currentUserAuthority);
 
         return "homepage";
@@ -65,7 +69,7 @@ public class MainController {
 
         FirstView.changeLanguageToEn();
 
-        return "redirect:/";
+        return "redirect:/.";
     }
 
     @RequestMapping("ua")
@@ -74,7 +78,7 @@ public class MainController {
 
         FirstView.changeLanguageToUa();
 
-        return "redirect:/";
+        return "redirect:/.";
     }
 
     @RequestMapping("/booksList")

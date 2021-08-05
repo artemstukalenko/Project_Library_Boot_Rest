@@ -15,4 +15,6 @@ public interface UserService {
     public String getUserRole(String username);
 
     public void registerUser(User user);
+
+    public User findUserByUsername(String username);
 }

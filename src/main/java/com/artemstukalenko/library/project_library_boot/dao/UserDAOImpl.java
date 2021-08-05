@@ -54,6 +54,12 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     @Transactional
+    public User findUserByUsername(String username) {
+        return entityManager.find(User.class, username);
+    }
+
+    @Override
+    @Transactional
     public void registerUser(User user) {
         Authority newUserAuthority = new Authority(user.getUsername(), "ROLE_USER");
 
