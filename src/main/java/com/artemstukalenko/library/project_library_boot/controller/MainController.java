@@ -29,10 +29,21 @@ public class MainController {
         model.addAttribute("locale", controlledView);
         String currentUsername = request.getParameter("username");
         model.addAttribute("currentUsername", currentUsername);
-        String currentAuthority = userService.getUserRole(currentUsername);
-        model.addAttribute("currentAuthority", currentAuthority);
+        model.addAttribute("currentAuthority", getUserAuthorityString(
+                userService.getUserRole(currentUsername)));
 
         return "homepage";
+    }
+
+    private String getUserAuthorityString(String userAuthorityFromDB) {
+        switch (userAuthorityFromDB) {
+            case "ROLE_ADMIN":
+                return ", admin";
+            case "ROLE_LIBRARIAN":
+                return ", librarian";
+            default:
+                return "";
+        }
     }
 
     @RequestMapping("en")
@@ -49,7 +60,7 @@ public class MainController {
         model.addAttribute("locale", controlledView);
 
         FirstView.changeLanguageToUa();
-        
+
         return "redirect:/";
     }
 
