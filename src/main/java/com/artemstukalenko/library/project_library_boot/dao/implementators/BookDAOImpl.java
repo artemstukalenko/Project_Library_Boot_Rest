@@ -32,4 +32,10 @@ public class BookDAOImpl implements BookDAO {
 
         queryForDeletingBook.executeUpdate();
     }
+
+    @Override
+    @Transactional
+    public void addNewBook(Book bookToAdd) {
+        entityManager.persist(bookToAdd);
+    }
 }

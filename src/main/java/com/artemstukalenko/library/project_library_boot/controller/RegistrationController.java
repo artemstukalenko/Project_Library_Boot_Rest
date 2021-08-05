@@ -19,7 +19,10 @@ public class RegistrationController {
 
     FirstView controlledView = new FirstView();
 
-    User potentialUser = new User();
+//    User potentialUser = new User();
+
+    @Autowired
+    User potentialUser;
 
     @RequestMapping("/register")
     public String getRegistrationPage(Model model) {

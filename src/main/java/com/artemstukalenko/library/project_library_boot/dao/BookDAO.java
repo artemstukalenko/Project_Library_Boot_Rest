@@ -8,5 +8,6 @@ public interface BookDAO {
     public List<Book> getAllBooks();
 
     public void deleteBook(int bookId);
-    
+
+    public void addNewBook(Book bookToAdd);
 }
