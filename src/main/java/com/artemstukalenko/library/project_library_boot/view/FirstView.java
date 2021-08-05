@@ -1,6 +1,5 @@
 package com.artemstukalenko.library.project_library_boot.view;
 
-import org.springframework.beans.factory.annotation.Value;
 import static com.artemstukalenko.library.project_library_boot.view.TextConstants.*;
 
 import java.util.Locale;
@@ -19,6 +18,7 @@ public class FirstView {
     public static String seeSubscriptionsList = bundle.getString(SEE_SUBSCRIPTIONS_LIST);
     public static String subscriptionsListString = bundle.getString(SUBSCRIPTIONS_LIST_STRING);
 
+    public static String deleteUserButton = bundle.getString(DELETE_USER_BUTTON);
     public static String blockButton = bundle.getString(BLOCK_BUTTON);
     public static String unblockButton = bundle.getString(UNBLOCK_BUTTON);
     public static String usernameTableHeader = bundle.getString(USERNAME_TABLE_HEADER);
@@ -52,6 +52,7 @@ public class FirstView {
         seeSubscriptionsList = bundle.getString(SEE_SUBSCRIPTIONS_LIST);
         subscriptionsListString = bundle.getString(SUBSCRIPTIONS_LIST_STRING);
 
+        deleteUserButton = bundle.getString(DELETE_USER_BUTTON);
         blockButton = bundle.getString(BLOCK_BUTTON);
         unblockButton = bundle.getString(UNBLOCK_BUTTON);
         usernameTableHeader = bundle.getString(USERNAME_TABLE_HEADER);
@@ -88,7 +89,7 @@ public class FirstView {
     public static void changeLanguageToEn() {
         bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME, new Locale("en", "EN"));
 
-        initStringFields(bundle);
+        //initStringFields(bundle);
     }
 
     public String getUsersListString() {return usersListString;}
@@ -183,5 +184,9 @@ public class FirstView {
 
     public String getRegistration() {
         return registration;
+    }
+
+    public String getDeleteUserButton() {
+        return deleteUserButton;
     }
 }

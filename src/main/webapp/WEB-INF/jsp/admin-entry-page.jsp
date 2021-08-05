@@ -46,7 +46,7 @@
             <td>
                 <input type="button" value="${locale.blockButton}" onclick="window.location.href = '${blockButton}'"/>
                 <input type="button" value="${locale.unblockButton}" onclick="window.location.href = '${unblockButton}'"/>
-                <input type="button" value="delete user" onclick="window.location.href = '${deleteButton}'">
+                <input type="button" value="${locale.deleteUserButton}" onclick="window.location.href = '${deleteButton}'">
             </td>
         </tr>
 

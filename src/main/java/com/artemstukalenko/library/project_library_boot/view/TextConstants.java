@@ -9,6 +9,7 @@ public interface TextConstants {
     String SEE_SUBSCRIPTIONS_LIST = "see.subscriptions.list";
     String SUBSCRIPTIONS_LIST_STRING = "subscriptions.list";
 
+    String DELETE_USER_BUTTON = "delete.user";
     String BLOCK_BUTTON = "block.button";
     String UNBLOCK_BUTTON = "unblock.button";
     String USERNAME_TABLE_HEADER = "username.table.header";
