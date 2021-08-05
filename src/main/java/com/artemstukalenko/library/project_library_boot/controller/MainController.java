@@ -24,13 +24,26 @@ public class MainController {
 
     FirstView controlledView = new FirstView();
 
+    String currentUsername;
+    String currentUserAuthority;
+
     @RequestMapping("/homepage")
     public String getHomePage(Model model, HttpServletRequest request) {
         model.addAttribute("locale", controlledView);
-        String currentUsername = request.getParameter("username");
+        currentUsername = request.getParameter("username");
         model.addAttribute("currentUsername", currentUsername);
-        model.addAttribute("currentAuthority", getUserAuthorityString(
-                userService.getUserRole(currentUsername)));
+        currentUserAuthority = getUserAuthorityString(
+                userService.getUserRole(currentUsername));
+        model.addAttribute("currentAuthority", currentUserAuthority);
+
+        return "homepage";
+    }
+
+    @RequestMapping("/homepage_again")
+    public String getHomePageAgain(Model model) {
+        model.addAttribute("locale", controlledView);
+        model.addAttribute("currentUsername", currentUsername);
+        model.addAttribute("currentAuthority", currentUserAuthority);
 
         return "homepage";
     }
