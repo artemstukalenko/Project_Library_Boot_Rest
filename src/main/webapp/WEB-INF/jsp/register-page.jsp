@@ -11,7 +11,7 @@
 
     ${locale.loginUsername}: <form:input path="username"/>
     <form:errors path="username"/>
-    ${locale.loginPassword}: <form:input path="password"/>
+    ${locale.loginPassword}: <form:password path="password"/>
     <form:errors path="password"/>
 
 
