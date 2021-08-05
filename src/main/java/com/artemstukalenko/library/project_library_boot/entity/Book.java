@@ -1,7 +1,6 @@
 package com.artemstukalenko.library.project_library_boot.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "books")
@@ -17,14 +16,17 @@ public class Book {
     private String bookAuthor;
     @Column(name = "year_of_publishing")
     private String bookYearOfPublishing;
+    @Column(name = "taken")
+    private boolean taken;
 
 
-    public Book() {}
+    public Book() {this.taken = false;}
 
     public Book(String bookTitle, String bookAuthor, String bookYearOfPublishing) {
         this.bookTitle = bookTitle;
         this.bookAuthor = bookAuthor;
         this.bookYearOfPublishing = bookYearOfPublishing;
+        this.taken = false;
     }
 
     public int getBookId() {
