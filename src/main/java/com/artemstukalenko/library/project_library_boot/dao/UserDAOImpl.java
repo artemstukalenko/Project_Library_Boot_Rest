@@ -44,8 +44,8 @@ public class UserDAOImpl implements UserDAO {
     @Override
     @Transactional
     public String getUserRole(String username) {
-        Query queryForGettingUserRole = entityManager.createQuery("authority from Authority where username in " +
-                "(from User where username := usernameForSearch)");
+        Query queryForGettingUserRole = entityManager.createQuery("select authority from Authority where username in " +
+                "(select username from User where username =: usernameForSearch)");
 
         queryForGettingUserRole.setParameter("usernameForSearch", username);
         return (String) queryForGettingUserRole.getSingleResult();

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-public class FirstController {
+public class MainController {
 
     @Autowired
     UserService userService;
@@ -28,7 +28,9 @@ public class FirstController {
     public String getHomePage(Model model, HttpServletRequest request) {
         model.addAttribute("locale", controlledView);
         String currentUsername = request.getParameter("username");
-        System.out.println("USERNAME: " + currentUsername);
+        model.addAttribute("currentUsername", currentUsername);
+        String currentAuthority = userService.getUserRole(currentUsername);
+        model.addAttribute("currentAuthority", currentAuthority);
 
         return "homepage";
     }
@@ -39,7 +41,6 @@ public class FirstController {
 
         FirstView.changeLanguageToEn();
 
-        //return "homepage";
         return "redirect:/";
     }
 
@@ -48,8 +49,7 @@ public class FirstController {
         model.addAttribute("locale", controlledView);
 
         FirstView.changeLanguageToUa();
-
-        //return "homepage";
+        
         return "redirect:/";
     }
 
