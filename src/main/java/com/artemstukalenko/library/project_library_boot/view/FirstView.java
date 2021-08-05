@@ -10,71 +10,37 @@ public class FirstView {
     public static final String RESOURCE_BUNDLE_NAME = "messages";
     public static ResourceBundle bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME, new Locale("en", "EN"));
 
-    public static String usersListString;
-    public static String seeUsersList;
-    public static String seeBooksList;
-    public static String booksListString;
-    public static String toHomePage;
-    public static String seeSubscriptionsList;
-    public static String subscriptionsListString;
+    public static String usersListString = bundle.getString(TextConstants.USERS_LIST_STRING);
+    public static String seeUsersList = bundle.getString(TextConstants.SEE_USERS_LIST);
+    public static String seeBooksList = bundle.getString(TextConstants.SEE_BOOK_LIST);
+    public static String booksListString = bundle.getString(TextConstants.BOOK_LIST_STRING);
+    public static String toHomePage = bundle.getString(TextConstants.TO_HOME_PAGE);
+    public static String seeSubscriptionsList = bundle.getString(TextConstants.SEE_SUBSCRIPTIONS_LIST);
+    public static String subscriptionsListString = bundle.getString(TextConstants.SUBSCRIPTIONS_LIST_STRING);
 
-    public static String blockButton;
-    public static String unblockButton;
-    public static String usernameTableHeader;
-    public static String statusTableHeader;
-    public static String userBlocked;
-    public static String userNotBlocked;
-    public static String userFirstName;
-    public static String userLastName;
-    public static String userEmail;
-    public static String userPhoneNumber;
-    public static String userAddress;
+    public static String blockButton = bundle.getString(TextConstants.BLOCK_BUTTON);
+    public static String unblockButton = bundle.getString(TextConstants.UNBLOCK_BUTTON);
+    public static String usernameTableHeader = bundle.getString(TextConstants.USERNAME_TABLE_HEADER);
+    public static String statusTableHeader = bundle.getString(TextConstants.STATUS_TABLE_HEADER);
+    public static String userBlocked = bundle.getString(TextConstants.USER_BLOCKED);
+    public static String userNotBlocked = bundle.getString(TextConstants.USER_NOT_BLOCKED);
+    public static String userFirstName = bundle.getString(TextConstants.USER_FIRST_NAME);
+    public static String userLastName = bundle.getString(TextConstants.USER_LAST_NAME);
+    public static String userEmail = bundle.getString(TextConstants.USER_EMAIL);
+    public static String userPhoneNumber = bundle.getString(TextConstants.USER_PHONE_NUMBER);
+    public static String userAddress = bundle.getString(TextConstants.USER_ADDRESS);
 
-    public static String bookId;
-    public static String bookTitle;
-    public static String bookAuthor;
-    public static String bookYearOfPublishing;
+    public static String bookId = bundle.getString(TextConstants.BOOK_ID);
+    public static String bookTitle = bundle.getString(TextConstants.BOOK_TITLE);
+    public static String bookAuthor = bundle.getString(TextConstants.BOOK_AUTHOR);
+    public static String bookYearOfPublishing = bundle.getString(TextConstants.BOOK_YEAR_OF_PUBLISHING);
 
-    public static String loginUsername;
-    public static String loginPassword;
-    public static String loginWelcome;
-    public static String loginButton;
+    public static String loginUsername = bundle.getString(TextConstants.LOGIN_USERNAME);
+    public static String loginPassword = bundle.getString(TextConstants.LOGIN_PASSWORD);
+    public static String loginWelcome = bundle.getString(TextConstants.LOGIN_WELCOME);
+    public static String loginButton = bundle.getString(TextConstants.LOGIN_BUTTON);
 
-    public static String registration;
-
-    static {
-        usersListString = bundle.getString(TextConstants.USERS_LIST_STRING);
-        seeUsersList = bundle.getString(TextConstants.SEE_USERS_LIST);
-        seeBooksList = bundle.getString(TextConstants.SEE_BOOK_LIST);
-        booksListString = bundle.getString(TextConstants.BOOK_LIST_STRING);
-        toHomePage = bundle.getString(TextConstants.TO_HOME_PAGE);
-        seeSubscriptionsList = bundle.getString(TextConstants.SEE_SUBSCRIPTIONS_LIST);
-        subscriptionsListString = bundle.getString(TextConstants.SUBSCRIPTIONS_LIST_STRING);
-
-        blockButton = bundle.getString(TextConstants.BLOCK_BUTTON);
-        unblockButton = bundle.getString(TextConstants.UNBLOCK_BUTTON);
-        usernameTableHeader = bundle.getString(TextConstants.USERNAME_TABLE_HEADER);
-        statusTableHeader = bundle.getString(TextConstants.STATUS_TABLE_HEADER);
-        userBlocked = bundle.getString(TextConstants.USER_BLOCKED);
-        userNotBlocked = bundle.getString(TextConstants.USER_NOT_BLOCKED);
-        userFirstName = bundle.getString(TextConstants.USER_FIRST_NAME);
-        userLastName = bundle.getString(TextConstants.USER_LAST_NAME);
-        userEmail = bundle.getString(TextConstants.USER_EMAIL);
-        userPhoneNumber = bundle.getString(TextConstants.USER_PHONE_NUMBER);
-        userAddress = bundle.getString(TextConstants.USER_ADDRESS);
-
-        bookId = bundle.getString(TextConstants.BOOK_ID);
-        bookTitle = bundle.getString(TextConstants.BOOK_TITLE);
-        bookAuthor = bundle.getString(TextConstants.BOOK_AUTHOR);
-        bookYearOfPublishing = bundle.getString(TextConstants.BOOK_YEAR_OF_PUBLISHING);
-
-        loginUsername = bundle.getString(TextConstants.LOGIN_USERNAME);
-        loginPassword = bundle.getString(TextConstants.LOGIN_PASSWORD);
-        loginWelcome = bundle.getString(TextConstants.LOGIN_WELCOME);
-        loginButton = bundle.getString(TextConstants.LOGIN_BUTTON);
-
-        registration = bundle.getString(TextConstants.REGISTRATION);
-    }
+    public static String registration = bundle.getString(TextConstants.REGISTRATION);
 
     public static void initStringFields(ResourceBundle bundle) {
         usersListString = bundle.getString(TextConstants.USERS_LIST_STRING);
