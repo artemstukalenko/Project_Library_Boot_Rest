@@ -21,6 +21,7 @@ public interface TextConstants {
     String USER_EMAIL = "user.email";
     String USER_PHONE_NUMBER = "user.phone.number";
     String USER_ADDRESS = "user.address";
+    String USER_PENALTY = "user.penalty";
 
     String BOOK_ID = "book.id";
     String BOOK_TITLE = "book.title";

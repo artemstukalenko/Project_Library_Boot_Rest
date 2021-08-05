@@ -30,6 +30,7 @@ public class FirstView {
     public static String userEmail = bundle.getString(USER_EMAIL);
     public static String userPhoneNumber = bundle.getString(USER_PHONE_NUMBER);
     public static String userAddress = bundle.getString(USER_ADDRESS);
+    public static String userPenalty = bundle.getString(USER_PENALTY);
 
     public static String bookId = bundle.getString(BOOK_ID);
     public static String bookTitle = bundle.getString(BOOK_TITLE);
@@ -68,6 +69,7 @@ public class FirstView {
         userEmail = bundle.getString(USER_EMAIL);
         userPhoneNumber = bundle.getString(USER_PHONE_NUMBER);
         userAddress = bundle.getString(USER_ADDRESS);
+        userPenalty = bundle.getString(USER_PENALTY);
 
         bookId = bundle.getString(BOOK_ID);
         bookTitle = bundle.getString(BOOK_TITLE);
@@ -208,5 +210,9 @@ public class FirstView {
 
     public String getDeleteBook() {
         return deleteBook;
+    }
+
+    public String getUserPenalty() {
+        return userPenalty;
     }
 }

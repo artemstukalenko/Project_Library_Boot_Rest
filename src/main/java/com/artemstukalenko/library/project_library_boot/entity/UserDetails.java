@@ -24,11 +24,14 @@ public class UserDetails {
     private String userPhoneNumber;
     @Column(name = "address")
     private String userAddress;
+    @Column(name = "penalty")
+    private int userPenalty;
 
     public UserDetails() {}
 
     public UserDetails(User user) {
         this.username = user.getUsername();
+        this.userPenalty = 0;
     }
 
     public UserDetails(String userFirstName, String userLastName, String userEmail, String userPhoneNumber, String userAddress) {
@@ -37,6 +40,7 @@ public class UserDetails {
         this.userEmail = userEmail;
         this.userPhoneNumber = userPhoneNumber;
         this.userAddress = userAddress;
+        this.userPenalty = 0;
     }
 
     public String getUserFirstName() {
@@ -87,6 +91,14 @@ public class UserDetails {
         return username;
     }
 
+    public int getUserPenalty() {
+        return userPenalty;
+    }
+
+    public void setPenalty(int penalty) {
+        this.userPenalty = penalty;
+    }
+
     @Override
     public String toString() {
         return "UserDetails{" +
@@ -96,6 +108,7 @@ public class UserDetails {
                 ", userEmail='" + userEmail + '\'' +
                 ", userPhoneNumber='" + userPhoneNumber + '\'' +
                 ", userAddress='" + userAddress + '\'' +
+                ", userPenalty=" + userPenalty +
                 '}';
     }
 }

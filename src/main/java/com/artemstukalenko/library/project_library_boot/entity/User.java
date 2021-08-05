@@ -6,15 +6,22 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 @Component
 @Entity
 @Table(name = "users")
 public class User {
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "username")
     @Autowired
     private UserDetails userDetails;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "username")
+    @Autowired
+    private List<Subscription> subscriptionList;
 
     @Id
     @Column(name = "username")

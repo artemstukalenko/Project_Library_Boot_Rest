@@ -20,6 +20,7 @@
         <th>${locale.userEmail}</th>
         <th>${locale.userPhoneNumber}</th>
         <th>${locale.userAddress}</th>
+        <th>${locale.userPenalty}</th>
     </tr>
 
     <c:forEach var="user" items="${allUsers}">
@@ -42,6 +43,7 @@
             <td>${user.userDetails.userEmail}</td>
             <td>${user.userDetails.userPhoneNumber}</td>
             <td>${user.userDetails.userAddress}</td>
+            <td>${user.userDetails.userPenalty}</td>
 
             <td>
                 <input type="button" value="${locale.blockButton}" onclick="window.location.href = '${blockButton}'"/>
