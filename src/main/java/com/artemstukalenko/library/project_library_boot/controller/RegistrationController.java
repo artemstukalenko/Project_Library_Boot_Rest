@@ -19,8 +19,6 @@ public class RegistrationController {
 
     FirstView controlledView = new FirstView();
 
-//    User potentialUser = new User();
-
     @Autowired
     User potentialUser;
 

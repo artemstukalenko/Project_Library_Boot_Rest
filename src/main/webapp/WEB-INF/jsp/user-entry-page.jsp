@@ -36,7 +36,7 @@
                 <security:authorize access="hasRole('ADMIN')">
 
                     <input type="button" value="delete book" onclick="window.location.href = '${deleteBookButton}'">
-
+                    <input type="button" value="add book" onclick="window.location.href = '/enterInfoForNewBook'">
                 </security:authorize>
 
             </td>
