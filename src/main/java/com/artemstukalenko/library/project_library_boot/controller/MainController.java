@@ -38,6 +38,7 @@ public class MainController {
         currentUserAuthority = getUserAuthorityString(
                 userService.getUserRole(currentUser.getUsername()));
         model.addAttribute("currentAuthority", currentUserAuthority);
+        model.addAttribute("currentUser", currentUser);
 
         return "homepage";
     }
@@ -54,9 +55,9 @@ public class MainController {
     private String getUserAuthorityString(String userAuthorityFromDB) {
         switch (userAuthorityFromDB) {
             case "ROLE_ADMIN":
-                return ", admin";
+                return "ADMIN";
             case "ROLE_LIBRARIAN":
-                return ", librarian";
+                return "LIBRARIAN";
             default:
                 return "";
         }
