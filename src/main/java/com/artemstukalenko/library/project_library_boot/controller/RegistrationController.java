@@ -19,32 +19,35 @@ public class RegistrationController {
 
     FirstView controlledView = new FirstView();
 
+    User potentialUser = new User();
+
     @RequestMapping("/register")
     public String getRegistrationPage(Model model) {
         model.addAttribute("locale", controlledView);
-        model.addAttribute("potentialUser", new User());
+        model.addAttribute("potentialUser", potentialUser);
 
         return "register-page";
     }
 
     @RequestMapping("/registerDetails")
-    public String registerDetails(@ModelAttribute("potentialUser") User potentialUser,
-                                      @ModelAttribute("newUserDetails") UserDetails newUserDetails) {
-//        System.out.println("DETAILS: " + newUserDetails);
-//        System.out.println("USER: " + potentialUser);
+    public String registerDetails(@ModelAttribute("newUserDetails") UserDetails newUserDetails) {
+        System.out.println("DETAILS: " + newUserDetails);
+        System.out.println("USER: " + potentialUser);
+        newUserDetails.setUsername(potentialUser.getUsername());
+        potentialUser.setUserDetails(newUserDetails);
         userService.updateUser(potentialUser);
 
         return "redirect:/login";
     }
 
     @RequestMapping("/registerNewUser")
-    public String registerNewUser(@ModelAttribute("potentialUser") User potentialUser, Model model) {
-        System.out.println("USER: " + potentialUser);
-        userService.registerUser(potentialUser);
-        System.out.println("USER: " + potentialUser);
-        potentialUser.setUserDetails(new UserDetails(potentialUser));
-        System.out.println("DETAILS: " + potentialUser.getUserDetails());
-        model.addAttribute("potentialUser", potentialUser);
+    public String registerNewUser(@ModelAttribute("potentialUser") User potentialUser1, Model model) {
+        userService.registerUser(potentialUser1);
+        System.out.println("USER: " + potentialUser1);
+        potentialUser1.setUserDetails(new UserDetails(potentialUser1));
+        System.out.println("DETAILS: " + potentialUser1.getUserDetails());
+        potentialUser = potentialUser1;
+
         model.addAttribute("newUserDetails", potentialUser.getUserDetails());
 
         return "register-details-page";
