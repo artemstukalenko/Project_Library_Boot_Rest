@@ -25,9 +25,13 @@ public class AdminController {
 
     FirstView controlledView = new FirstView();
 
+    @ModelAttribute
+    public void addTextInformation(Model model) {
+        model.addAttribute("locale", controlledView);
+    }
+
     @RequestMapping("/asAdmin")
     public String getAdminEntryPage(Model model) {
-        model.addAttribute("locale", controlledView);
         List<User> allUsers = userService.getAllUsers();
         model.addAttribute("allUsers", allUsers);
 
@@ -38,34 +42,33 @@ public class AdminController {
     public String blockUser(@RequestParam("userName") String username) {
         userService.blockUser(username);
 
-        return "homepage";
+        return "user-list-page";
     }
 
     @RequestMapping("/unblockUser")
     public String unblockUser(@RequestParam("userName") String username) {
         userService.unblockUser(username);
 
-        return "homepage";
+        return "user-list-page";
     }
 
     @RequestMapping("/deleteUser")
     public String deleteUser(@RequestParam("userName") String username) {
         userService.deleteUser(username);
 
-        return "homepage";
+        return "user-list-page";
     }
 
     @RequestMapping("/deleteBook")
     public String deleteBook(@RequestParam("bookId") int bookId) {
         bookService.deleteBook(bookId);
 
-        return "homepage";
+        return "book-list-page";
     }
 
     @RequestMapping("/enterInfoForNewBook")
     public String enterInfoForNewBook(Model model) {
         model.addAttribute("newBook", new Book());
-        model.addAttribute("locale", controlledView);
 
         return "enter-info-for-new-book";
     }
@@ -74,6 +77,6 @@ public class AdminController {
     public String addNewBook(@ModelAttribute("newBook") Book bookToAdd) {
         bookService.addNewBook(bookToAdd);
 
-        return "homepage";
+        return "book-list-page";
     }
 }

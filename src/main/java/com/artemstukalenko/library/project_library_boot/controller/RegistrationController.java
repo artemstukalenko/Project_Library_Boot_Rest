@@ -25,9 +25,13 @@ public class RegistrationController {
     @Autowired
     User potentialUser;
 
+    @ModelAttribute
+    public void addTextInformation(Model model) {
+        model.addAttribute("locale", controlledView);
+    }
+
     @RequestMapping("/register")
     public String getRegistrationPage(Model model) {
-        model.addAttribute("locale", controlledView);
         model.addAttribute("potentialUser", potentialUser);
 
         return "register-page";
@@ -51,7 +55,6 @@ public class RegistrationController {
 
     @RequestMapping("/registerNewUser")
     public String registerNewUser(@ModelAttribute("potentialUser") User potentialUser1, Model model) {
-        model.addAttribute("locale", controlledView);
         userService.registerUser(potentialUser1);
 
         potentialUser1.setUserDetails(new UserDetails(potentialUser1));
