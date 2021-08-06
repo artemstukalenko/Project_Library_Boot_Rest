@@ -57,6 +57,10 @@ public class Book {
         this.bookYearOfPublishing = bookYearOfPublishing;
     }
 
+    public boolean getTaken() {
+        return taken;
+    }
+
     @Override
     public String toString() {
         return "Book{" +

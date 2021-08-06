@@ -38,4 +38,20 @@ public class BookDAOImpl implements BookDAO {
     public void addNewBook(Book bookToAdd) {
         entityManager.persist(bookToAdd);
     }
+
+    @Override
+    @Transactional
+    public Book findBookById(int bookId) {
+        return entityManager.find(Book.class, bookId);
+    }
+
+    @Override
+    @Transactional
+    public void setTaken(int id, boolean takenToSet) {
+        Query queryForSettingTaken = entityManager.createQuery("update Book set taken =: takenToSet where bookId =: id");
+        queryForSettingTaken.setParameter("takenToSet", takenToSet);
+        queryForSettingTaken.setParameter("id", id);
+
+        queryForSettingTaken.executeUpdate();
+    }
 }

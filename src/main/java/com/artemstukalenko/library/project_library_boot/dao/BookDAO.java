@@ -10,4 +10,8 @@ public interface BookDAO {
     public void deleteBook(int bookId);
 
     public void addNewBook(Book bookToAdd);
+
+    public Book findBookById(int bookId);
+
+    public void setTaken(int id, boolean taken);
 }

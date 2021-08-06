@@ -2,6 +2,8 @@ package com.artemstukalenko.library.project_library_boot.controller;
 
 import com.artemstukalenko.library.project_library_boot.entity.Subscription;
 import com.artemstukalenko.library.project_library_boot.entity.User;
+import com.artemstukalenko.library.project_library_boot.exceptions.BookIsTakenException;
+import com.artemstukalenko.library.project_library_boot.service.BookService;
 import com.artemstukalenko.library.project_library_boot.service.SubscriptionService;
 import com.artemstukalenko.library.project_library_boot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +19,32 @@ public class SubscriptionController {
     @Autowired
     SubscriptionService subscriptionService;
 
+    @Autowired
+    BookService bookService;
+
     User currentUser;
 
     Subscription processedSubscription;
 
     @RequestMapping("/arrangeSubscription")
-    public String arrangeSubscription(int bookId) {
+    public String arrangeSubscription(int bookId) throws BookIsTakenException {
         currentUser = MainController.getCurrentUser();
+
+        if (bookIsTaken(bookId)) {
+            throw new BookIsTakenException();
+        }
 
         processedSubscription = new Subscription(currentUser.getUsername(), bookId);
 
         subscriptionService.registerSubscriptionInDB(processedSubscription);
+        bookService.setTaken(bookId, true);
         currentUser.addSubscription(processedSubscription);
 
         return "subscription-arrange-form";
+    }
+
+    private boolean bookIsTaken(int bookId) {
+        return bookService.findBookById(bookId).getTaken();
     }
 
     private boolean detailsArePresent(User userToCheck) {

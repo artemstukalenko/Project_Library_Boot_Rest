@@ -32,4 +32,16 @@ public class BookServiceImpl implements BookService {
     public void addNewBook(Book bookToAdd) {
         bookDAO.addNewBook(bookToAdd);
     }
+
+    @Override
+    @Transactional
+    public Book findBookById(int bookId) {
+        return bookDAO.findBookById(bookId);
+    }
+
+    @Override
+    @Transactional
+    public void setTaken(int id, boolean taken) {
+        bookDAO.setTaken(id, taken);
+    }
 }
