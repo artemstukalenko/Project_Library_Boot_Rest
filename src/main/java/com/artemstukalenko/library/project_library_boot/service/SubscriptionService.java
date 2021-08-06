@@ -10,4 +10,8 @@ public interface SubscriptionService {
 
     public List<Subscription> getAllSubscriptions();
 
+    public Subscription findSubscriptionById(int id);
+
+    public void deleteSubscriptionFromDB(int id);
+
 }

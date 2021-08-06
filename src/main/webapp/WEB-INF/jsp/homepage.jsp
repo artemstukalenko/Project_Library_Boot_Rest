@@ -43,7 +43,7 @@
 
 </security:authorize>
 
-<br><br><br
+<br><br><br>
 
 <security:authorize access="hasAnyRole('LIBRARIAN', 'ADMIN')">
 

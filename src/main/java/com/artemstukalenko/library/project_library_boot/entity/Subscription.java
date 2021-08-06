@@ -68,6 +68,7 @@ public class Subscription {
         return LocalDate.now().isAfter(endOfThePeriod);
     }
 
+
     @Override
     public String toString() {
         return "Subscription{" +

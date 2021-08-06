@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -25,5 +26,21 @@ public class SubscriptionDAOImpl implements SubscriptionDAO {
     @Transactional
     public List<Subscription> getAllSubscriptions() {
         return entityManager.createQuery("from Subscription").getResultList();
+    }
+
+    @Override
+    @Transactional
+    public Subscription findSubscriptionById(int id) {
+        return entityManager.find(Subscription.class, id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteSubscriptionFromDB(int id) {
+        Query queryForDeletingSubscription = entityManager.createQuery("delete from Subscription " +
+                "where subscriptionId =: id");
+        queryForDeletingSubscription.setParameter("id", id);
+
+        queryForDeletingSubscription.executeUpdate();
     }
 }

@@ -8,7 +8,9 @@ import com.artemstukalenko.library.project_library_boot.service.SubscriptionServ
 import com.artemstukalenko.library.project_library_boot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SubscriptionController {
@@ -45,6 +47,17 @@ public class SubscriptionController {
 
     private boolean bookIsTaken(int bookId) {
         return bookService.findBookById(bookId).getTaken();
+    }
+
+    @RequestMapping("/returnBook")
+    public String returnBook(@RequestParam("subscriptionId") int id) {
+        processedSubscription = subscriptionService.findSubscriptionById(id);
+
+        subscriptionService.deleteSubscriptionFromDB(processedSubscription
+                .getSubscriptionId());
+        bookService.setTaken(processedSubscription.getBookId(), false);
+
+        return "homepage";
     }
 
     private boolean detailsArePresent(User userToCheck) {

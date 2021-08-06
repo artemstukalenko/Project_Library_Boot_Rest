@@ -26,4 +26,14 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     public List<Subscription> getAllSubscriptions() {
         return subscriptionDAO.getAllSubscriptions();
     }
+
+    @Override
+    @Transactional
+    public Subscription findSubscriptionById(int id) {
+        return subscriptionDAO.findSubscriptionById(id);
+    }
+
+    public void deleteSubscriptionFromDB(int id) {
+        subscriptionDAO.deleteSubscriptionFromDB(id);
+    }
 }
