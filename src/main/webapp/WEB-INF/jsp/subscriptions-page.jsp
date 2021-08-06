@@ -17,6 +17,8 @@
         <th>${locale.subscriptionId}</th>
         <th>${locale.usernameTableHeader}</th>
         <th>${locale.bookId}</th>
+        <th>${locale.bookTitle}</th>
+        <th>${locale.bookAuthor}</th>
         <th>${locale.startOfThePeriod}</th>
         <th>${locale.endOfThePeriod}</th>
         <th>${locale.isExpired}</th>
@@ -28,6 +30,8 @@
             <td>${subscription.subscriptionId}</td>
             <td>${subscription.username}</td>
             <td>${subscription.bookId}</td>
+            <td>${subscription.title}</td>
+            <td>${subscription.author}</td>
             <td>${subscription.startOfThePeriod}</td>
             <td>${subscription.endOfThePeriod}</td>
             <td>${subscription.expired}</td>

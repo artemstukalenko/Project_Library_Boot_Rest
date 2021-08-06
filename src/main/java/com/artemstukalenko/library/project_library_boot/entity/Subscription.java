@@ -1,5 +1,6 @@
 package com.artemstukalenko.library.project_library_boot.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -17,6 +18,10 @@ public class Subscription {
     private String username;
     @Column(name = "book_id")
     private int bookId;
+    @Column(name = "book_title")
+    private String title;
+    @Column(name = "book_author")
+    private String author;
     @Column(name = "start_of_the_period")
     private final LocalDate startOfThePeriod;
     @Column(name = "end_of_the_period")
@@ -29,9 +34,11 @@ public class Subscription {
         this.endOfThePeriod = LocalDate.now().plusMonths(1);
     }
 
-    public Subscription(String username, int bookId) {
+    public Subscription(String username, int bookId, String title, String author) {
         this.username = username;
         this.bookId = bookId;
+        this.title = title;
+        this.author = author;
         this.startOfThePeriod = LocalDate.now();
         this.endOfThePeriod = LocalDate.now().plusMonths(1);
     }
@@ -68,6 +75,21 @@ public class Subscription {
         return LocalDate.now().isAfter(endOfThePeriod);
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
     @Override
     public String toString() {

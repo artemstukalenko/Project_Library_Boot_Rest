@@ -1,5 +1,6 @@
 package com.artemstukalenko.library.project_library_boot.controller;
 
+import com.artemstukalenko.library.project_library_boot.entity.Book;
 import com.artemstukalenko.library.project_library_boot.entity.Subscription;
 import com.artemstukalenko.library.project_library_boot.entity.User;
 import com.artemstukalenko.library.project_library_boot.exceptions.BookIsTakenException;
@@ -26,17 +27,22 @@ public class SubscriptionController {
 
     User currentUser;
 
+    Book currentBook;
+
     Subscription processedSubscription;
 
     @RequestMapping("/arrangeSubscription")
     public String arrangeSubscription(int bookId) throws BookIsTakenException {
         currentUser = MainController.getCurrentUser();
+        currentBook = bookService.findBookById(bookId);
 
-        if (bookIsTaken(bookId)) {
+        if (bookIsTaken()) {
             throw new BookIsTakenException();
         }
 
-        processedSubscription = new Subscription(currentUser.getUsername(), bookId);
+        processedSubscription = new Subscription(currentUser.getUsername(), bookId,
+                currentBook.getBookTitle(), currentBook.getBookAuthor());
+
 
         subscriptionService.registerSubscriptionInDB(processedSubscription);
         bookService.setTaken(bookId, true);
@@ -45,8 +51,8 @@ public class SubscriptionController {
         return "subscription-arrange-form";
     }
 
-    private boolean bookIsTaken(int bookId) {
-        return bookService.findBookById(bookId).getTaken();
+    private boolean bookIsTaken() {
+        return  currentBook.getTaken();
     }
 
     @RequestMapping("/returnBook")

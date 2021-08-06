@@ -11,6 +11,8 @@
 <table border="1">
     <tr>
         <th>${locale.bookId}</th>
+        <th>${locale.bookTitle}</th>
+        <th>${locale.bookAuthor}</th>
         <th>${locale.startOfThePeriod}</th>
         <th>${locale.endOfThePeriod}</th>
         <th>${locale.isExpired}</th>
@@ -25,6 +27,8 @@
 
         <tr>
             <td>${subscription.bookId}</td>
+            <td>${subscription.title}</td>
+            <td>${subscription.author}</td>
             <td>${subscription.startOfThePeriod}</td>
             <td>${subscription.endOfThePeriod}</td>
             <td>${subscription.expired}</td>

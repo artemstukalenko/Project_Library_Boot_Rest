@@ -74,6 +74,6 @@ public class AdminController {
     public String addNewBook(@ModelAttribute("newBook") Book bookToAdd) {
         bookService.addNewBook(bookToAdd);
 
-        return "redirect:/";
+        return "homepage";
     }
 }
