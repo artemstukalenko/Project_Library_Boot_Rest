@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public class SubscriptionDAOImpl implements SubscriptionDAO {
@@ -18,5 +19,11 @@ public class SubscriptionDAOImpl implements SubscriptionDAO {
     @Transactional
     public void registerSubscriptionInDB(Subscription subscriptionToRegister) {
         entityManager.persist(subscriptionToRegister);
+    }
+
+    @Override
+    @Transactional
+    public List<Subscription> getAllSubscriptions() {
+        return entityManager.createQuery("from Subscription").getResultList();
     }
 }

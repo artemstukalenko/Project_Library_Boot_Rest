@@ -11,6 +11,31 @@
 
 <br><br><br>
 
+<table border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Book ID</th>
+        <th>Start date</th>
+        <th>End date</th>
+    </tr>
+
+    <c:forEach var="subscription" items="${allSubscriptions}">
+
+        <tr>
+            <td>${subscription.subscriptionId}</td>
+            <td>${subscription.username}</td>
+            <td>${subscription.bookId}</td>
+            <td>${subscription.startOfThePeriod}</td>
+            <td>${subscription.endOfThePeriod}</td>
+        </tr>
+
+    </c:forEach>
+
+</table>
+
+<br><br><br>
 <form:form action="/homepage_again" modelAttribute="locale">
 
     <input type="submit" value="${locale.toHomePage}"/>
