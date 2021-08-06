@@ -14,7 +14,7 @@ public class LibrarianController {
     public String getLibrarianEntryPage(Model model) {
         model.addAttribute("locale", controlledView);
 
-        return "librarian-entry-page";
+        return "subscriptions-page";
     }
 
 }

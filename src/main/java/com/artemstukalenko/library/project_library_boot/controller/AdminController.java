@@ -31,7 +31,7 @@ public class AdminController {
         List<User> allUsers = userService.getAllUsers();
         model.addAttribute("allUsers", allUsers);
 
-        return "admin-entry-page";
+        return "user-list-page";
     }
 
     @RequestMapping("/blockUser")

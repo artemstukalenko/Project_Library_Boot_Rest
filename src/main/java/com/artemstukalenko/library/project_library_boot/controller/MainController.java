@@ -87,7 +87,7 @@ public class MainController {
         List<Book> allBooks = bookService.getAllBooks();
         model.addAttribute("allBooks", allBooks);
 
-        return "user-entry-page";
+        return "book-list-page";
     }
 
 
