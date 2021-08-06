@@ -36,6 +36,15 @@ public interface TextConstants {
     String LOGIN_BUTTON = "login.button";
 
     String REGISTRATION = "registration";
+    String LOGOUT_BUTTON = "logout.button";
 
     String LOGGED_IN_AS = "logged.in.as";
+
+    String SUBSCRIPTION_ID = "subscription.id";
+    String ARRANGE_SUBSCRIPTION_BUTTON = "arrange.subscription.button";
+    String VIEW_SUBSCRIPTIONS_BUTTON = "view.subscriptions.button";
+    String YOUR_SUBSCRIPTIONS = "your.subscriptions";
+    String START_OF_THE_PERIOD = "start.of.the.period";
+    String END_OF_THE_PERIOD = "end.of.the.period";
+    String IS_EXPIRED = "is.expired";
 }

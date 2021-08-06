@@ -14,12 +14,12 @@
 <table border="1">
 
     <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>Book ID</th>
-        <th>Start date</th>
-        <th>End date</th>
-        <th>Is expired</th>
+        <th>${locale.subscriptionId}</th>
+        <th>${locale.usernameTableHeader}</th>
+        <th>${locale.bookId}</th>
+        <th>${locale.startOfThePeriod}</th>
+        <th>${locale.endOfThePeriod}</th>
+        <th>${locale.isExpired}</th>
     </tr>
 
     <c:forEach var="subscription" items="${allSubscriptions}">

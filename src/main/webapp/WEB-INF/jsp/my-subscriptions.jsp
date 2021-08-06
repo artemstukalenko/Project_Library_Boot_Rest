@@ -1,18 +1,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 
 <body>
 
-<h2>Your subscriptions:</h2>
+<h2>${locale.yourSubscriptions}</h2>
 
 <table border="1">
     <tr>
-        <th>Book ID</th>
-        <th>Start of the period</th>
-        <th>End of the period</th>
-        <th>Is expired</th>
+        <th>${locale.bookId}</th>
+        <th>${locale.startOfThePeriod}</th>
+        <th>${locale.endOfThePeriod}</th>
+        <th>${locale.isExpired}</th>
         <th></th>
     </tr>
 

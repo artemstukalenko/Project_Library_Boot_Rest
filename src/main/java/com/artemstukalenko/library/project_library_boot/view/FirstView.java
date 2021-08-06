@@ -45,8 +45,17 @@ public class FirstView {
     public static String loginButton = bundle.getString(LOGIN_BUTTON);
 
     public static String registration = bundle.getString(REGISTRATION);
+    public static String logoutButton = bundle.getString(LOGOUT_BUTTON);
 
     public static String loggedInAs = bundle.getString(LOGGED_IN_AS);
+
+    public static String subscriptionId = bundle.getString(SUBSCRIPTION_ID);
+    public static String arrangeSubscriptionButton = bundle.getString(ARRANGE_SUBSCRIPTION_BUTTON);
+    public static String viewSubscriptionsButton = bundle.getString(VIEW_SUBSCRIPTIONS_BUTTON);
+    public static String yourSubscriptions = bundle.getString(YOUR_SUBSCRIPTIONS);
+    public static String startOfThePeriod = bundle.getString(START_OF_THE_PERIOD);
+    public static String endOfThePeriod = bundle.getString(END_OF_THE_PERIOD);
+    public static String isExpired = bundle.getString(IS_EXPIRED);
 
     public static void initStringFields(ResourceBundle bundle) {
         usersListString = bundle.getString(USERS_LIST_STRING);
@@ -84,8 +93,17 @@ public class FirstView {
         loginButton = bundle.getString(LOGIN_BUTTON);
 
         registration = bundle.getString(REGISTRATION);
+        logoutButton = bundle.getString(LOGOUT_BUTTON);
 
         loggedInAs = bundle.getString(LOGGED_IN_AS);
+
+        subscriptionId = bundle.getString(SUBSCRIPTION_ID);
+        arrangeSubscriptionButton = bundle.getString(ARRANGE_SUBSCRIPTION_BUTTON);
+        viewSubscriptionsButton = bundle.getString(VIEW_SUBSCRIPTIONS_BUTTON);
+        yourSubscriptions = bundle.getString(YOUR_SUBSCRIPTIONS);
+        startOfThePeriod = bundle.getString(START_OF_THE_PERIOD);
+        endOfThePeriod = bundle.getString(END_OF_THE_PERIOD);
+        isExpired = bundle.getString(IS_EXPIRED);
     }
 
     public FirstView() {}
@@ -214,5 +232,37 @@ public class FirstView {
 
     public String getUserPenalty() {
         return userPenalty;
+    }
+
+    public String getViewSubscriptionsButton() {
+        return viewSubscriptionsButton;
+    }
+
+    public String getYourSubscriptions() {
+        return yourSubscriptions;
+    }
+
+    public String getStartOfThePeriod() {
+        return startOfThePeriod;
+    }
+
+    public String getEndOfThePeriod() {
+        return endOfThePeriod;
+    }
+
+    public String getIsExpired() {
+        return isExpired;
+    }
+
+    public String getArrangeSubscriptionButton() {
+        return arrangeSubscriptionButton;
+    }
+
+    public String getLogoutButton() {
+        return logoutButton;
+    }
+
+    public String getSubscriptionId() {
+        return subscriptionId;
     }
 }

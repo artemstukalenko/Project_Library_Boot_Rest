@@ -39,7 +39,7 @@
 
 <security:authorize access="hasRole('USER')">
 
-    <input type="button" value="view my subscriptions" onclick="window.location.href = 'viewSubscriptions'">
+    <input type="button" value="${locale.viewSubscriptionsButton}" onclick="window.location.href = 'viewSubscriptions'">
 
 </security:authorize>
 
@@ -60,7 +60,7 @@
 </security:authorize>
 
 <br><br><br>
-<input type="button" value="logout" onclick="window.location.href = 'logout'">
+<input type="button" value="${locale.logoutButton}" onclick="window.location.href = 'logout'">
 
 </body>
 

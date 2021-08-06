@@ -40,7 +40,7 @@
                     <input type="button" value="${locale.deleteBook}" onclick="window.location.href = '${deleteBookButton}'">
                 </security:authorize>
                 <security:authorize access="hasRole('USER')">
-                    <input type="button" value="arrange subscription" onclick="window.location.href = '${arrangeSubscriptionButton}'"
+                    <input type="button" value="${locale.arrangeSubscriptionButton}" onclick="window.location.href = '${arrangeSubscriptionButton}'"
                     <c:if test="${book.taken}"><c:out value="disabled='disabled'"/></c:if>>
                 </security:authorize>
 
