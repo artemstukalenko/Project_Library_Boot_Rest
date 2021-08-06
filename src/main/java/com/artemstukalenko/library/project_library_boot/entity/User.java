@@ -18,9 +18,9 @@ public class User {
     @Autowired
     private UserDetails userDetails;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "username")
-    @Autowired
+    //@Autowired
     private List<Subscription> subscriptionList;
 
     @Id
@@ -87,4 +87,9 @@ public class User {
     public List<Subscription> getSubscriptionList() {
         return subscriptionList;
     }
+
+    public void addSubscription(Subscription subscriptionToAdd) {
+        this.subscriptionList.add(subscriptionToAdd);
+    }
+
 }

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Component
+//@Component
 @Entity
 @Table(name = "subscriptions")
 public class Subscription {
@@ -17,15 +17,16 @@ public class Subscription {
     private String username;
     @Column(name = "book_id")
     private int bookId;
-    @Column(name = "start_of_period")
+    @Column(name = "start_of_the_period")
     private LocalDate startOfThePeriod;
-    @Column(name = "end_of_period")
+    @Column(name = "end_of_the_period")
     private LocalDate endOfThePeriod;
 
     public Subscription() {}
 
-    public Subscription(Book book, LocalDate startOfThePeriod, LocalDate endOfThePeriod) {
-        this.bookId = book.getBookId();
+    public Subscription(String username, int bookId, LocalDate startOfThePeriod, LocalDate endOfThePeriod) {
+        this.username = username;
+        this.bookId = bookId;
         this.startOfThePeriod = startOfThePeriod;
         this.endOfThePeriod = endOfThePeriod;
     }

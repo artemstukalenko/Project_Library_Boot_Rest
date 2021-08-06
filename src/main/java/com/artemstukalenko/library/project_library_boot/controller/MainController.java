@@ -24,7 +24,7 @@ public class MainController {
 
     FirstView controlledView = new FirstView();
 
-    User currentUser;
+    static User currentUser;
 
     String currentUserAuthority;
 
@@ -90,9 +90,9 @@ public class MainController {
         return "book-list-page";
     }
 
-
-
     
-
+    public static User getCurrentUser() {
+        return currentUser;
+    }
 
 }

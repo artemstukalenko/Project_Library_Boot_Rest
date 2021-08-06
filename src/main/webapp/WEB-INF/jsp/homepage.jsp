@@ -22,7 +22,7 @@
 
 <br><br>
 
-<h2>${locale.loggedInAs} <i>${currentUsername}</i> [${currentAuthority}]</h2>
+<h2>${locale.loggedInAs} <i>${currentUsername}</i> ${currentAuthority}</h2>
 <h3>${locale.userFirstName}: ${currentUser.userDetails.userFirstName}</h3>
 <h3>${locale.userLastName}: ${currentUser.userDetails.userLastName}</h3>
 <h3>${locale.userEmail}: ${currentUser.userDetails.userEmail}</h3>

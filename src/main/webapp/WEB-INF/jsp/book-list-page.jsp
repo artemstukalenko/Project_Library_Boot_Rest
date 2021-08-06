@@ -24,6 +24,9 @@
         <c:url var="deleteBookButton" value="/deleteBook">
             <c:param name="bookId" value="${book.bookId}"/>
         </c:url>
+        <c:url var="arrangeSubscriptionButton" value="/arrangeSubscription">
+            <c:param name="bookId" value="${book.bookId}"/>
+        </c:url>
 
         <tr>
             <td>${book.bookId}</td>
@@ -35,6 +38,9 @@
 
                 <security:authorize access="hasRole('ADMIN')">
                     <input type="button" value="${locale.deleteBook}" onclick="window.location.href = '${deleteBookButton}'">
+                </security:authorize>
+                <security:authorize access="hasRole('USER')">
+                    <input type="button" value="arrange subscription" onclick="window.location.href = '${arrangeSubscriptionButton}'">
                 </security:authorize>
 
             </td>
