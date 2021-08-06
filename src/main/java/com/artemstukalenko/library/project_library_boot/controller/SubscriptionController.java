@@ -34,8 +34,6 @@ public class SubscriptionController {
         subscriptionService.registerSubscriptionInDB(processedSubscription);
         currentUser.addSubscription(processedSubscription);
 
-        System.out.println(currentUser.getSubscriptionList());
-
         return "subscription-arrange-form";
     }
 
