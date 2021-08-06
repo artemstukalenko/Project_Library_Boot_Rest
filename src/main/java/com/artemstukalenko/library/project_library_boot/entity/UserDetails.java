@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import static com.artemstukalenko.library.project_library_boot.controller.RegexContainer.*;
 
 @Component
 @Entity
@@ -14,8 +16,10 @@ public class UserDetails {
     @Id
     @Column(name = "username")
     private String username;
+    @Pattern(regexp = VALID_NAME, message = "Name is invaild")
     @Column(name = "first_name")
     private String userFirstName;
+    @Pattern(regexp = VALID_SURNAME, message = "Surname is invaild")
     @Column(name = "last_name")
     private String userLastName;
     @Column(name = "email")
@@ -117,12 +121,6 @@ public class UserDetails {
 
     public String getAuthorityString() {
         return authorityString;
-    }
-
-    public boolean areEmpty() {
-        return this.username.isEmpty() || this.userFirstName.isEmpty()
-                || this.userLastName.isEmpty() || this.userEmail.isEmpty()
-                || this.userPhoneNumber.isEmpty() || this.userAddress.isEmpty();
     }
 
     @Override

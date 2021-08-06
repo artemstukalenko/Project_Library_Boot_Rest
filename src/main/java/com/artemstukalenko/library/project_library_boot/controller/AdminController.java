@@ -38,28 +38,28 @@ public class AdminController {
     public String blockUser(@RequestParam("userName") String username) {
         userService.blockUser(username);
 
-        return "redirect:/";
+        return "homepage";
     }
 
     @RequestMapping("/unblockUser")
     public String unblockUser(@RequestParam("userName") String username) {
         userService.unblockUser(username);
 
-        return "redirect:/";
+        return "homepage";
     }
 
     @RequestMapping("/deleteUser")
     public String deleteUser(@RequestParam("userName") String username) {
         userService.deleteUser(username);
 
-        return "redirect:/";
+        return "homepage";
     }
 
     @RequestMapping("/deleteBook")
     public String deleteBook(@RequestParam("bookId") int bookId) {
         bookService.deleteBook(bookId);
 
-        return "redirect:/";
+        return "homepage";
     }
 
     @RequestMapping("/enterInfoForNewBook")
