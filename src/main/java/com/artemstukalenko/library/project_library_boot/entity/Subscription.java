@@ -18,17 +18,20 @@ public class Subscription {
     @Column(name = "book_id")
     private int bookId;
     @Column(name = "start_of_the_period")
-    private LocalDate startOfThePeriod;
+    private final LocalDate startOfThePeriod;
     @Column(name = "end_of_the_period")
-    private LocalDate endOfThePeriod;
+    private final LocalDate endOfThePeriod;
 
-    public Subscription() {}
+    public Subscription() {
+        this.startOfThePeriod = LocalDate.now();
+        this.endOfThePeriod = LocalDate.now().plusMonths(1);
+    }
 
-    public Subscription(String username, int bookId, LocalDate startOfThePeriod, LocalDate endOfThePeriod) {
+    public Subscription(String username, int bookId) {
         this.username = username;
         this.bookId = bookId;
-        this.startOfThePeriod = startOfThePeriod;
-        this.endOfThePeriod = endOfThePeriod;
+        this.startOfThePeriod = LocalDate.now();
+        this.endOfThePeriod = LocalDate.now().plusMonths(1);
     }
 
     public String getUsername() {
@@ -51,17 +54,17 @@ public class Subscription {
         return startOfThePeriod;
     }
 
-    public void setStartOfThePeriod(LocalDate startOfThePeriod) {
-        this.startOfThePeriod = startOfThePeriod;
-    }
+//    public void setStartOfThePeriod(LocalDate startOfThePeriod) {
+//        this.startOfThePeriod = startOfThePeriod;
+//    }
 
     public LocalDate getEndOfThePeriod() {
         return endOfThePeriod;
     }
 
-    public void setEndOfThePeriod(LocalDate endOfThePeriod) {
-        this.endOfThePeriod = endOfThePeriod;
-    }
+//    public void setEndOfThePeriod(LocalDate endOfThePeriod) {
+//        this.endOfThePeriod = endOfThePeriod;
+//    }
 
     public int getSubscriptionId() {
         return subscriptionId;

@@ -28,8 +28,7 @@ public class SubscriptionController {
     public String arrangeSubscription(int bookId) {
         currentUser = MainController.getCurrentUser();
 
-        processedSubscription = new Subscription(currentUser.getUsername(), bookId,
-                LocalDate.now(), LocalDate.now().plusMonths(1));
+        processedSubscription = new Subscription(currentUser.getUsername(), bookId);
 
         subscriptionService.registerSubscriptionInDB(processedSubscription);
         currentUser.addSubscription(processedSubscription);
