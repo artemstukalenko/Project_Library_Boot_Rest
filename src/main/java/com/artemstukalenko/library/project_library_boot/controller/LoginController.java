@@ -25,4 +25,22 @@ public class LoginController {
     public String whenLoggedOut() {
         return "redirect:/login";
     }
+
+    @RequestMapping("uaLogin")
+    public String getUaLoginPage(Model model) {
+        model.addAttribute("locale", controlledView);
+
+        FirstView.changeLanguageToUa();
+
+        return "redirect:/.";
+    }
+
+    @RequestMapping("enLogin")
+    public String getEnLoginPage(Model model) {
+        model.addAttribute("locale", controlledView);
+
+        FirstView.changeLanguageToEn();
+
+        return "redirect:/.";
+    }
 }

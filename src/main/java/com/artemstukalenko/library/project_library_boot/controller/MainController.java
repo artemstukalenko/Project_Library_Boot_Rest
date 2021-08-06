@@ -24,20 +24,17 @@ public class MainController {
 
     FirstView controlledView = new FirstView();
 
+    @Autowired
     static User currentUser;
-
-    String currentUserAuthority;
 
     @RequestMapping("/homepage")
     public String getHomePage(Model model, HttpServletRequest request) {
         model.addAttribute("locale", controlledView);
-
         currentUser = userService.findUserByUsername(request.getParameter("username"));
+        currentUser.getUserDetails().setAuthorityString(userService.getUserRole(currentUser.getUsername()));
 
         model.addAttribute("currentUsername", currentUser.getUsername());
-        currentUserAuthority = getUserAuthorityString(
-                userService.getUserRole(currentUser.getUsername()));
-        model.addAttribute("currentAuthority", currentUserAuthority);
+        model.addAttribute("currentAuthority", currentUser.getAuthorityString());
         model.addAttribute("currentUser", currentUser);
 
         return "homepage";
@@ -47,38 +44,29 @@ public class MainController {
     public String getHomePageAgain(Model model) {
         model.addAttribute("locale", controlledView);
         model.addAttribute("currentUsername", currentUser.getUsername());
-        model.addAttribute("currentAuthority", currentUserAuthority);
+        model.addAttribute("currentAuthority", currentUser.getAuthorityString());
 
         return "homepage";
-    }
-
-    private String getUserAuthorityString(String userAuthorityFromDB) {
-        switch (userAuthorityFromDB) {
-            case "ROLE_ADMIN":
-                return "ADMIN";
-            case "ROLE_LIBRARIAN":
-                return "LIBRARIAN";
-            default:
-                return "";
-        }
     }
 
     @RequestMapping("en")
     public String getPageWithEnLang(Model model) {
         model.addAttribute("locale", controlledView);
+        model.addAttribute("currentUser", currentUser);
 
         FirstView.changeLanguageToEn();
 
-        return "redirect:/.";
+        return "homepage";
     }
 
     @RequestMapping("ua")
     public String getPageWithUaLang(Model model) {
         model.addAttribute("locale", controlledView);
+        model.addAttribute("currentUser", currentUser);
 
         FirstView.changeLanguageToUa();
 
-        return "redirect:/.";
+        return "homepage";
     }
 
     @RequestMapping("/booksList")

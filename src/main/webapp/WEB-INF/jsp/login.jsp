@@ -5,7 +5,7 @@
 
 <body>
 
-<form:form action="en" modelAttribute="locale">
+<form:form action="enLogin" modelAttribute="locale">
 
     <input type="submit" value="EN"/>
 
@@ -13,7 +13,7 @@
 
 <br>
 
-<form:form action="ua" modelAttribute="locale">
+<form:form action="uaLogin" modelAttribute="locale">
 
     <input type="submit" value="UA"/>
 

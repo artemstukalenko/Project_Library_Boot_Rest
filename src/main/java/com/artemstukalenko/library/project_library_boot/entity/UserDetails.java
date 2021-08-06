@@ -26,6 +26,8 @@ public class UserDetails {
     private String userAddress;
     @Column(name = "penalty")
     private int userPenalty;
+    @Column(name = "authority_string")
+    private String authorityString;
 
     public UserDetails() {}
 
@@ -97,6 +99,24 @@ public class UserDetails {
 
     public void setPenalty(int penalty) {
         this.userPenalty = penalty;
+    }
+
+    public void setAuthorityString(String authorityStringFromDB) {
+        switch (authorityStringFromDB) {
+            case "ROLE_ADMIN":
+                this.authorityString = "ADMIN";
+                break;
+            case "ROLE_LIBRARIAN":
+                this.authorityString = "LIBRARIAN";
+                break;
+            default:
+                this.authorityString = "";
+                break;
+        }
+    }
+
+    public String getAuthorityString() {
+        return authorityString;
     }
 
     @Override

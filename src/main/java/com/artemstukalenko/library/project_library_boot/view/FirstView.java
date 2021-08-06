@@ -99,7 +99,7 @@ public class FirstView {
     public static void changeLanguageToEn() {
         bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME, new Locale("en", "EN"));
 
-        //initStringFields(bundle);
+        initStringFields(bundle);
     }
 
     public String getUsersListString() {return usersListString;}

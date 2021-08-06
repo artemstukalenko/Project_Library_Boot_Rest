@@ -32,6 +32,8 @@ public class User {
     @Column(name = "enabled")
     private int enabled;
 
+
+
     public User() {
         this.enabled = 1;
 
@@ -92,4 +94,7 @@ public class User {
         this.subscriptionList.add(subscriptionToAdd);
     }
 
+    public String getAuthorityString() {
+        return this.userDetails.getAuthorityString();
+    }
 }
