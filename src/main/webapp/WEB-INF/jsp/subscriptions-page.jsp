@@ -19,6 +19,7 @@
         <th>Book ID</th>
         <th>Start date</th>
         <th>End date</th>
+        <th>Is expired</th>
     </tr>
 
     <c:forEach var="subscription" items="${allSubscriptions}">
@@ -29,6 +30,7 @@
             <td>${subscription.bookId}</td>
             <td>${subscription.startOfThePeriod}</td>
             <td>${subscription.endOfThePeriod}</td>
+            <td>${subscription.expired}</td>
         </tr>
 
     </c:forEach>

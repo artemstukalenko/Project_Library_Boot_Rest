@@ -21,6 +21,8 @@ public class Subscription {
     private final LocalDate startOfThePeriod;
     @Column(name = "end_of_the_period")
     private final LocalDate endOfThePeriod;
+    @Column(name = "expired")
+    private boolean expired;
 
     public Subscription() {
         this.startOfThePeriod = LocalDate.now();
@@ -54,20 +56,16 @@ public class Subscription {
         return startOfThePeriod;
     }
 
-//    public void setStartOfThePeriod(LocalDate startOfThePeriod) {
-//        this.startOfThePeriod = startOfThePeriod;
-//    }
-
     public LocalDate getEndOfThePeriod() {
         return endOfThePeriod;
     }
 
-//    public void setEndOfThePeriod(LocalDate endOfThePeriod) {
-//        this.endOfThePeriod = endOfThePeriod;
-//    }
-
     public int getSubscriptionId() {
         return subscriptionId;
+    }
+
+    public boolean getExpired() {
+        return LocalDate.now().isAfter(endOfThePeriod);
     }
 
     @Override
