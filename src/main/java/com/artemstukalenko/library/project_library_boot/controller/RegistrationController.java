@@ -37,6 +37,10 @@ public class RegistrationController {
         potentialUser.setUserDetails(newUserDetails);
         userService.updateUser(potentialUser);
 
+        if (newUserDetails.areEmpty()) {
+            userService.deleteUser(potentialUser.getUsername());
+        }
+
         return "redirect:/login";
     }
 

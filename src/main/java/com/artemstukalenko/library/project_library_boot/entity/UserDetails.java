@@ -119,6 +119,12 @@ public class UserDetails {
         return authorityString;
     }
 
+    public boolean areEmpty() {
+        return this.username.isEmpty() || this.userFirstName.isEmpty()
+                || this.userLastName.isEmpty() || this.userEmail.isEmpty()
+                || this.userPhoneNumber.isEmpty() || this.userAddress.isEmpty();
+    }
+
     @Override
     public String toString() {
         return "UserDetails{" +
