@@ -42,13 +42,9 @@ public class SubscriptionController {
     }
 
     @RequestMapping("/arrangeSubscription")
-    public String arrangeSubscription(int bookId, Model model) throws BookIsTakenException {
+    public String arrangeSubscription(int bookId, Model model) {
         currentUser = MainController.getCurrentUser();
         currentBook = bookService.findBookById(bookId);
-
-        if (bookIsTaken()) {
-            throw new BookIsTakenException();
-        }
 
         processedSubscription = new Subscription(currentUser.getUsername(), bookId,
                 currentBook.getBookTitle(), currentBook.getBookAuthor());
@@ -62,10 +58,6 @@ public class SubscriptionController {
                 findUserByUsername(currentUser.getUsername()).getSubscriptionList());
 
         return "my-subscriptions";
-    }
-
-    private boolean bookIsTaken() {
-        return  currentBook.getTaken();
     }
 
     @RequestMapping("/returnBook")

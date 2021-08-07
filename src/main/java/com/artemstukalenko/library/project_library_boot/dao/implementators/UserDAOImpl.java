@@ -95,7 +95,13 @@ public class UserDAOImpl implements UserDAO {
         queryForDeletingUserDetails.executeUpdate();
     }
 
+    @Transactional
     protected void deleteUserSubscriptions(String username) {
+        Query queryForUpdatingBookInfo = entityManager.createQuery("update Book set taken = false " +
+                "where bookId in (select bookId from Subscription where username =: username)");
+        queryForUpdatingBookInfo.setParameter("username", username);
+        queryForUpdatingBookInfo.executeUpdate();
+
         Query queryForDeletingUserSubscriptions = entityManager.createQuery("delete from Subscription where username =: username");
         queryForDeletingUserSubscriptions.setParameter("username", username);
         queryForDeletingUserSubscriptions.executeUpdate();
