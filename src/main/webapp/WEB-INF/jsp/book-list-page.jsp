@@ -17,6 +17,17 @@
         <th>${locale.bookTitle}</th>
         <th>${locale.bookAuthor}</th>
         <th>${locale.bookYearOfPublishing}</th>
+        <th>
+            <form:form action="filter" modelAttribute="listSorter">
+                <form:select path="sortMethod">
+                    <form:option value="byTitle" label="byTitle"/>
+                    <form:option value="byAuthor" label="byAuthor"/>
+                    <form:option value="byYear" label="byYear"/>
+                </form:select>
+                <input type="submit" value="filter">
+            </form:form>
+
+        </th>
     </tr>
 
     <c:forEach var="book" items="${allBooks}">

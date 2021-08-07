@@ -5,6 +5,7 @@ import com.artemstukalenko.library.project_library_boot.entity.Book;
 import com.artemstukalenko.library.project_library_boot.entity.User;
 import com.artemstukalenko.library.project_library_boot.service.BookService;
 import com.artemstukalenko.library.project_library_boot.service.UserService;
+import com.artemstukalenko.library.project_library_boot.utility.Sorter;
 import com.artemstukalenko.library.project_library_boot.view.FirstView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,11 +27,15 @@ public class MainController {
     FirstView controlledView;
 
     @Autowired
+    Sorter sorter;
+
+    @Autowired
     static User currentUser;
 
     @ModelAttribute
     public void addTextInformation(Model model) {
         model.addAttribute("locale", controlledView);
+        model.addAttribute("listSorter", sorter);
     }
 
     @RequestMapping("/homepage")
@@ -69,15 +74,9 @@ public class MainController {
         return "homepage";
     }
 
-    @RequestMapping("/booksList")
-    public String getUserEntryPage(Model model) {
-        List<Book> allBooks = bookService.getAllBooks();
-        model.addAttribute("allBooks", allBooks);
 
-        return "book-list-page";
-    }
 
-    
+
     public static User getCurrentUser() {
         return currentUser;
     }
