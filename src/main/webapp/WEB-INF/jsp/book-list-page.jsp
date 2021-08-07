@@ -13,6 +13,11 @@
 
 <form:form action="searchBook" modelAttribute="searcher">
     <form:input path="userInput"/>
+    <form:select path="searchCriteria">
+        <form:option value="byTitle" label="By title"/>
+        <form:option value="byAuthor" label="By author"/>
+        <form:option value="byYear" label="By year"/>
+    </form:select>
     <input type="submit" value="search">
 </form:form>
 
