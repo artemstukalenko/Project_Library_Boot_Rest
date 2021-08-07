@@ -20,11 +20,11 @@
         <th>
             <form:form action="filter" modelAttribute="listSorter">
                 <form:select path="sortMethod">
-                    <form:option value="byTitle" label="byTitle"/>
-                    <form:option value="byAuthor" label="byAuthor"/>
-                    <form:option value="byYear" label="byYear"/>
+                    <form:option value="byTitle" label="${locale.filterByTitle}"/>
+                    <form:option value="byAuthor" label="${locale.filterByAuthor}"/>
+                    <form:option value="byYear" label="${locale.filterByYear}"/>
                 </form:select>
-                <input type="submit" value="filter">
+                <input type="submit" value="${locale.filter}">
             </form:form>
 
         </th>

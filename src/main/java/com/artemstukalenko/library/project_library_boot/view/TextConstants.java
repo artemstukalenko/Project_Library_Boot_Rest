@@ -47,4 +47,9 @@ public interface TextConstants {
     String START_OF_THE_PERIOD = "start.of.the.period";
     String END_OF_THE_PERIOD = "end.of.the.period";
     String IS_EXPIRED = "is.expired";
+
+    String FILTER = "filter";
+    String FILTER_BY_TITLE = "filter.by.title";
+    String FILTER_BY_AUTHOR = "filter.by.author";
+    String FILTER_BY_YEAR = "filter.by.year";
 }

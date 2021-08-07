@@ -37,9 +37,6 @@ public class BookController {
 
     @RequestMapping("/booksList")
     public String getUserEntryPage(Model model) {
-//        List<Book> allBooks = ;
-//        model.addAttribute("allBooks", bookService.getAllBooks());
-
         return "book-list-page";
     }
 

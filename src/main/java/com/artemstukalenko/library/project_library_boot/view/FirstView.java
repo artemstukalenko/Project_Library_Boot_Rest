@@ -60,6 +60,11 @@ public class FirstView {
     public static String endOfThePeriod = bundle.getString(END_OF_THE_PERIOD);
     public static String isExpired = bundle.getString(IS_EXPIRED);
 
+    public static String filter = bundle.getString(FILTER);
+    public static String filterByTitle = bundle.getString(FILTER_BY_TITLE);
+    public static String filterByAuthor = bundle.getString(FILTER_BY_AUTHOR);
+    public static String filterByYear = bundle.getString(FILTER_BY_YEAR);
+
     public static void initStringFields(ResourceBundle bundle) {
         usersListString = bundle.getString(USERS_LIST_STRING);
         seeUsersList = bundle.getString(SEE_USERS_LIST);
@@ -107,6 +112,11 @@ public class FirstView {
         startOfThePeriod = bundle.getString(START_OF_THE_PERIOD);
         endOfThePeriod = bundle.getString(END_OF_THE_PERIOD);
         isExpired = bundle.getString(IS_EXPIRED);
+
+        filter = bundle.getString(FILTER);
+        filterByTitle = bundle.getString(FILTER_BY_TITLE);
+        filterByAuthor = bundle.getString(FILTER_BY_AUTHOR);
+        filterByYear = bundle.getString(FILTER_BY_YEAR);
     }
 
     public FirstView() {}
@@ -267,5 +277,21 @@ public class FirstView {
 
     public String getSubscriptionId() {
         return subscriptionId;
+    }
+
+    public String getFilter() {
+        return filter;
+    }
+
+    public String getFilterByTitle() {
+        return filterByTitle;
+    }
+
+    public String getFilterByAuthor() {
+        return filterByAuthor;
+    }
+
+    public String getFilterByYear() {
+        return filterByYear;
     }
 }
