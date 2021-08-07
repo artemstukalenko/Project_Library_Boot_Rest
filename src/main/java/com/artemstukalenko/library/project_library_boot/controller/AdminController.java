@@ -23,7 +23,8 @@ public class AdminController {
     @Autowired
     BookService bookService;
 
-    FirstView controlledView = new FirstView();
+    @Autowired
+    FirstView controlledView;
 
     private List<User> allUsersList;
 

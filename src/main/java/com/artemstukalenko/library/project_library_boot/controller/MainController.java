@@ -22,7 +22,8 @@ public class MainController {
     @Autowired
     BookService bookService;
 
-    FirstView controlledView = new FirstView();
+    @Autowired
+    FirstView controlledView;
 
     @Autowired
     static User currentUser;

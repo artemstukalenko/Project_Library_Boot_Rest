@@ -1,10 +1,13 @@
 package com.artemstukalenko.library.project_library_boot.view;
 
+import org.springframework.stereotype.Component;
+
 import static com.artemstukalenko.library.project_library_boot.view.TextConstants.*;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+@Component
 public class FirstView {
 
     public static final String RESOURCE_BUNDLE_NAME = "messages";

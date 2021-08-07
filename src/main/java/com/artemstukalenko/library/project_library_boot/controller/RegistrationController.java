@@ -20,7 +20,8 @@ public class RegistrationController {
     @Autowired
     UserService userService;
 
-    FirstView controlledView = new FirstView();
+    @Autowired
+    FirstView controlledView;
 
     @Autowired
     User potentialUser;

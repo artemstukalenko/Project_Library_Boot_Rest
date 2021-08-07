@@ -16,7 +16,8 @@ public class LibrarianController {
     @Autowired
     SubscriptionService subscriptionService;
 
-    FirstView controlledView = new FirstView();
+    @Autowired
+    FirstView controlledView;
 
     @RequestMapping("/asLibrarian")
     public String getLibrarianEntryPage(Model model) {

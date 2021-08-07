@@ -15,7 +15,8 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    FirstView controlledView = new FirstView();
+    @Autowired
+    FirstView controlledView;
 
     User currentUser;
 
