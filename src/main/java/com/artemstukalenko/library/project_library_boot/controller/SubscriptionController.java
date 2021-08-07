@@ -39,11 +39,12 @@ public class SubscriptionController {
     @ModelAttribute
     public void addTextInformation(Model model) {
         model.addAttribute("locale", controlledView);
+        currentUser = MainController.getCurrentUser();
+        model.addAttribute("currnetUser", currentUser);
     }
 
     @RequestMapping("/arrangeSubscription")
     public String arrangeSubscription(int bookId, Model model) {
-        currentUser = MainController.getCurrentUser();
         currentBook = bookService.findBookById(bookId);
 
         processedSubscription = new Subscription(currentUser.getUsername(), bookId,
@@ -69,6 +70,9 @@ public class SubscriptionController {
         bookService.setTaken(processedSubscription.getBookId(), false);
 
         model.addAttribute("userSubscriptionList", userService.
+                findUserByUsername(currentUser.getUsername()).getSubscriptionList());
+
+        System.out.println("FROM RETURN BOOK METHOD: " + userService.
                 findUserByUsername(currentUser.getUsername()).getSubscriptionList());
 
         return "my-subscriptions";

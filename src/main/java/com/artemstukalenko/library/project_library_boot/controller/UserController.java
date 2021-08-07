@@ -3,6 +3,7 @@ package com.artemstukalenko.library.project_library_boot.controller;
 import com.artemstukalenko.library.project_library_boot.entity.Subscription;
 import com.artemstukalenko.library.project_library_boot.entity.User;
 import com.artemstukalenko.library.project_library_boot.service.SubscriptionService;
+import com.artemstukalenko.library.project_library_boot.service.UserService;
 import com.artemstukalenko.library.project_library_boot.view.FirstView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,15 +19,23 @@ public class UserController {
     @Autowired
     FirstView controlledView;
 
+    @Autowired
+    UserService userService;
+
     User currentUser;
+
+    @ModelAttribute
+    public void addEssentialAttributes(Model model) {
+        model.addAttribute("locale", controlledView);
+        currentUser = MainController.getCurrentUser();
+        model.addAttribute("currentUser", currentUser);
+    }
 
     @RequestMapping("/viewSubscriptions")
     public String getUserSubscriptionsPage(Model model) {
-        currentUser = MainController.getCurrentUser();
-        List<Subscription> userSubscriptionList = currentUser.getSubscriptionList();
-
-        model.addAttribute("locale", controlledView);
-        model.addAttribute("userSubscriptionList", userSubscriptionList);
+        System.out.println("FROM GET SUBSCRIPTIONS PAGE METHOD: " + currentUser.getSubscriptionList());
+        model.addAttribute("userSubscriptionList", userService.
+                findUserByUsername(currentUser.getUsername()).getSubscriptionList());
 
         return "my-subscriptions";
     }
