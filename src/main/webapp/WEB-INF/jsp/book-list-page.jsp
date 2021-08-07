@@ -11,6 +11,14 @@
 
 <br><br><br>
 
+<form:form action="searchBook" modelAttribute="searcher">
+    <form:input path="userInput"/>
+    <input type="submit" value="search">
+</form:form>
+
+
+<br><br>
+
 <table border="1">
     <tr>
         <th>${locale.bookId}</th>

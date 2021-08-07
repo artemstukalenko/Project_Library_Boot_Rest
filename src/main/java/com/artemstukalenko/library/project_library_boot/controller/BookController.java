@@ -3,6 +3,7 @@ package com.artemstukalenko.library.project_library_boot.controller;
 import com.artemstukalenko.library.project_library_boot.entity.Book;
 import com.artemstukalenko.library.project_library_boot.service.BookService;
 import com.artemstukalenko.library.project_library_boot.service.UserService;
+import com.artemstukalenko.library.project_library_boot.utility.Searcher;
 import com.artemstukalenko.library.project_library_boot.utility.Sorter;
 import com.artemstukalenko.library.project_library_boot.view.FirstView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,15 @@ public class BookController {
     @Autowired
     Sorter sorter;
 
+    @Autowired
+    Searcher searcher;
+
     @ModelAttribute
     public void addTextInformation(Model model) {
         model.addAttribute("locale", controlledView);
         model.addAttribute("listSorter", sorter);
         model.addAttribute("allBooks", bookService.getAllBooks());
+        model.addAttribute("searcher", searcher);
     }
 
     @RequestMapping("/booksList")
@@ -45,6 +50,15 @@ public class BookController {
                                   Model model) {
 
         model.addAttribute("allBooks", sorter.sortList(bookService.getAllBooks()));
+        return "book-list-page";
+    }
+
+    @RequestMapping("/searchBook")
+    public String searchForBooks(@ModelAttribute("searcher") Searcher searcher,
+                                 Model model) {
+        model.addAttribute("allBooks", searcher
+                .getResultOfTheBookSearch(bookService.getAllBooks()));
+
         return "book-list-page";
     }
 }
