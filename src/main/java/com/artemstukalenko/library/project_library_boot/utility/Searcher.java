@@ -14,9 +14,12 @@ public class Searcher {
     String userInput;
     String searchCriteria;
 
-    private Predicate <Book> searchByTitle = book -> {return book.getBookTitle().toLowerCase().contains(userInput.toLowerCase());};
-    private Predicate <Book> searchByAuthor = book -> {return book.getBookAuthor().toLowerCase().contains(userInput.toLowerCase());};
-    private Predicate <Book> searchByYear = book -> {return book.getBookYearOfPublishing().toLowerCase().contains(userInput.toLowerCase());};
+    private Predicate <Book> searchByTitle = book -> {return book.getBookTitle().toLowerCase()
+            .contains(userInput.toLowerCase());};
+    private Predicate <Book> searchByAuthor = book -> {return book.getBookAuthor().toLowerCase()
+            .contains(userInput.toLowerCase());};
+    private Predicate <Book> searchByYear = book -> {return book.getBookYearOfPublishing().toLowerCase()
+            .contains(userInput.toLowerCase());};
 
     public Searcher() {}
 
