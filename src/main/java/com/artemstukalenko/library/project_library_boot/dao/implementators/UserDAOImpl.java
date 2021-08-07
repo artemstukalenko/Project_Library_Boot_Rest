@@ -74,6 +74,8 @@ public class UserDAOImpl implements UserDAO {
 
         deleteUserDetails(username);
 
+        deleteUserSubscriptions(username);
+
         Query queryForDeletingUser = entityManager.createQuery("delete from User where username =: username");
         queryForDeletingUser.setParameter("username", username);
         queryForDeletingUser.executeUpdate();
@@ -91,6 +93,12 @@ public class UserDAOImpl implements UserDAO {
         Query queryForDeletingUserDetails = entityManager.createQuery("delete from UserDetails where username =: username");
         queryForDeletingUserDetails.setParameter("username", username);
         queryForDeletingUserDetails.executeUpdate();
+    }
+
+    protected void deleteUserSubscriptions(String username) {
+        Query queryForDeletingUserSubscriptions = entityManager.createQuery("delete from Subscription where username =: username");
+        queryForDeletingUserSubscriptions.setParameter("username", username);
+        queryForDeletingUserSubscriptions.executeUpdate();
     }
 
     @Override

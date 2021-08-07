@@ -28,14 +28,17 @@ public class MainController {
     @Autowired
     static User currentUser;
 
+    @ModelAttribute
+    public void addTextInformation(Model model) {
+        model.addAttribute("locale", controlledView);
+    }
+
     @RequestMapping("/homepage")
     public String getHomePage(Model model, HttpServletRequest request) {
-        model.addAttribute("locale", controlledView);
+
         currentUser = userService.findUserByUsername(request.getParameter("username"));
         currentUser.getUserDetails().setAuthorityString(userService.getUserRole(currentUser.getUsername()));
 
-        model.addAttribute("currentUsername", currentUser.getUsername());
-        model.addAttribute("currentAuthority", currentUser.getAuthorityString());
         model.addAttribute("currentUser", currentUser);
 
         return "homepage";
@@ -43,17 +46,13 @@ public class MainController {
 
     @RequestMapping("/homepage_again")
     public String getHomePageAgain(Model model) {
-        model.addAttribute("locale", controlledView);
         model.addAttribute("currentUser", currentUser);
-        model.addAttribute("currentUsername", currentUser.getUsername());
-        model.addAttribute("currentAuthority", currentUser.getAuthorityString());
 
         return "homepage";
     }
 
     @RequestMapping("en")
     public String getPageWithEnLang(Model model) {
-        model.addAttribute("locale", controlledView);
         model.addAttribute("currentUser", currentUser);
 
         FirstView.changeLanguageToEn();
@@ -63,7 +62,6 @@ public class MainController {
 
     @RequestMapping("ua")
     public String getPageWithUaLang(Model model) {
-        model.addAttribute("locale", controlledView);
         model.addAttribute("currentUser", currentUser);
 
         FirstView.changeLanguageToUa();
@@ -73,7 +71,6 @@ public class MainController {
 
     @RequestMapping("/booksList")
     public String getUserEntryPage(Model model) {
-        model.addAttribute("locale", controlledView);
         List<Book> allBooks = bookService.getAllBooks();
         model.addAttribute("allBooks", allBooks);
 
