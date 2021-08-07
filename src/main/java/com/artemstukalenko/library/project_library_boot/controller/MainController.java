@@ -44,6 +44,7 @@ public class MainController {
     @RequestMapping("/homepage_again")
     public String getHomePageAgain(Model model) {
         model.addAttribute("locale", controlledView);
+        model.addAttribute("currentUser", currentUser);
         model.addAttribute("currentUsername", currentUser.getUsername());
         model.addAttribute("currentAuthority", currentUser.getAuthorityString());
 
