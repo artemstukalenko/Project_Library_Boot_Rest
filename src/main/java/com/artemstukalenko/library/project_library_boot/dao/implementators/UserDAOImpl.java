@@ -27,6 +27,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    @Transactional
     public void blockUser(String username) {
         Query queryForBlockingUser = entityManager.createQuery("update User set enabled = 0 where username =: userUsername");
 
@@ -35,6 +36,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    @Transactional
     public void unblockUser(String username) {
         Query queryForUnblockingUser = entityManager.createQuery("update User set enabled = 1 where username =: userUsername");
 

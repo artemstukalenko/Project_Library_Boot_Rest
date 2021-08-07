@@ -25,6 +25,12 @@ public class AdminController {
 
     FirstView controlledView = new FirstView();
 
+    private List<User> allUsersList;
+
+    private List<User> getUpdatedUserList() {
+        return userService.getAllUsers();
+    }
+
     @ModelAttribute
     public void addTextInformation(Model model) {
         model.addAttribute("locale", controlledView);
@@ -32,29 +38,31 @@ public class AdminController {
 
     @RequestMapping("/asAdmin")
     public String getAdminEntryPage(Model model) {
-        List<User> allUsers = userService.getAllUsers();
-        model.addAttribute("allUsers", allUsers);
+        model.addAttribute("allUsers", getUpdatedUserList());
 
         return "user-list-page";
     }
 
     @RequestMapping("/blockUser")
-    public String blockUser(@RequestParam("userName") String username) {
+    public String blockUser(@RequestParam("userName") String username, Model model) {
         userService.blockUser(username);
+        model.addAttribute("allUsers", getUpdatedUserList());
 
         return "user-list-page";
     }
 
     @RequestMapping("/unblockUser")
-    public String unblockUser(@RequestParam("userName") String username) {
+    public String unblockUser(@RequestParam("userName") String username, Model model) {
         userService.unblockUser(username);
+        model.addAttribute("allUsers", getUpdatedUserList());
 
         return "user-list-page";
     }
 
     @RequestMapping("/deleteUser")
-    public String deleteUser(@RequestParam("userName") String username) {
+    public String deleteUser(@RequestParam("userName") String username, Model model) {
         userService.deleteUser(username);
+        model.addAttribute("allUsers", getUpdatedUserList());
 
         return "user-list-page";
     }
