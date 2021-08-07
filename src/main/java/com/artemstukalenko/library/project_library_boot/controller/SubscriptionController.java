@@ -7,8 +7,10 @@ import com.artemstukalenko.library.project_library_boot.exceptions.BookIsTakenEx
 import com.artemstukalenko.library.project_library_boot.service.BookService;
 import com.artemstukalenko.library.project_library_boot.service.SubscriptionService;
 import com.artemstukalenko.library.project_library_boot.service.UserService;
+import com.artemstukalenko.library.project_library_boot.view.FirstView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,14 +27,22 @@ public class SubscriptionController {
     @Autowired
     BookService bookService;
 
+    @Autowired
+    FirstView controlledView;
+
     User currentUser;
 
     Book currentBook;
 
     Subscription processedSubscription;
 
+    @ModelAttribute
+    public void addTextInformation(Model model) {
+        model.addAttribute("locale", controlledView);
+    }
+
     @RequestMapping("/arrangeSubscription")
-    public String arrangeSubscription(int bookId) throws BookIsTakenException {
+    public String arrangeSubscription(int bookId, Model model) throws BookIsTakenException {
         currentUser = MainController.getCurrentUser();
         currentBook = bookService.findBookById(bookId);
 
@@ -48,7 +58,10 @@ public class SubscriptionController {
         bookService.setTaken(bookId, true);
         currentUser.addSubscription(processedSubscription);
 
-        return "subscription-arrange-form";
+        model.addAttribute("userSubscriptionList", userService.
+                findUserByUsername(currentUser.getUsername()).getSubscriptionList());
+
+        return "my-subscriptions";
     }
 
     private boolean bookIsTaken() {
@@ -56,14 +69,17 @@ public class SubscriptionController {
     }
 
     @RequestMapping("/returnBook")
-    public String returnBook(@RequestParam("subscriptionId") int id) {
+    public String returnBook(@RequestParam("subscriptionId") int id, Model model) {
         processedSubscription = subscriptionService.findSubscriptionById(id);
 
         subscriptionService.deleteSubscriptionFromDB(processedSubscription
                 .getSubscriptionId());
         bookService.setTaken(processedSubscription.getBookId(), false);
 
-        return "homepage";
+        model.addAttribute("userSubscriptionList", userService.
+                findUserByUsername(currentUser.getUsername()).getSubscriptionList());
+
+        return "my-subscriptions";
     }
 
     private boolean detailsArePresent(User userToCheck) {
