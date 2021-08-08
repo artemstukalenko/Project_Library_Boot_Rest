@@ -73,6 +73,9 @@
                     <input type="button" value="${locale.arrangeSubscriptionButton}" onclick="window.location.href = '${arrangeSubscriptionButton}'"
                     <c:if test="${book.taken}"><c:out value="disabled='disabled'"/></c:if>>
                 </security:authorize>
+                <security:authorize access="hasRole('USER')">
+                    <input type="button" value="${locale.arrangeCustomRequest}" onclick="window.location.href = '${arrangeCustomSubscriptionRequestButton}'"
+                </security:authorize>
                 <security:authorize access="hasRole('LIBRARIAN')">
                     <input type="button" value="set taken" onclick="window.location.href = '${changeTakenValueButton}'"
                 </security:authorize>
