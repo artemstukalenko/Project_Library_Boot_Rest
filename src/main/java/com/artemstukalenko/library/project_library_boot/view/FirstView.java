@@ -62,7 +62,7 @@ public class FirstView {
     public static String isExpired = bundle.getString(IS_EXPIRED);
 
     public static String search = bundle.getString(SEARCH);
-    public static String filter = bundle.getString(FILTER);
+    public static String sort = bundle.getString(SORT);
     public static String filterByTitle = bundle.getString(FILTER_BY_TITLE);
     public static String filterByAuthor = bundle.getString(FILTER_BY_AUTHOR);
     public static String filterByYear = bundle.getString(FILTER_BY_YEAR);
@@ -123,7 +123,7 @@ public class FirstView {
         isExpired = bundle.getString(IS_EXPIRED);
 
         search = bundle.getString(SEARCH);
-        filter = bundle.getString(FILTER);
+        sort = bundle.getString(SORT);
         filterByTitle = bundle.getString(FILTER_BY_TITLE);
         filterByAuthor = bundle.getString(FILTER_BY_AUTHOR);
         filterByYear = bundle.getString(FILTER_BY_YEAR);
@@ -296,7 +296,7 @@ public class FirstView {
     }
 
     public String getFilter() {
-        return filter;
+        return sort;
     }
 
     public String getFilterByTitle() {

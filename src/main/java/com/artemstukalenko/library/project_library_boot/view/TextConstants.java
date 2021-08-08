@@ -50,7 +50,7 @@ public interface TextConstants {
     String IS_EXPIRED = "is.expired";
 
     String SEARCH = "search";
-    String FILTER = "filter";
+    String SORT = "sort";
     String FILTER_BY_TITLE = "filter.by.title";
     String FILTER_BY_AUTHOR = "filter.by.author";
     String FILTER_BY_YEAR = "filter.by.year";

@@ -31,7 +31,7 @@
         <th>${locale.bookAuthor}</th>
         <th>${locale.bookYearOfPublishing}</th>
         <th>
-            <form:form action="filter" modelAttribute="listSorter">
+            <form:form action="sort" modelAttribute="listSorter">
                 <form:select path="sortMethod">
                     <form:option value="byTitle" label="${locale.filterByTitle}"/>
                     <form:option value="byAuthor" label="${locale.filterByAuthor}"/>

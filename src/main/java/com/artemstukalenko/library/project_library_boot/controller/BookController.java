@@ -49,9 +49,9 @@ public class BookController {
         return "book-list-page";
     }
 
-    @RequestMapping("/filter")
-    public String getFilteredPage(@ModelAttribute("listSorter") Sorter sorter,
-                                  Model model) {
+    @RequestMapping("/sort")
+    public String getSortedPage(@ModelAttribute("listSorter") Sorter sorter,
+                                Model model) {
 
         model.addAttribute("allBooks", sorter.sortList(currentBookList));
         return "book-list-page";
