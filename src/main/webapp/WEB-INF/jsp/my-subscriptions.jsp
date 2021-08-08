@@ -34,7 +34,7 @@
             <td>${subscription.expired}</td>
 
             <td>
-                <input type="button" value="return book" onclick="window.location.href = '${returnBookButton}'">
+                <input type="button" value="${locale.returnBook}" onclick="window.location.href = '${returnBookButton}'">
             </td>
         </tr>
 

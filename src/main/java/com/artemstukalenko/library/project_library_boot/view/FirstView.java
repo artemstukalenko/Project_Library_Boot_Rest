@@ -70,6 +70,9 @@ public class FirstView {
     public static String arrangeCustomRequest = bundle.getString(ARRANGE_CUSTOM_REQUEST);
     public static String requestChoosePeriod = bundle.getString(REQUEST_CHOOSE_PERIOD);
 
+    public static String cancel = bundle.getString(CANCEL);
+    public static String returnBook = bundle.getString(RETURN_BOOK);
+
     public static void initStringFields(ResourceBundle bundle) {
         usersListString = bundle.getString(USERS_LIST_STRING);
         seeUsersList = bundle.getString(SEE_USERS_LIST);
@@ -127,6 +130,9 @@ public class FirstView {
 
         arrangeCustomRequest = bundle.getString(ARRANGE_CUSTOM_REQUEST);
         requestChoosePeriod = bundle.getString(REQUEST_CHOOSE_PERIOD);
+
+        cancel = bundle.getString(CANCEL);
+        returnBook = bundle.getString(RETURN_BOOK);
     }
 
     public FirstView() {}
@@ -319,5 +325,13 @@ public class FirstView {
 
     public String getRequestChoosePeriod() {
         return requestChoosePeriod;
+    }
+
+    public String getCancel() {
+        return cancel;
+    }
+
+    public String getReturnBook() {
+        return returnBook;
     }
 }

@@ -57,4 +57,7 @@ public interface TextConstants {
 
     String ARRANGE_CUSTOM_REQUEST = "arrange.custom.request";
     String REQUEST_CHOOSE_PERIOD = "request.choose.period";
+
+    String CANCEL = "cancel";
+    String RETURN_BOOK = "return.book";
 }

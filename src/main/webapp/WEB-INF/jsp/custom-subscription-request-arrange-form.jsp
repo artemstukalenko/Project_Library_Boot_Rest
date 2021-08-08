@@ -8,7 +8,7 @@
 
 <h2>${locale.bookTitle}: ${currentBook.bookTitle}</h2>
 <h2>${locale.bookAuthor}: ${currentBook.bookAuthor}</h2>
-<h3>${locale.requestChoosePeriod}, ${notTaken}</h3>
+<h3>${locale.requestChoosePeriod}</h3>
 
 <form:form action="/registerRequest">
 
@@ -25,6 +25,11 @@
     <br>
     <input type="submit" value="${locale.arrangeCustomRequest}"/>
 
+</form:form>
+<br><br>
+
+<form:form action="/booksList">
+    <input type="submit" value="${locale.cancel}">
 </form:form>
 
 </body>
