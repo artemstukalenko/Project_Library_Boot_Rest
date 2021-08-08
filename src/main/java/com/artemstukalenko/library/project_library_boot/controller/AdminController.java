@@ -96,4 +96,13 @@ public class AdminController {
         model.addAttribute("allUsers", getUpdatedUserList());
         return "user-list-page";
     }
+
+    @RequestMapping("/depriveLibrarianRole")
+    public String depriveLibrarianPrivilegesFromUser(@RequestParam("userName") String username,
+                                                     Model model) {
+        userService.depriveLibrarianPrivileges(username);
+
+        model.addAttribute("allUsers", getUpdatedUserList());
+        return "user-list-page";
+    }
 }

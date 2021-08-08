@@ -118,6 +118,15 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     @Transactional
+    public void depriveLibrarianPrivileges(String username) {
+        Query queryForMakingUserLibrarian = entityManager.createQuery("update Authority set authority = 'ROLE_USER'" +
+                "where username =: username");
+        queryForMakingUserLibrarian.setParameter("username", username);
+        queryForMakingUserLibrarian.executeUpdate();
+    }
+
+    @Override
+    @Transactional
     public void registerUser(User user) {
         Authority newUserAuthority = new Authority(user.getUsername(), "ROLE_USER");
 

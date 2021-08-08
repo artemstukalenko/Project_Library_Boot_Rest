@@ -68,4 +68,10 @@ public class UserServiceImpl implements UserService {
     public void makeUserLibrarian(String username) {
         userDAO.makeUserLibrarian(username);
     }
+
+    @Override
+    @Transactional
+    public void depriveLibrarianPrivileges(String username) {
+        userDAO.depriveLibrarianPrivileges(username);
+    }
 }

@@ -23,4 +23,6 @@ public interface UserService {
     public void deleteUser(String username);
 
     public void makeUserLibrarian(String username);
+
+    public void depriveLibrarianPrivileges(String username);
 }
