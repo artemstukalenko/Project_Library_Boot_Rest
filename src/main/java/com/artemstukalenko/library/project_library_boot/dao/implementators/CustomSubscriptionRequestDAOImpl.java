@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public class CustomSubscriptionRequestDAOImpl implements CustomSubscriptionRequestDAO {
@@ -33,4 +34,11 @@ public class CustomSubscriptionRequestDAOImpl implements CustomSubscriptionReque
         queryForDeletingCustomSubscriptionRequest.executeUpdate();
     }
 
+    @Override
+    @Transactional
+    public List<CustomSubscriptionRequest> getAllRequests() {
+        Query queryForGettingAllRequests = entityManager.createQuery("from CustomSubscriptionRequest");
+
+        return queryForGettingAllRequests.getResultList();
+    }
 }

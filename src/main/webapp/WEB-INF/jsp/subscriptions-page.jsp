@@ -40,6 +40,36 @@
     </c:forEach>
 
 </table>
+<br><br>
+<h2>REQUESTS</h2>
+<br>
+<table border="1">
+
+    <tr>
+        <th>${locale.subscriptionId}</th>
+        <th>${locale.usernameTableHeader}</th>
+        <th>${locale.bookId}</th>
+        <th>${locale.bookTitle}</th>
+        <th>${locale.bookAuthor}</th>
+        <th>${locale.startOfThePeriod}</th>
+        <th>${locale.endOfThePeriod}</th>
+    </tr>
+
+    <c:forEach var="subscriptionRequest" items="${allRequests}">
+
+        <tr>
+            <td>${subscriptionRequest.customSubscriptionId}</td>
+            <td>${subscriptionRequest.username}</td>
+            <td>${subscriptionRequest.bookId}</td>
+            <td>${subscriptionRequest.title}</td>
+            <td>${subscriptionRequest.author}</td>
+            <td>${subscriptionRequest.startOfThePeriod}</td>
+            <td>${subscriptionRequest.endOfThePeriod}</td>
+        </tr>
+
+    </c:forEach>
+
+</table>
 
 <br><br><br>
 <form:form action="/homepage_again" modelAttribute="locale">

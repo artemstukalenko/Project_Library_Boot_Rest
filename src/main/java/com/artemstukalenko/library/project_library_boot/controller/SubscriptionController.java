@@ -1,10 +1,12 @@
 package com.artemstukalenko.library.project_library_boot.controller;
 
 import com.artemstukalenko.library.project_library_boot.entity.Book;
+import com.artemstukalenko.library.project_library_boot.entity.CustomSubscriptionRequest;
 import com.artemstukalenko.library.project_library_boot.entity.Subscription;
 import com.artemstukalenko.library.project_library_boot.entity.User;
 import com.artemstukalenko.library.project_library_boot.exceptions.BookIsTakenException;
 import com.artemstukalenko.library.project_library_boot.service.BookService;
+import com.artemstukalenko.library.project_library_boot.service.CustomSubscriptionRequestService;
 import com.artemstukalenko.library.project_library_boot.service.SubscriptionService;
 import com.artemstukalenko.library.project_library_boot.service.UserService;
 import com.artemstukalenko.library.project_library_boot.view.FirstView;
@@ -25,6 +27,9 @@ public class SubscriptionController {
 
     @Autowired
     SubscriptionService subscriptionService;
+
+    @Autowired
+    CustomSubscriptionRequestService customSubscriptionRequestService;
 
     @Autowired
     BookService bookService;
@@ -90,10 +95,18 @@ public class SubscriptionController {
 
     @RequestMapping("/registerRequest")
     public String registerCustomRequest(@RequestParam("startDate") String startDate,
-                                        @RequestParam("endDate") String endDate) {
+                                        @RequestParam("endDate") String endDate,
+                                        Model model) {
 
-        System.out.println("START DATE: " + startDate);
-        System.out.println("END DATE: " + endDate);
+        CustomSubscriptionRequest processedRequest =
+                new CustomSubscriptionRequest(currentUser.getUsername(), currentBook.getBookId(),
+                        currentBook.getBookTitle(), currentBook.getBookAuthor(),
+                        LocalDate.parse(startDate), LocalDate.parse(endDate));
+
+        customSubscriptionRequestService.addCustomSubscriptionRequestToDB(processedRequest);
+
+        model.addAttribute("userSubscriptionList", userService.
+                findUserByUsername(currentUser.getUsername()).getSubscriptionList());
 
         return "my-subscriptions";
     }
