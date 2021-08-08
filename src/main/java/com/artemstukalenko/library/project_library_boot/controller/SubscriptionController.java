@@ -72,9 +72,6 @@ public class SubscriptionController {
         model.addAttribute("userSubscriptionList", userService.
                 findUserByUsername(currentUser.getUsername()).getSubscriptionList());
 
-        System.out.println("FROM RETURN BOOK METHOD: " + userService.
-                findUserByUsername(currentUser.getUsername()).getSubscriptionList());
-
         return "my-subscriptions";
     }
 

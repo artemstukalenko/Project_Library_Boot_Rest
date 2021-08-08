@@ -33,7 +33,6 @@ public class UserController {
 
     @RequestMapping("/viewSubscriptions")
     public String getUserSubscriptionsPage(Model model) {
-        System.out.println("FROM GET SUBSCRIPTIONS PAGE METHOD: " + currentUser.getSubscriptionList());
         model.addAttribute("userSubscriptionList", userService.
                 findUserByUsername(currentUser.getUsername()).getSubscriptionList());
 

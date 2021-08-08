@@ -39,14 +39,12 @@ public class BookController {
         model.addAttribute("locale", controlledView);
         model.addAttribute("listSorter", sorter);
         model.addAttribute("allBooks", currentBookList);
-        System.out.println("IN ADD ATTRIBUTES, ADDED CURRENT LIST: " + currentBookList);
         model.addAttribute("searcher", searcher);
     }
 
     @RequestMapping("/booksList")
     public String getUserEntryPage(Model model) {
         currentBookList = bookService.getAllBooks();
-        System.out.println("IN GET USER ENTRY PAGE");
         model.addAttribute("allBooks", currentBookList);
         return "book-list-page";
     }
@@ -65,7 +63,6 @@ public class BookController {
         currentBookList = searcher
                 .getResultOfTheBookSearch(bookService.getAllBooks());
         model.addAttribute("allBooks", currentBookList);
-        System.out.println("IN SEARCH FOR BOOKS ADDED SEARCH RESULT: " + currentBookList);
 
         return "book-list-page";
     }
