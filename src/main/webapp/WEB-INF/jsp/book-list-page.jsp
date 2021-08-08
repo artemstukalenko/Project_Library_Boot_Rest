@@ -81,6 +81,14 @@
 
 <br><br><br>
 
+<form:form action="booksList" modelAttribute="locale">
+
+    <input type="submit" value="${locale.showAllBooksButton}"/>
+
+</form:form>
+
+<br><br>
+
 <form:form action="/homepage_again" modelAttribute="locale">
 
     <input type="submit" value="${locale.toHomePage}"/>

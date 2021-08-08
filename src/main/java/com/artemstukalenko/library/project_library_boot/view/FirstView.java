@@ -41,6 +41,7 @@ public class FirstView {
     public static String bookYearOfPublishing = bundle.getString(BOOK_YEAR_OF_PUBLISHING);
     public static String addNewBook = bundle.getString(ADD_NEW_BOOK);
     public static String deleteBook = bundle.getString(DELETE_BOOK);
+    public static String showAllBooksButton = bundle.getString(SHOW_ALL_BOOKS_BUTTON);
 
     public static String loginUsername = bundle.getString(LOGIN_USERNAME);
     public static String loginPassword = bundle.getString(LOGIN_PASSWORD);
@@ -95,6 +96,7 @@ public class FirstView {
         bookYearOfPublishing = bundle.getString(BOOK_YEAR_OF_PUBLISHING);
         addNewBook = bundle.getString(ADD_NEW_BOOK);
         deleteBook = bundle.getString(DELETE_BOOK);
+        showAllBooksButton = bundle.getString(SHOW_ALL_BOOKS_BUTTON);
 
         loginUsername = bundle.getString(LOGIN_USERNAME);
         loginPassword = bundle.getString(LOGIN_PASSWORD);
@@ -299,5 +301,9 @@ public class FirstView {
 
     public String getSearch() {
         return search;
+    }
+
+    public String getShowAllBooksButton() {
+        return showAllBooksButton;
     }
 }

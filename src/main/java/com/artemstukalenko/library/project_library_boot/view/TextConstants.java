@@ -29,6 +29,7 @@ public interface TextConstants {
     String BOOK_YEAR_OF_PUBLISHING = "book.year.of.publishing";
     String ADD_NEW_BOOK = "add.new.book";
     String DELETE_BOOK = "delete.book";
+    String SHOW_ALL_BOOKS_BUTTON = "show.all.books.button";
 
     String LOGIN_USERNAME = "login.username";
     String LOGIN_PASSWORD = "login.password";
