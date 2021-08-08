@@ -66,4 +66,12 @@ public class BookController {
 
         return "book-list-page";
     }
+
+    @RequestMapping("/changeTakenValue")
+    public String changeTakenValueOfBook(@RequestParam("bookId") int bookId) {
+        bookService.setTaken(bookId,
+                (bookService.findBookById(bookId).getTaken() == true ? false : true));
+
+        return "book-list-page";
+    }
 }
