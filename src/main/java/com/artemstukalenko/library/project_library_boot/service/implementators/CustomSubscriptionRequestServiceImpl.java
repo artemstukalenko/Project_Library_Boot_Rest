@@ -34,4 +34,10 @@ public class CustomSubscriptionRequestServiceImpl
         return customSubscriptionRequestDAO.getAllRequests();
     }
 
+    @Override
+    @Transactional
+    public CustomSubscriptionRequest findRequestById(int id) {
+        return customSubscriptionRequestDAO.findRequestById(id);
+    }
+
 }

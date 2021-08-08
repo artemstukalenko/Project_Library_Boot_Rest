@@ -41,4 +41,10 @@ public class CustomSubscriptionRequestDAOImpl implements CustomSubscriptionReque
 
         return queryForGettingAllRequests.getResultList();
     }
+
+    @Override
+    @Transactional
+    public CustomSubscriptionRequest findRequestById(int id) {
+        return entityManager.find(CustomSubscriptionRequest.class, id);
+    }
 }

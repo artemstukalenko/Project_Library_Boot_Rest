@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -32,4 +33,21 @@ public class LibrarianController {
         return "subscriptions-page";
     }
 
+    @RequestMapping("/acceptRequest")
+    public String acceptRequest(@RequestParam("requestId") int requestId) {
+        subscriptionService.registerSubscriptionInDB(
+                new Subscription(customSubscriptionRequestService.findRequestById(requestId))
+        );
+
+        customSubscriptionRequestService.deleteCustomSubscriptionRequestFromDB(requestId);
+
+        return "subscriptions-page";
+    }
+
+    @RequestMapping("/denyRequest")
+    public String denyRequest(@RequestParam("requestId") int requestId) {
+        customSubscriptionRequestService.deleteCustomSubscriptionRequestFromDB(requestId);
+
+        return "subscriptions-page";
+    }
 }

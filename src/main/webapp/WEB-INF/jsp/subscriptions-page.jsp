@@ -57,6 +57,13 @@
 
     <c:forEach var="subscriptionRequest" items="${allRequests}">
 
+        <c:url var="acceptRequestButton" value="/acceptRequest">
+            <c:param name="requestId" value="${subscriptionRequest.customSubscriptionId}"/>
+        </c:url>
+        <c:url var="denyRequestButton" value="/denyRequest">
+            <c:param name="requestId" value="${subscriptionRequest.customSubscriptionId}"/>
+        </c:url>
+
         <tr>
             <td>${subscriptionRequest.customSubscriptionId}</td>
             <td>${subscriptionRequest.username}</td>
@@ -65,6 +72,11 @@
             <td>${subscriptionRequest.author}</td>
             <td>${subscriptionRequest.startOfThePeriod}</td>
             <td>${subscriptionRequest.endOfThePeriod}</td>
+
+            <td>
+                <input type="button" value="accept" onclick="window.location.href = '${acceptRequestButton}'"/>
+                <input type="button" value="deny" onclick="window.location.href = '${denyRequestButton}'"/>
+            </td>
         </tr>
 
     </c:forEach>

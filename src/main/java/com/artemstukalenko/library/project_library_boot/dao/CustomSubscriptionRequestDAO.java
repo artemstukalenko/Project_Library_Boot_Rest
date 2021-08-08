@@ -11,4 +11,6 @@ public interface CustomSubscriptionRequestDAO {
     public void deleteCustomSubscriptionRequestFromDB(int id);
 
     public List<CustomSubscriptionRequest> getAllRequests();
+
+    public CustomSubscriptionRequest findRequestById(int id);
 }

@@ -53,6 +53,15 @@ public class Subscription {
         this.endOfThePeriod = endOfThePeriod;
     }
 
+    public Subscription(CustomSubscriptionRequest request) {
+        this.username = request.getUsername();
+        this.bookId = request.getBookId();
+        this.title = request.getTitle();
+        this.author = request.getAuthor();
+        this.startOfThePeriod = request.getStartOfThePeriod();
+        this.endOfThePeriod = request.getEndOfThePeriod();
+    }
+
     public String getUsername() {
         return username;
     }

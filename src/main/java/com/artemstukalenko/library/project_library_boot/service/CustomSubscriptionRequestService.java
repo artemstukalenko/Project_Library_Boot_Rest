@@ -12,4 +12,6 @@ public interface CustomSubscriptionRequestService {
 
     public List<CustomSubscriptionRequest> getAllRequests();
 
+    public CustomSubscriptionRequest findRequestById(int id);
+
 }
