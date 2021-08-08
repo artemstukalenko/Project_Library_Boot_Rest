@@ -14,4 +14,6 @@ public interface SubscriptionDAO {
     public Subscription findSubscriptionById(int id);
 
     public void deleteSubscriptionFromDB(int id);
+
+    public Subscription findSubscriptionByBookId(int bookId);
 }

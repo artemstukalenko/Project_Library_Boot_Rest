@@ -14,4 +14,6 @@ public interface SubscriptionService {
 
     public void deleteSubscriptionFromDB(int id);
 
+    public Subscription findSubscriptionByBookId(int id);
+
 }

@@ -43,4 +43,14 @@ public class SubscriptionDAOImpl implements SubscriptionDAO {
 
         queryForDeletingSubscription.executeUpdate();
     }
+
+    @Override
+    @Transactional
+    public Subscription findSubscriptionByBookId(int bookId) {
+        Query queryForFindingSubscriptionByBookId =
+                entityManager.createQuery("from Subscription where bookId =: bookId");
+        queryForFindingSubscriptionByBookId.setParameter("bookId", bookId);
+
+        return (Subscription) queryForFindingSubscriptionByBookId.getSingleResult();
+    }
 }

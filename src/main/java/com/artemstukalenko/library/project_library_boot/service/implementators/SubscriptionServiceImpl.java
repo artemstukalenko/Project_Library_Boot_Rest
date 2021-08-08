@@ -33,7 +33,15 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         return subscriptionDAO.findSubscriptionById(id);
     }
 
+    @Override
+    @Transactional
     public void deleteSubscriptionFromDB(int id) {
         subscriptionDAO.deleteSubscriptionFromDB(id);
+    }
+
+    @Override
+    @Transactional
+    public Subscription findSubscriptionByBookId(int bookId) {
+        return subscriptionDAO.findSubscriptionByBookId(bookId);
     }
 }

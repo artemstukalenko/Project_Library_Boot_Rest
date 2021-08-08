@@ -87,6 +87,11 @@ public class SubscriptionController {
                                                           Model model) {
         currentBook = bookService.findBookById(bookId);
 
+        if (currentBook.getTaken()) {
+            model.addAttribute("currentSubscription",
+                    subscriptionService.findSubscriptionByBookId(bookId));
+        }
+
         model.addAttribute("currentBook", currentBook);
 
 
