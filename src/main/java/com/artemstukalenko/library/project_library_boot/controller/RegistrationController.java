@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -25,6 +24,8 @@ public class RegistrationController {
 
     @Autowired
     User potentialUser;
+
+    private boolean detailsAreNotValid;
 
     @ModelAttribute
     public void addTextInformation(Model model) {
@@ -43,13 +44,17 @@ public class RegistrationController {
                                   BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            userService.deleteUser(potentialUser.getUsername());
+            detailsAreNotValid = true;
             return "register-details-page";
         }
-
+        detailsAreNotValid = false;
         newUserDetails.setUsername(potentialUser.getUsername());
         potentialUser.setUserDetails(newUserDetails);
         userService.updateUser(potentialUser);
+
+        if(detailsAreNotValid) {
+            userService.deleteUser(potentialUser.getUsername());
+        }
 
         return "redirect:/login";
     }
