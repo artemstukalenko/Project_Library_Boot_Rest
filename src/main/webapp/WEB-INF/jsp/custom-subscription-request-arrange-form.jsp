@@ -6,9 +6,9 @@
 
 <body>
 
-<h2>${currentBook.bookTitle}</h2>
-<h2>${currentBook.bookAuthor}</h2>
-<h2>${currentSubscription.endOfThePeriod}</h2>
+<h2>${locale.bookTitle}: ${currentBook.bookTitle}</h2>
+<h2>${locale.bookAuthor}: ${currentBook.bookAuthor}</h2>
+<h3>${locale.requestChoosePeriod}</h3>
 
 <form:form action="/registerRequest">
 
@@ -17,8 +17,8 @@
     <input type="date" min="" name="endDate" value="${today}"/>
 
     <br>
-
-    <input type="submit" value="OK"/>
+    <br>
+    <input type="submit" value="${locale.arrangeCustomRequest}"/>
 
 </form:form>
 

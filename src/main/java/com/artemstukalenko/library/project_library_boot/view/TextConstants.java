@@ -54,4 +54,7 @@ public interface TextConstants {
     String FILTER_BY_TITLE = "filter.by.title";
     String FILTER_BY_AUTHOR = "filter.by.author";
     String FILTER_BY_YEAR = "filter.by.year";
+
+    String ARRANGE_CUSTOM_REQUEST = "arrange.custom.request";
+    String REQUEST_CHOOSE_PERIOD = "request.choose.period";
 }

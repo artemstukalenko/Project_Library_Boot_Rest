@@ -71,7 +71,7 @@
                     <c:if test="${book.taken}"><c:out value="disabled='disabled'"/></c:if>>
                 </security:authorize>
                 <security:authorize access="hasRole('USER')">
-                    <input type="button" value="Arrange custom request" onclick="window.location.href = '${arrangeCustomSubscriptionRequestButton}'"
+                    <input type="button" value="${locale.arrangeCustomRequest}" onclick="window.location.href = '${arrangeCustomSubscriptionRequestButton}'"
 <%--                        <c:if test="${book.taken}"><c:out value="disabled='disabled'"/></c:if>>--%>
                 </security:authorize>
             </td>

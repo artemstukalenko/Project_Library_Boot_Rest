@@ -67,6 +67,9 @@ public class FirstView {
     public static String filterByAuthor = bundle.getString(FILTER_BY_AUTHOR);
     public static String filterByYear = bundle.getString(FILTER_BY_YEAR);
 
+    public static String arrangeCustomRequest = bundle.getString(ARRANGE_CUSTOM_REQUEST);
+    public static String requestChoosePeriod = bundle.getString(REQUEST_CHOOSE_PERIOD);
+
     public static void initStringFields(ResourceBundle bundle) {
         usersListString = bundle.getString(USERS_LIST_STRING);
         seeUsersList = bundle.getString(SEE_USERS_LIST);
@@ -121,6 +124,9 @@ public class FirstView {
         filterByTitle = bundle.getString(FILTER_BY_TITLE);
         filterByAuthor = bundle.getString(FILTER_BY_AUTHOR);
         filterByYear = bundle.getString(FILTER_BY_YEAR);
+
+        arrangeCustomRequest = bundle.getString(ARRANGE_CUSTOM_REQUEST);
+        requestChoosePeriod = bundle.getString(REQUEST_CHOOSE_PERIOD);
     }
 
     public FirstView() {}
@@ -305,5 +311,13 @@ public class FirstView {
 
     public String getShowAllBooksButton() {
         return showAllBooksButton;
+    }
+
+    public String getArrangeCustomRequest() {
+        return arrangeCustomRequest;
+    }
+
+    public String getRequestChoosePeriod() {
+        return requestChoosePeriod;
     }
 }
