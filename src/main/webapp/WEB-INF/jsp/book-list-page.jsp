@@ -51,6 +51,9 @@
         <c:url var="arrangeSubscriptionButton" value="/arrangeSubscription">
             <c:param name="bookId" value="${book.bookId}"/>
         </c:url>
+        <c:url var="arrangeCustomSubscriptionRequestButton" value="/arrangeCustomRequest">
+            <c:param name="bookId" value="${book.bookId}"/>
+        </c:url>
 
         <tr>
             <td>${book.bookId}</td>
@@ -67,7 +70,10 @@
                     <input type="button" value="${locale.arrangeSubscriptionButton}" onclick="window.location.href = '${arrangeSubscriptionButton}'"
                     <c:if test="${book.taken}"><c:out value="disabled='disabled'"/></c:if>>
                 </security:authorize>
-
+                <security:authorize access="hasRole('USER')">
+                    <input type="button" value="Arrange custom request" onclick="window.location.href = '${arrangeCustomSubscriptionRequestButton}'"
+                        <c:if test="${book.taken}"><c:out value="disabled='disabled'"/></c:if>>
+                </security:authorize>
             </td>
         </tr>
     </c:forEach>

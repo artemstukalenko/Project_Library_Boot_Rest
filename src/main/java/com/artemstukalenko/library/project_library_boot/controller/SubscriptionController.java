@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
+
 @Controller
 public class SubscriptionController {
 
@@ -75,9 +77,24 @@ public class SubscriptionController {
         return "my-subscriptions";
     }
 
-    private boolean detailsArePresent(User userToCheck) {
-        //TODO: complete details check
-        return userToCheck.getUserDetails() != null;
+    @RequestMapping("/arrangeCustomRequest")
+    public String getCustomSubscriptionRequestArrangeForm(int bookId,
+                                                          Model model) {
+        currentBook = bookService.findBookById(bookId);
+
+        model.addAttribute("currentBook", currentBook);
+
+
+        return "custom-subscription-request-arrange-form";
     }
 
+    @RequestMapping("/registerRequest")
+    public String registerCustomRequest(@RequestParam("startDate") String startDate,
+                                        @RequestParam("endDate") String endDate) {
+
+        System.out.println("START DATE: " + startDate);
+        System.out.println("END DATE: " + endDate);
+
+        return "my-subscriptions";
+    }
 }

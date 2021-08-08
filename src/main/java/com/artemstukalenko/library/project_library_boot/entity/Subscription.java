@@ -43,6 +43,16 @@ public class Subscription {
         this.endOfThePeriod = LocalDate.now().plusMonths(1);
     }
 
+    public Subscription(String username, int bookId, String title, String author,
+                        LocalDate startOfThePeriod, LocalDate endOfThePeriod) {
+        this.username = username;
+        this.bookId = bookId;
+        this.title = title;
+        this.author = author;
+        this.startOfThePeriod = startOfThePeriod;
+        this.endOfThePeriod = endOfThePeriod;
+    }
+
     public String getUsername() {
         return username;
     }
