@@ -32,16 +32,22 @@ public class BookController {
     @Autowired
     Searcher searcher;
 
+    List<Book> currentBookList;
+
     @ModelAttribute
     public void addTextInformation(Model model) {
         model.addAttribute("locale", controlledView);
         model.addAttribute("listSorter", sorter);
-        model.addAttribute("allBooks", bookService.getAllBooks());
+        model.addAttribute("allBooks", currentBookList);
+        System.out.println("IN ADD ATTRIBUTES, ADDED CURRENT LIST: " + currentBookList);
         model.addAttribute("searcher", searcher);
     }
 
     @RequestMapping("/booksList")
     public String getUserEntryPage(Model model) {
+        currentBookList = bookService.getAllBooks();
+        System.out.println("IN GET USER ENTRY PAGE");
+        model.addAttribute("allBooks", currentBookList);
         return "book-list-page";
     }
 
@@ -49,15 +55,17 @@ public class BookController {
     public String getFilteredPage(@ModelAttribute("listSorter") Sorter sorter,
                                   Model model) {
 
-        model.addAttribute("allBooks", sorter.sortList(bookService.getAllBooks()));
+        model.addAttribute("allBooks", sorter.sortList(currentBookList));
         return "book-list-page";
     }
 
     @RequestMapping("/searchBook")
     public String searchForBooks(@ModelAttribute("searcher") Searcher searcher,
                                  Model model) {
-        model.addAttribute("allBooks", searcher
-                .getResultOfTheBookSearch(bookService.getAllBooks()));
+        currentBookList = searcher
+                .getResultOfTheBookSearch(bookService.getAllBooks());
+        model.addAttribute("allBooks", currentBookList);
+        System.out.println("IN SEARCH FOR BOOKS ADDED SEARCH RESULT: " + currentBookList);
 
         return "book-list-page";
     }
