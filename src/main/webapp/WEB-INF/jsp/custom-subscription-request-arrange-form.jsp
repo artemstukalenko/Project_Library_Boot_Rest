@@ -8,13 +8,18 @@
 
 <h2>${locale.bookTitle}: ${currentBook.bookTitle}</h2>
 <h2>${locale.bookAuthor}: ${currentBook.bookAuthor}</h2>
-<h3>${locale.requestChoosePeriod}</h3>
+<h3>${locale.requestChoosePeriod}, ${notTaken}</h3>
 
 <form:form action="/registerRequest">
 
-    <input type="date" name="startDate" value="${today}"
-        <c:if test="${currentBook.taken}"><c:out value="min=${currentSubscription.endOfThePeriod}"/></c:if>>
-    <input type="date" min="" name="endDate" value="${today}"/>
+    <input type="date" name="startDate"
+        <c:if test="${currentBook.taken}"><c:out value="min=${currentSubscription.endOfThePeriod}"/></c:if>
+        <c:if test="${currentBook.taken}"><c:out value="value=${currentSubscription.endOfThePeriod}"/></c:if>
+        <c:if test="${notTaken}"><c:out value="value=${today}"/></c:if>>
+    <input type="date" min="" name="endDate"
+        <c:if test="${currentBook.taken}"><c:out value="min=${currentSubscription.endOfThePeriod}"/></c:if>
+        <c:if test="${currentBook.taken}"><c:out value="value=${currentSubscription.endOfThePeriod}"/></c:if>
+        <c:if test="${notTaken}"><c:out value="value=${today}"/></c:if>>
 
     <br>
     <br>

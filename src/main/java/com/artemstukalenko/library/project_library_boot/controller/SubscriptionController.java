@@ -94,6 +94,7 @@ public class SubscriptionController {
 
         model.addAttribute("currentBook", currentBook);
         model.addAttribute("today", LocalDate.now());
+        model.addAttribute("notTaken", !(currentBook.getTaken()));
 
         return "custom-subscription-request-arrange-form";
     }
