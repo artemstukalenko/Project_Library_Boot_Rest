@@ -88,4 +88,12 @@ public class AdminController {
 
         return "book-list-page";
     }
+
+    @RequestMapping("/makeUserLibrarian")
+    public String makeUserLibrarian(@RequestParam("userName") String username, Model model) {
+        userService.makeUserLibrarian(username);
+
+        model.addAttribute("allUsers", getUpdatedUserList());
+        return "user-list-page";
+    }
 }

@@ -34,6 +34,9 @@
         <c:url var="deleteButton" value="/deleteUser">
             <c:param name="userName" value="${user.username}"/>
         </c:url>
+        <c:url var="makeLibrarianButton" value="/makeUserLibrarian">
+            <c:param name="userName" value="${user.username}"/>
+        </c:url>
 
         <tr>
             <td>${user.username}</td>
@@ -49,6 +52,7 @@
                 <input type="button" value="${locale.blockButton}" onclick="window.location.href = '${blockButton}'"/>
                 <input type="button" value="${locale.unblockButton}" onclick="window.location.href = '${unblockButton}'"/>
                 <input type="button" value="${locale.deleteUserButton}" onclick="window.location.href = '${deleteButton}'">
+                <input type="button" value="Make him librarian" onclick="window.location.href = '${makeLibrarianButton}'">
             </td>
         </tr>
 

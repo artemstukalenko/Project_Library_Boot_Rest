@@ -20,4 +20,6 @@ public interface UserDAO {
     public void updateUser(User user);
 
     public void deleteUser(String username);
+
+    public void makeUserLibrarian(String username);
 }
