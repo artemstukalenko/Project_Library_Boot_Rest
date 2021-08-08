@@ -30,6 +30,9 @@
         <th>${locale.bookTitle}</th>
         <th>${locale.bookAuthor}</th>
         <th>${locale.bookYearOfPublishing}</th>
+        <security:authorize access="hasRole('LIBRARIAN')">
+            <th>${locale.statusTableHeader}</th>
+        </security:authorize>
         <th>
             <form:form action="sort" modelAttribute="listSorter">
                 <form:select path="sortMethod">
@@ -63,6 +66,10 @@
             <td>${book.bookTitle}</td>
             <td>${book.bookAuthor}</td>
             <td>${book.bookYearOfPublishing}</td>
+
+            <security:authorize access="hasRole('LIBRARIAN')">
+                <td>${book.taken}</td>
+            </security:authorize>
 
             <td>
 
