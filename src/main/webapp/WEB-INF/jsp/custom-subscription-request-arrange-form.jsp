@@ -12,9 +12,9 @@
 
 <form:form action="/registerRequest">
 
-    <input type="date" name="startDate" value="Start date"
+    <input type="date" name="startDate" value="${today}"
         <c:if test="${currentBook.taken}"><c:out value="min=${currentSubscription.endOfThePeriod}"/></c:if>>
-    <input type="date" min="" name="endDate" value="End date"/>
+    <input type="date" min="" name="endDate" value="${today}"/>
 
     <br>
 

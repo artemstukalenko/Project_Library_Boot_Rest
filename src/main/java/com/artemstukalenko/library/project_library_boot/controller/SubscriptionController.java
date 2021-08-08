@@ -93,7 +93,7 @@ public class SubscriptionController {
         }
 
         model.addAttribute("currentBook", currentBook);
-
+        model.addAttribute("today", LocalDate.now());
 
         return "custom-subscription-request-arrange-form";
     }
