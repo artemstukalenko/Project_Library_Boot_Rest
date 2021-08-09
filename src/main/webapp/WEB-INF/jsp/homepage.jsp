@@ -28,6 +28,9 @@
 <h3>${locale.userEmail}: ${currentUser.userDetails.userEmail}</h3>
 <h3>${locale.userPhoneNumber}: ${currentUser.userDetails.userPhoneNumber}</h3>
 <h3>${locale.userAddress}: ${currentUser.userDetails.userAddress}</h3>
+<security:authorize access="hasRole('USER')">
+    <th>${currentUser.userDetails.userPenalty}</th>
+</security:authorize>
 
 <form:form action="booksList" modelAttribute="locale">
 

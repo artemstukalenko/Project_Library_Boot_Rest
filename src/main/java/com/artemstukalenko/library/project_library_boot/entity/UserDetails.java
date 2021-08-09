@@ -104,7 +104,7 @@ public class UserDetails {
     }
 
     public void setPenalty(int penalty) {
-        this.userPenalty = penalty;
+        this.userPenalty += penalty;
     }
 
     public void setAuthorityString(String authorityStringFromDB) {

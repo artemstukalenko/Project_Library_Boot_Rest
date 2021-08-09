@@ -28,10 +28,13 @@ public class Subscription {
     private final LocalDate endOfThePeriod;
     @Column(name = "expired")
     private boolean expired;
+    @Column(name = "fined")
+    private boolean fined;
 
     public Subscription() {
         this.startOfThePeriod = LocalDate.now();
         this.endOfThePeriod = LocalDate.now().plusMonths(1);
+        this.fined = false;
     }
 
     public Subscription(String username, int bookId, String title, String author) {
@@ -41,6 +44,7 @@ public class Subscription {
         this.author = author;
         this.startOfThePeriod = LocalDate.now();
         this.endOfThePeriod = LocalDate.now().plusMonths(1);
+        this.fined = false;
     }
 
     public Subscription(String username, int bookId, String title, String author,
@@ -51,6 +55,7 @@ public class Subscription {
         this.author = author;
         this.startOfThePeriod = startOfThePeriod;
         this.endOfThePeriod = endOfThePeriod;
+        this.fined = false;
     }
 
     public Subscription(CustomSubscriptionRequest request) {
@@ -60,6 +65,7 @@ public class Subscription {
         this.author = request.getAuthor();
         this.startOfThePeriod = request.getStartOfThePeriod();
         this.endOfThePeriod = request.getEndOfThePeriod();
+        this.fined = false;
     }
 
     public String getUsername() {
@@ -108,6 +114,14 @@ public class Subscription {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public boolean getFined() {
+        return fined;
+    }
+
+    public void setFined(boolean fined) {
+        this.fined = fined;
     }
 
     @Override

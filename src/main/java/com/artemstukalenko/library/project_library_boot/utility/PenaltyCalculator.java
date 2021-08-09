@@ -11,7 +11,8 @@ public class PenaltyCalculator {
     public int calculateUsersPenalty(User user) {
 
         return (int)(user.getSubscriptionList().stream()
-                .filter(subscription -> {return subscription.getExpired();})
+                .filter(subscription -> {return subscription.getExpired() && !subscription.getFined();})
+                .peek(subscription -> {subscription.setFined(true);})
                 .count() * 10);
     }
 
