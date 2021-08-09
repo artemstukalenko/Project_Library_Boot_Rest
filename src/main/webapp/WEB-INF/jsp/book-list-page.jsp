@@ -68,7 +68,10 @@
             <td>${book.bookYearOfPublishing}</td>
 
             <security:authorize access="hasRole('LIBRARIAN')">
-                <td>${book.taken}</td>
+                <td>
+                    <c:if test="${book.taken}"><c:out value="${locale.bookIsAvailable}"/></c:if>
+                    <c:if test="${!book.taken}"><c:out value="${locale.bookIsNotAvailable}"/></c:if>
+                </td>
             </security:authorize>
 
             <td>
@@ -84,7 +87,7 @@
                     <input type="button" value="${locale.arrangeCustomRequest}" onclick="window.location.href = '${arrangeCustomSubscriptionRequestButton}'"
                 </security:authorize>
                 <security:authorize access="hasRole('LIBRARIAN')">
-                    <input type="button" value="set taken" onclick="window.location.href = '${changeTakenValueButton}'"
+                    <input type="button" value="${locale.setTakenButton}" onclick="window.location.href = '${changeTakenValueButton}'"
                 </security:authorize>
             </td>
         </tr>

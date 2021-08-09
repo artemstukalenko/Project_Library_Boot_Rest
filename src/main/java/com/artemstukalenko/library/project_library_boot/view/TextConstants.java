@@ -72,4 +72,9 @@ public interface TextConstants {
     String PENALTY_FIELD = "penalty.field";
     String PAY_PENALTY_BUTTON = "pay.penalty.button";
     String CHOOSE_SUM_TO_PAY = "choose.sum.to.pay";
+
+    String SET_TAKEN_BUTTON = "set.taken.button";
+
+    String BOOK_IS_AVAILABLE = "book.is.available";
+    String BOOK_IS_NOT_AVAILABLE = "book.is.not.available";
 }

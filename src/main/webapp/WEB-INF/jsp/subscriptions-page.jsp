@@ -34,7 +34,10 @@
             <td>${subscription.author}</td>
             <td>${subscription.startOfThePeriod}</td>
             <td>${subscription.endOfThePeriod}</td>
-            <td>${subscription.expired}</td>
+            <td>
+                <c:if test="${subscription.expired}"><c:out value="+"/></c:if>
+                <c:if test="${!subscription.expired}"><c:out value="-"/></c:if>
+            </td>
         </tr>
 
     </c:forEach>

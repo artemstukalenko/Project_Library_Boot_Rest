@@ -85,6 +85,11 @@ public class FirstView {
     public static String payPenaltyButton = bundle.getString(PAY_PENALTY_BUTTON);
     public static String chooseSumToPay = bundle.getString(CHOOSE_SUM_TO_PAY);
 
+    public static String setTakenButton = bundle.getString(SET_TAKEN_BUTTON);
+
+    public static String bookIsAvailable = bundle.getString(BOOK_IS_AVAILABLE);
+    public static String bookIsNotAvailable = bundle.getString(BOOK_IS_NOT_AVAILABLE);
+
     public static void initStringFields(ResourceBundle bundle) {
         usersListString = bundle.getString(USERS_LIST_STRING);
         seeUsersList = bundle.getString(SEE_USERS_LIST);
@@ -157,6 +162,11 @@ public class FirstView {
         penaltyField = bundle.getString(PENALTY_FIELD);
         payPenaltyButton = bundle.getString(PAY_PENALTY_BUTTON);
         chooseSumToPay = bundle.getString(CHOOSE_SUM_TO_PAY);
+
+        setTakenButton = bundle.getString(SET_TAKEN_BUTTON);
+
+        bookIsAvailable = bundle.getString(BOOK_IS_AVAILABLE);
+        bookIsNotAvailable = bundle.getString(BOOK_IS_NOT_AVAILABLE);
     }
 
     public FirstView() {}
@@ -397,5 +407,17 @@ public class FirstView {
 
     public String getChooseSumToPay() {
         return chooseSumToPay;
+    }
+
+    public String getSetTakenButton() {
+        return setTakenButton;
+    }
+
+    public String getBookIsAvailable() {
+        return bookIsAvailable;
+    }
+
+    public String getBookIsNotAvailable() {
+        return bookIsNotAvailable;
     }
 }
