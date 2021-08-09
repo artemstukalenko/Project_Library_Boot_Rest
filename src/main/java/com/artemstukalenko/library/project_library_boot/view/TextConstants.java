@@ -9,6 +9,8 @@ public interface TextConstants {
     String SEE_SUBSCRIPTIONS_LIST = "see.subscriptions.list";
     String SUBSCRIPTIONS_LIST_STRING = "subscriptions.list";
 
+    String MAKE_LIBRARIAN_BUTTON = "make.librarian.button";
+    String MAKE_NOT_LIBRARIAN_BUTTON = "make.not.librarian.button";
     String DELETE_USER_BUTTON = "delete.user";
     String BLOCK_BUTTON = "block.button";
     String UNBLOCK_BUTTON = "unblock.button";
@@ -22,6 +24,7 @@ public interface TextConstants {
     String USER_PHONE_NUMBER = "user.phone.number";
     String USER_ADDRESS = "user.address";
     String USER_PENALTY = "user.penalty";
+    String USER_SPECIAL_STATUS = "user.special.status";
 
     String BOOK_ID = "book.id";
     String BOOK_TITLE = "book.title";

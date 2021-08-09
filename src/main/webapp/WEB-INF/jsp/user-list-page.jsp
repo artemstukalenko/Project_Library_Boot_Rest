@@ -21,7 +21,7 @@
         <th>${locale.userPhoneNumber}</th>
         <th>${locale.userAddress}</th>
         <th>${locale.userPenalty}</th>
-        <th>ROLE</th>
+        <th>${locale.userSpecialStatus}</th>
     </tr>
 
     <c:forEach var="user" items="${allUsers}">
@@ -57,8 +57,8 @@
                 <input type="button" value="${locale.blockButton}" onclick="window.location.href = '${blockButton}'"/>
                 <input type="button" value="${locale.unblockButton}" onclick="window.location.href = '${unblockButton}'"/>
                 <input type="button" value="${locale.deleteUserButton}" onclick="window.location.href = '${deleteButton}'">
-                <input type="button" value="Make him librarian" onclick="window.location.href = '${makeLibrarianButton}'">
-                <input type="button" value="Make him not librarian" onclick="window.location.href = '${depriveLibrarianPrivilegesButton}'">
+                <input type="button" value="${locale.makeLibrarianButton}" onclick="window.location.href = '${makeLibrarianButton}'">
+                <input type="button" value="${locale.makeNotLibrarianButton}" onclick="window.location.href = '${depriveLibrarianPrivilegesButton}'">
             </td>
         </tr>
 

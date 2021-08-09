@@ -21,6 +21,8 @@ public class FirstView {
     public static String seeSubscriptionsList = bundle.getString(SEE_SUBSCRIPTIONS_LIST);
     public static String subscriptionsListString = bundle.getString(SUBSCRIPTIONS_LIST_STRING);
 
+    public static String makeLibrarianButton = bundle.getString(MAKE_LIBRARIAN_BUTTON);
+    public static String makeNotLibrarianButton = bundle.getString(MAKE_NOT_LIBRARIAN_BUTTON);
     public static String deleteUserButton = bundle.getString(DELETE_USER_BUTTON);
     public static String blockButton = bundle.getString(BLOCK_BUTTON);
     public static String unblockButton = bundle.getString(UNBLOCK_BUTTON);
@@ -34,6 +36,7 @@ public class FirstView {
     public static String userPhoneNumber = bundle.getString(USER_PHONE_NUMBER);
     public static String userAddress = bundle.getString(USER_ADDRESS);
     public static String userPenalty = bundle.getString(USER_PENALTY);
+    public static String userSpecialStatus = bundle.getString(USER_SPECIAL_STATUS);
 
     public static String bookId = bundle.getString(BOOK_ID);
     public static String bookTitle = bundle.getString(BOOK_TITLE);
@@ -87,6 +90,8 @@ public class FirstView {
         seeSubscriptionsList = bundle.getString(SEE_SUBSCRIPTIONS_LIST);
         subscriptionsListString = bundle.getString(SUBSCRIPTIONS_LIST_STRING);
 
+        makeLibrarianButton = bundle.getString(MAKE_LIBRARIAN_BUTTON);
+        makeNotLibrarianButton = bundle.getString(MAKE_NOT_LIBRARIAN_BUTTON);
         deleteUserButton = bundle.getString(DELETE_USER_BUTTON);
         blockButton = bundle.getString(BLOCK_BUTTON);
         unblockButton = bundle.getString(UNBLOCK_BUTTON);
@@ -100,6 +105,7 @@ public class FirstView {
         userPhoneNumber = bundle.getString(USER_PHONE_NUMBER);
         userAddress = bundle.getString(USER_ADDRESS);
         userPenalty = bundle.getString(USER_PENALTY);
+        userSpecialStatus = bundle.getString(USER_SPECIAL_STATUS);
 
         bookId = bundle.getString(BOOK_ID);
         bookTitle = bundle.getString(BOOK_TITLE);
@@ -359,5 +365,17 @@ public class FirstView {
 
     public String getDenyRequestButton() {
         return denyRequestButton;
+    }
+
+    public String getMakeLibrarianButton() {
+        return makeLibrarianButton;
+    }
+
+    public String getMakeNotLibrarianButton() {
+        return makeNotLibrarianButton;
+    }
+
+    public String getUserSpecialStatus() {
+        return userSpecialStatus;
     }
 }
