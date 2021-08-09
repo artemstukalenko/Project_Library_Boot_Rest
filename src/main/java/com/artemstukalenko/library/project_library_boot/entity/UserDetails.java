@@ -1,5 +1,6 @@
 package com.artemstukalenko.library.project_library_boot.entity;
 
+import com.artemstukalenko.library.project_library_boot.utility.PenaltyCalculator;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import static com.artemstukalenko.library.project_library_boot.controller.RegexC
 @Entity
 @Table(name = "user_details")
 public class UserDetails {
+
     @Id
     @Column(name = "username")
     private String username;
