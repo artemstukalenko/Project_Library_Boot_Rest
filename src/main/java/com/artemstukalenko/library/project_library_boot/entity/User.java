@@ -97,4 +97,8 @@ public class User {
     public String getAuthorityString() {
         return this.userDetails.getAuthorityString();
     }
+
+    public void setAuthorityString(String authorityString) {
+        this.getUserDetails().setAuthorityString(authorityString);
+    }
 }

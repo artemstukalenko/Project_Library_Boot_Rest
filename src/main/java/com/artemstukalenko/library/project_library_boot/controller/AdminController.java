@@ -26,8 +26,6 @@ public class AdminController {
     @Autowired
     FirstView controlledView;
 
-    private List<User> allUsersList;
-
     private List<User> getUpdatedUserList() {
         return userService.getAllUsers();
     }
@@ -90,8 +88,13 @@ public class AdminController {
     }
 
     @RequestMapping("/makeUserLibrarian")
-    public String makeUserLibrarian(@RequestParam("userName") String username, Model model) {
-        userService.makeUserLibrarian(username);
+    public String makeUserLibrarian(@RequestParam("userName") String username,
+                                    Model model) {
+
+        User currentUser = userService.findUserByUsername(username);
+
+        userService.makeUserLibrarian(currentUser.getUsername());
+        currentUser.setAuthorityString("ROLE_LIBRARIAN");
 
         model.addAttribute("allUsers", getUpdatedUserList());
         return "user-list-page";
@@ -100,7 +103,11 @@ public class AdminController {
     @RequestMapping("/depriveLibrarianRole")
     public String depriveLibrarianPrivilegesFromUser(@RequestParam("userName") String username,
                                                      Model model) {
+
+        User currentUser = userService.findUserByUsername(username);
+
         userService.depriveLibrarianPrivileges(username);
+        currentUser.setAuthorityString("ROLE_USER");
 
         model.addAttribute("allUsers", getUpdatedUserList());
         return "user-list-page";
