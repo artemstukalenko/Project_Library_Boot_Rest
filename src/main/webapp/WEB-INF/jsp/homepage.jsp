@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
@@ -28,11 +29,15 @@
 <h3>${locale.userEmail}: ${currentUser.userDetails.userEmail}</h3>
 <h3>${locale.userPhoneNumber}: ${currentUser.userDetails.userPhoneNumber}</h3>
 <h3>${locale.userAddress}: ${currentUser.userDetails.userAddress}</h3>
+<br><br>
 <security:authorize access="hasRole('USER')">
-    <th>${locale.penaltyField} ${currentUser.userDetails.userPenalty}</th>
-    <br>
-    <input type="submit" value="${locale.payPenaltyButton}" onclick="window.location.href = 'payPenalty'">
+<%--    <h3>${locale.penaltyField} ${currentUser.userDetails.userPenalty}</h3>--%>
+    <input type="text" value="${locale.penaltyField} ${currentUser.userDetails.userPenalty}" readonly
+        <c:if test="${!currentUser.userDetails.hasPenalty}"><c:out value="hidden='true'"/></c:if>>
     <br><br>
+    <input type="submit" value="${locale.payPenaltyButton}" onclick="window.location.href = 'payPenalty'"
+        <c:if test="${!currentUser.userDetails.hasPenalty}"><c:out value="hidden='true'"/></c:if>>
+    <br><br><br>
 </security:authorize>
 
 <form:form action="booksList" modelAttribute="locale">

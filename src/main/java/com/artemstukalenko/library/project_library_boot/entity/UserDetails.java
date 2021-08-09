@@ -49,6 +49,8 @@ public class UserDetails {
     @Column(name = "authority_string")
     private String authorityString;
 
+    private transient boolean hasPenalty;
+
     public UserDetails() {}
 
     public UserDetails(User user) {
@@ -137,6 +139,10 @@ public class UserDetails {
 
     public String getAuthorityString() {
         return authorityString;
+    }
+
+    public boolean isHasPenalty() {
+        return this.userPenalty > 0;
     }
 
     @Override
