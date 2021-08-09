@@ -71,6 +71,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
+    public void updatePenaltyInfo(String username, int updateSum) {
+        userDAO.updatePenaltyInfo(username, updateSum);
+    }
+
+    @Override
+    @Transactional
     public void depriveLibrarianPrivileges(String username) {
         userDAO.depriveLibrarianPrivileges(username);
     }

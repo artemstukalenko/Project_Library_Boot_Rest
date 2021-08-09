@@ -49,7 +49,7 @@ public class UserController {
 
     @RequestMapping("/confirmPayment")
     public String confirmPayment(@RequestParam("userSum") int userSum) {
-        System.out.println(userSum);
+        userService.updatePenaltyInfo(currentUser.getUsername(), currentUser.getUserDetails().getUserPenalty() - userSum);
 
         return "homepage";
     }

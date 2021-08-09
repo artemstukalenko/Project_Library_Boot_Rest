@@ -25,4 +25,6 @@ public interface UserService {
     public void makeUserLibrarian(String username);
 
     public void depriveLibrarianPrivileges(String username);
+
+    public void updatePenaltyInfo(String username, int updateSum);
 }

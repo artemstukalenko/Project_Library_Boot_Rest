@@ -9,7 +9,7 @@
 
 <form:form action="confirmPayment">
 
-    <input type="number" value="0" max="${userPenaltySum}" name="userSum" id="userSum">
+    <input type="number" value="0" max="${userPenaltySum}" min="0" name="userSum" id="userSum">
     <input type="submit" value="OK">
 
 </form:form>

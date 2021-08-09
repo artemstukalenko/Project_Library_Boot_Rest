@@ -127,6 +127,17 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     @Transactional
+    public void updatePenaltyInfo(String username, int updateSum) {
+        Query queryForUpdatingPenaltyInfo = entityManager.createQuery("update UserDetails " +
+                "set userPenalty =: updateSum where username =: username");
+        queryForUpdatingPenaltyInfo.setParameter("updateSum", updateSum);
+        queryForUpdatingPenaltyInfo.setParameter("username", username);
+
+        queryForUpdatingPenaltyInfo.executeUpdate();
+    }
+
+    @Override
+    @Transactional
     public void registerUser(User user) {
         Authority newUserAuthority = new Authority(user.getUsername(), "ROLE_USER");
 
