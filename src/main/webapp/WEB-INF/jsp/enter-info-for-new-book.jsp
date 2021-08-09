@@ -19,6 +19,11 @@
     <input type="submit" value="OK">
 
 </form:form>
+<br><br><br>
+
+<form:form action="/booksList">
+    <input type="submit" value="${locale.cancel}">
+</form:form>
 
 </body>
 

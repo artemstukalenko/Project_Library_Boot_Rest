@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import static com.artemstukalenko.library.project_library_boot.controller.RegexContainer.*;
 
@@ -18,18 +19,31 @@ public class UserDetails {
     @Id
     @Column(name = "username")
     private String username;
-    @Pattern(regexp = VALID_NAME, message = "Name is invaild")
+
+    @Pattern(regexp = VALID_NAME, message = "Name is invalid")
+    @NotBlank
     @Column(name = "first_name")
     private String userFirstName;
-    @Pattern(regexp = VALID_SURNAME, message = "Surname is invaild")
+
+    @NotBlank
+    @Pattern(regexp = VALID_SURNAME, message = "Surname is invalid")
     @Column(name = "last_name")
     private String userLastName;
+
+    @NotBlank
+    @Pattern(regexp = VALID_EMAIL, message = "invalid")
     @Column(name = "email")
     private String userEmail;
+
+    @NotBlank
+    @Pattern(regexp = VALID_PHONE_NUMBER, message = "invalid")
     @Column(name = "phone_number")
     private String userPhoneNumber;
+
+    @NotBlank
     @Column(name = "address")
     private String userAddress;
+
     @Column(name = "penalty")
     private int userPenalty;
     @Column(name = "authority_string")

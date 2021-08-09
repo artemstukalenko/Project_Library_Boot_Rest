@@ -13,6 +13,11 @@
     <input type="submit" value="OK">
 
 </form:form>
+<br><br><br>
+
+<form:form action="/homepage_again">
+    <input type="submit" value="${locale.cancel}">
+</form:form>
 
 </body>
 
