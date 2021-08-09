@@ -33,7 +33,7 @@
 
 <br><br><br>
 
-<form:form action="/login">
+<form:form action="/deletePotentialUser">
     <input type="submit" value="${locale.cancel}">
 </form:form>
 

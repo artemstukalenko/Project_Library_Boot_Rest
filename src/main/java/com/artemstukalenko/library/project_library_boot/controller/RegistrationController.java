@@ -59,6 +59,13 @@ public class RegistrationController {
         return "redirect:/login";
     }
 
+    @RequestMapping("/deletePotentialUser")
+    public String deletePotentialUser() {
+        userService.deleteUser(potentialUser.getUsername());
+
+        return "redirect:/login";
+    }
+
     @RequestMapping("/registerNewUser")
     public String registerNewUser(@ModelAttribute("potentialUser") User potentialUser1, Model model) {
         userService.registerUser(potentialUser1);

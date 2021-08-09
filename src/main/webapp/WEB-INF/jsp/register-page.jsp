@@ -22,9 +22,9 @@
 </form:form>
 <br><br><br>
 
-<%--<form:form action="/login">--%>
-<%--    <input type="submit" value="${locale.cancel}">--%>
-<%--</form:form>--%>
+<form:form action="/login">
+    <input type="submit" value="${locale.cancel}">
+</form:form>
 
 </body>
 
