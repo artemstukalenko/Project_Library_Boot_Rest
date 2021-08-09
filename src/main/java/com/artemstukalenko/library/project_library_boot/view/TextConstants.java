@@ -68,4 +68,8 @@ public interface TextConstants {
     String REQUESTS_HEADER = "requests.header";
     String ACCEPT_REQUEST_BUTTON = "accept.request.button";
     String DENY_REQUEST_BUTTON = "deny.request.button";
+
+    String PENALTY_FIELD = "penalty.field";
+    String PAY_PENALTY_BUTTON = "pay.penalty.button";
+    String CHOOSE_SUM_TO_PAY = "choose.sum.to.pay";
 }

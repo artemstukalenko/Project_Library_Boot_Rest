@@ -5,7 +5,7 @@
 
 <body>
 
-<h2>Choose a sum to pay</h2>
+<h2>${locale.chooseSumToPay}</h2>
 
 <form:form action="confirmPayment">
 

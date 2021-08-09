@@ -81,6 +81,10 @@ public class FirstView {
     public static String acceptRequestButton = bundle.getString(ACCEPT_REQUEST_BUTTON);
     public static String denyRequestButton = bundle.getString(DENY_REQUEST_BUTTON);
 
+    public static String penaltyField = bundle.getString(PENALTY_FIELD);
+    public static String payPenaltyButton = bundle.getString(PAY_PENALTY_BUTTON);
+    public static String chooseSumToPay = bundle.getString(CHOOSE_SUM_TO_PAY);
+
     public static void initStringFields(ResourceBundle bundle) {
         usersListString = bundle.getString(USERS_LIST_STRING);
         seeUsersList = bundle.getString(SEE_USERS_LIST);
@@ -149,6 +153,10 @@ public class FirstView {
         requestsHeader = bundle.getString(REQUESTS_HEADER);
         acceptRequestButton = bundle.getString(ACCEPT_REQUEST_BUTTON);
         denyRequestButton = bundle.getString(DENY_REQUEST_BUTTON);
+
+        penaltyField = bundle.getString(PENALTY_FIELD);
+        payPenaltyButton = bundle.getString(PAY_PENALTY_BUTTON);
+        chooseSumToPay = bundle.getString(CHOOSE_SUM_TO_PAY);
     }
 
     public FirstView() {}
@@ -377,5 +385,17 @@ public class FirstView {
 
     public String getUserSpecialStatus() {
         return userSpecialStatus;
+    }
+
+    public String getPenaltyField() {
+        return penaltyField;
+    }
+
+    public String getPayPenaltyButton() {
+        return payPenaltyButton;
+    }
+
+    public String getChooseSumToPay() {
+        return chooseSumToPay;
     }
 }

@@ -29,8 +29,10 @@
 <h3>${locale.userPhoneNumber}: ${currentUser.userDetails.userPhoneNumber}</h3>
 <h3>${locale.userAddress}: ${currentUser.userDetails.userAddress}</h3>
 <security:authorize access="hasRole('USER')">
-    <th>${currentUser.userDetails.userPenalty}</th>
-    <input type="submit" value="Pay penalty" onclick="window.location.href = 'payPenalty'">
+    <th>${locale.penaltyField} ${currentUser.userDetails.userPenalty}</th>
+    <br>
+    <input type="submit" value="${locale.payPenaltyButton}" onclick="window.location.href = 'payPenalty'">
+    <br><br>
 </security:authorize>
 
 <form:form action="booksList" modelAttribute="locale">

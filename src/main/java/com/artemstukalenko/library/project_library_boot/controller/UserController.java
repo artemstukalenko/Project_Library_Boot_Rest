@@ -28,12 +28,12 @@ public class UserController {
     @ModelAttribute
     public void addEssentialAttributes(Model model) {
         model.addAttribute("locale", controlledView);
-        currentUser = MainController.getCurrentUser();
         model.addAttribute("currentUser", currentUser);
     }
 
     @RequestMapping("/viewSubscriptions")
     public String getUserSubscriptionsPage(Model model) {
+        currentUser = MainController.getCurrentUser();
         model.addAttribute("userSubscriptionList", userService.
                 findUserByUsername(currentUser.getUsername()).getSubscriptionList());
 
@@ -42,14 +42,17 @@ public class UserController {
 
     @RequestMapping("/payPenalty")
     public String payPenalty(Model model) {
+        currentUser = MainController.getCurrentUser();
         model.addAttribute("userPenaltySum", currentUser.getUserDetails().getUserPenalty());
 
         return "pay-penalty-form";
     }
 
     @RequestMapping("/confirmPayment")
-    public String confirmPayment(@RequestParam("userSum") int userSum) {
+    public String confirmPayment(@RequestParam("userSum") int userSum, Model model) {
         userService.updatePenaltyInfo(currentUser.getUsername(), currentUser.getUserDetails().getUserPenalty() - userSum);
+        currentUser = userService.findUserByUsername(currentUser.getUsername());
+        model.addAttribute("currentUser", currentUser);
 
         return "homepage";
     }
