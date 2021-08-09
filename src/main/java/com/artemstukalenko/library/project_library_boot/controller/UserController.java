@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -37,6 +38,20 @@ public class UserController {
                 findUserByUsername(currentUser.getUsername()).getSubscriptionList());
 
         return "my-subscriptions";
+    }
+
+    @RequestMapping("/payPenalty")
+    public String payPenalty(Model model) {
+        model.addAttribute("userPenaltySum", currentUser.getUserDetails().getUserPenalty());
+
+        return "pay-penalty-form";
+    }
+
+    @RequestMapping("/confirmPayment")
+    public String confirmPayment(@RequestParam("userSum") int userSum) {
+        System.out.println(userSum);
+
+        return "homepage";
     }
 
 }

@@ -1,0 +1,19 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<html>
+
+<body>
+
+<h2>Choose a sum to pay</h2>
+
+<form:form action="confirmPayment">
+
+    <input type="number" value="0" max="${userPenaltySum}" name="userSum" id="userSum">
+    <input type="submit" value="OK">
+
+</form:form>
+
+</body>
+
+</html>

@@ -30,6 +30,7 @@
 <h3>${locale.userAddress}: ${currentUser.userDetails.userAddress}</h3>
 <security:authorize access="hasRole('USER')">
     <th>${currentUser.userDetails.userPenalty}</th>
+    <input type="submit" value="Pay penalty" onclick="window.location.href = 'payPenalty'">
 </security:authorize>
 
 <form:form action="booksList" modelAttribute="locale">
