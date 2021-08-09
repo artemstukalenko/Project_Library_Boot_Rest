@@ -68,9 +68,16 @@ public class BookController {
     }
 
     @RequestMapping("/changeTakenValue")
-    public String changeTakenValueOfBook(@RequestParam("bookId") int bookId) {
-        bookService.setTaken(bookId,
-                (bookService.findBookById(bookId).getTaken() == true ? false : true));
+    public String changeTakenValueOfBook(@RequestParam("bookId") int bookId,
+                                         Model model) {
+
+        Book currentBook = bookService.findBookById(bookId);
+        System.out.println("BOOK BEFORE UPDATE: "+ currentBook);
+        currentBook.setTaken(!currentBook.getTaken());
+
+        System.out.println("BOOK AFTER UPDATE: "+ currentBook);
+
+        model.addAttribute("allBooks", bookService.getAllBooks());
 
         return "book-list-page";
     }

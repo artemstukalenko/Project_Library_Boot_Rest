@@ -61,13 +61,18 @@ public class Book {
         return taken;
     }
 
+    public void setTaken(boolean taken) {
+        this.taken = taken;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
                 "bookId=" + bookId +
                 ", bookTitle='" + bookTitle + '\'' +
                 ", bookAuthor='" + bookAuthor + '\'' +
-                ", booksYearOfPublishing=" + bookYearOfPublishing +
+                ", bookYearOfPublishing='" + bookYearOfPublishing + '\'' +
+                ", taken=" + taken +
                 '}';
     }
 }
