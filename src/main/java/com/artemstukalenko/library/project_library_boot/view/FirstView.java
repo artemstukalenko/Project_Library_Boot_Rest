@@ -73,6 +73,11 @@ public class FirstView {
     public static String cancel = bundle.getString(CANCEL);
     public static String returnBook = bundle.getString(RETURN_BOOK);
 
+    public static String changeBookStatusButton = bundle.getString(CHANGE_BOOK_STATUS_BUTTON);
+    public static String requestsHeader = bundle.getString(REQUESTS_HEADER);
+    public static String acceptRequestButton = bundle.getString(ACCEPT_REQUEST_BUTTON);
+    public static String denyRequestButton = bundle.getString(DENY_REQUEST_BUTTON);
+
     public static void initStringFields(ResourceBundle bundle) {
         usersListString = bundle.getString(USERS_LIST_STRING);
         seeUsersList = bundle.getString(SEE_USERS_LIST);
@@ -133,6 +138,11 @@ public class FirstView {
 
         cancel = bundle.getString(CANCEL);
         returnBook = bundle.getString(RETURN_BOOK);
+
+        changeBookStatusButton = bundle.getString(CHANGE_BOOK_STATUS_BUTTON);
+        requestsHeader = bundle.getString(REQUESTS_HEADER);
+        acceptRequestButton = bundle.getString(ACCEPT_REQUEST_BUTTON);
+        denyRequestButton = bundle.getString(DENY_REQUEST_BUTTON);
     }
 
     public FirstView() {}
@@ -333,5 +343,21 @@ public class FirstView {
 
     public String getReturnBook() {
         return returnBook;
+    }
+
+    public String getChangeBookStatusButton() {
+        return changeBookStatusButton;
+    }
+
+    public String getRequestsHeader() {
+        return requestsHeader;
+    }
+
+    public String getAcceptRequestButton() {
+        return acceptRequestButton;
+    }
+
+    public String getDenyRequestButton() {
+        return denyRequestButton;
     }
 }

@@ -60,4 +60,9 @@ public interface TextConstants {
 
     String CANCEL = "cancel";
     String RETURN_BOOK = "return.book";
+
+    String CHANGE_BOOK_STATUS_BUTTON = "change.book.status.button";
+    String REQUESTS_HEADER = "requests.header";
+    String ACCEPT_REQUEST_BUTTON = "accept.request.button";
+    String DENY_REQUEST_BUTTON = "deny.request.button";
 }

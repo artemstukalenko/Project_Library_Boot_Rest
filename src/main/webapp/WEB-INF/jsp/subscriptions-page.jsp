@@ -41,7 +41,7 @@
 
 </table>
 <br><br>
-<h2>REQUESTS</h2>
+<h2>${locale.requestsHeader}</h2>
 <br>
 <table border="1">
 
@@ -74,8 +74,8 @@
             <td>${subscriptionRequest.endOfThePeriod}</td>
 
             <td>
-                <input type="button" value="accept" onclick="window.location.href = '${acceptRequestButton}'"/>
-                <input type="button" value="deny" onclick="window.location.href = '${denyRequestButton}'"/>
+                <input type="button" value="${locale.acceptRequestButton}" onclick="window.location.href = '${acceptRequestButton}'"/>
+                <input type="button" value="${locale.denyRequestButton}" onclick="window.location.href = '${denyRequestButton}'"/>
             </td>
         </tr>
 
