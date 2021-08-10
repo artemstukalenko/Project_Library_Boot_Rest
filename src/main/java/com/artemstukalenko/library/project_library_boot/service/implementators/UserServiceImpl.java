@@ -21,13 +21,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void blockUser(String username) {
-        userDAO.blockUser(username);
+    public boolean blockUser(String username) {
+        return userDAO.blockUser(username);
     }
 
     @Override
-    public void unblockUser(String username) {
-        userDAO.unblockUser(username);
+    public boolean unblockUser(String username) {
+        return userDAO.unblockUser(username);
     }
 
     @Override
@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(User user) {
-        userDAO.updateUser(user);
+    public boolean updateUser(User user) {
+        return userDAO.updateUser(user);
     }
 
     @Override
@@ -46,18 +46,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void registerUser(User user) {
-        userDAO.registerUser(user);
+    public boolean registerUser(User user) {
+        return userDAO.registerUser(user);
     }
 
     @Override
-    public void deleteUser(String username) {
-        userDAO.deleteUser(username);
+    public boolean deleteUser(String username) {
+        return userDAO.deleteUser(username);
     }
 
     @Override
-    public void makeUserLibrarian(String username) {
-        userDAO.makeUserLibrarian(username);
+    public boolean makeUserLibrarian(String username) {
+        return userDAO.makeUserLibrarian(username);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void depriveLibrarianPrivileges(String username) {
-        userDAO.depriveLibrarianPrivileges(username);
+    public boolean depriveLibrarianPrivileges(String username) {
+        return userDAO.depriveLibrarianPrivileges(username);
     }
 }

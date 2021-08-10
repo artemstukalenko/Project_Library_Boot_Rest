@@ -27,20 +27,22 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     @Transactional
-    public void blockUser(String username) {
+    public boolean blockUser(String username) {
         Query queryForBlockingUser = entityManager.createQuery("update User set enabled = 0 where username =: userUsername");
 
         queryForBlockingUser.setParameter("userUsername", username);
         queryForBlockingUser.executeUpdate();
+        return true;
     }
 
     @Override
     @Transactional
-    public void unblockUser(String username) {
+    public boolean unblockUser(String username) {
         Query queryForUnblockingUser = entityManager.createQuery("update User set enabled = 1 where username =: userUsername");
 
         queryForUnblockingUser.setParameter("userUsername", username);
         queryForUnblockingUser.executeUpdate();
+        return true;
     }
 
     @Override
@@ -60,13 +62,14 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     @Transactional
-    public void updateUser(User user) {
+    public boolean updateUser(User user) {
         entityManager.merge(user);
+        return true;
     }
 
     @Override
     @Transactional
-    public void deleteUser(String username) {
+    public boolean deleteUser(String username) {
         deleteAuthority(username);
 
         deleteUserDetails(username);
@@ -76,6 +79,8 @@ public class UserDAOImpl implements UserDAO {
         Query queryForDeletingUser = entityManager.createQuery("delete from User where username =: username");
         queryForDeletingUser.setParameter("username", username);
         queryForDeletingUser.executeUpdate();
+
+        return true;
     }
 
     protected void deleteAuthority(String username) {
@@ -103,20 +108,24 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     @Transactional
-    public void makeUserLibrarian(String username) {
+    public boolean makeUserLibrarian(String username) {
         Query queryForMakingUserLibrarian = entityManager.createQuery("update Authority set authority = 'ROLE_LIBRARIAN'" +
                 "where username =: username");
         queryForMakingUserLibrarian.setParameter("username", username);
         queryForMakingUserLibrarian.executeUpdate();
+
+        return true;
     }
 
     @Override
     @Transactional
-    public void depriveLibrarianPrivileges(String username) {
+    public boolean depriveLibrarianPrivileges(String username) {
         Query queryForMakingUserLibrarian = entityManager.createQuery("update Authority set authority = 'ROLE_USER'" +
                 "where username =: username");
         queryForMakingUserLibrarian.setParameter("username", username);
         queryForMakingUserLibrarian.executeUpdate();
+
+        return true;
     }
 
     @Override
@@ -132,13 +141,15 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     @Transactional
-    public void registerUser(User user) {
+    public boolean registerUser(User user) {
         Authority newUserAuthority = new Authority(user.getUsername(), "ROLE_USER");
 
         user.setPassword(getEncodedPassword(user.getPassword()));
 
         entityManager.persist(user);
         entityManager.persist(newUserAuthority);
+
+        return true;
     }
 
     private String getEncodedPassword(String rawPassword) {

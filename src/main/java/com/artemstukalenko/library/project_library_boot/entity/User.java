@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 @Entity
@@ -101,5 +102,18 @@ public class User {
 
     public void setAuthorityString(String authorityString) {
         this.getUserDetails().setAuthorityString(authorityString);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return enabled == user.enabled  && username.equals(user.username) && password.equals(user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userDetails, subscriptionList, username, password, enabled);
     }
 }

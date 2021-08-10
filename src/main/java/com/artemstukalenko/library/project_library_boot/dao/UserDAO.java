@@ -7,23 +7,23 @@ public interface UserDAO {
 
     public List<User> getAllUsers();
 
-    public void blockUser(String username);
+    public boolean blockUser(String username);
 
-    public void unblockUser(String username);
+    public boolean unblockUser(String username);
 
     public String getUserRole(String username);
 
-    public void registerUser(User user);
+    public boolean registerUser(User user);
 
     public User findUserByUsername(String username);
 
-    public void updateUser(User user);
+    public boolean updateUser(User user);
 
-    public void deleteUser(String username);
+    public boolean deleteUser(String username);
 
-    public void makeUserLibrarian(String username);
+    public boolean makeUserLibrarian(String username);
 
-    public void depriveLibrarianPrivileges(String username);
+    public boolean depriveLibrarianPrivileges(String username);
 
     public void updatePenaltyInfo(String username, int updateSum);
 }
