@@ -37,6 +37,9 @@ public class SubscriptionController {
     @Autowired
     FirstView controlledView;
 
+    @Autowired
+    MainController mainController;
+
     User currentUser;
 
     Book currentBook;
@@ -46,7 +49,8 @@ public class SubscriptionController {
     @ModelAttribute
     public void addTextInformation(Model model) {
         model.addAttribute("locale", controlledView);
-        currentUser = MainController.getCurrentUser();
+        currentUser = mainController.getCurrentUser();
+        System.out.println("USER IN SUBSCRIPTION CONTROLLER: " + currentUser);
         model.addAttribute("currnetUser", currentUser);
     }
 

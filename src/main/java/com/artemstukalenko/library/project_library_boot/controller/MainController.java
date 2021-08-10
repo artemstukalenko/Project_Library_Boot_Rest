@@ -9,13 +9,18 @@ import com.artemstukalenko.library.project_library_boot.utility.PenaltyCalculato
 import com.artemstukalenko.library.project_library_boot.utility.Sorter;
 import com.artemstukalenko.library.project_library_boot.view.FirstView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Controller
 public class MainController {
 
@@ -30,8 +35,8 @@ public class MainController {
     @Autowired
     Sorter sorter;
 
-    @Autowired
-    static User currentUser;
+    User currentUser;
+    String currentUserUsername;
 
     @Autowired
     PenaltyCalculator penaltyCalculator;
@@ -44,8 +49,9 @@ public class MainController {
 
     @RequestMapping("/homepage")
     public String getHomePage(Model model, HttpServletRequest request) {
+        currentUserUsername = request.getParameter("username");
+        currentUser = userService.findUserByUsername(currentUserUsername);
 
-        currentUser = userService.findUserByUsername(request.getParameter("username"));
         currentUser.getUserDetails().setPenalty(penaltyCalculator.calculateUsersPenalty(currentUser));
         currentUser.getUserDetails().setAuthorityString(userService.getUserRole(currentUser.getUsername()));
 
@@ -56,14 +62,14 @@ public class MainController {
 
     @RequestMapping("/homepage_again")
     public String getHomePageAgain(Model model) {
-        model.addAttribute("currentUser", currentUser);
+        model.addAttribute("currentUser", userService.findUserByUsername(currentUserUsername));
 
         return "homepage";
     }
 
     @RequestMapping("en")
     public String getPageWithEnLang(Model model) {
-        model.addAttribute("currentUser", currentUser);
+        model.addAttribute("currentUser", userService.findUserByUsername(currentUserUsername));
 
         FirstView.changeLanguageToEn();
 
@@ -79,11 +85,8 @@ public class MainController {
         return "homepage";
     }
 
-
-
-
-    public static User getCurrentUser() {
-        return currentUser;
+    public User getCurrentUser() {
+        return userService.findUserByUsername(currentUserUsername);
     }
 
 }

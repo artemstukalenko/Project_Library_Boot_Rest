@@ -23,17 +23,22 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    MainController mainController;
+
     User currentUser;
 
     @ModelAttribute
     public void addEssentialAttributes(Model model) {
         model.addAttribute("locale", controlledView);
+        currentUser = mainController.getCurrentUser();
+        System.out.println("USER IN USER CONTROLLER: " + currentUser);
         model.addAttribute("currentUser", currentUser);
     }
 
     @RequestMapping("/viewSubscriptions")
     public String getUserSubscriptionsPage(Model model) {
-        currentUser = MainController.getCurrentUser();
+        currentUser = mainController.getCurrentUser();
         model.addAttribute("userSubscriptionList", userService.
                 findUserByUsername(currentUser.getUsername()).getSubscriptionList());
 
@@ -42,7 +47,7 @@ public class UserController {
 
     @RequestMapping("/payPenalty")
     public String payPenalty(Model model) {
-        currentUser = MainController.getCurrentUser();
+        currentUser = mainController.getCurrentUser();
         model.addAttribute("userPenaltySum", currentUser.getUserDetails().getUserPenalty());
 
         return "pay-penalty-form";
