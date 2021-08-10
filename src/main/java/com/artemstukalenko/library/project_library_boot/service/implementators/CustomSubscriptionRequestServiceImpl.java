@@ -6,7 +6,6 @@ import com.artemstukalenko.library.project_library_boot.service.CustomSubscripti
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -17,13 +16,13 @@ public class CustomSubscriptionRequestServiceImpl
     CustomSubscriptionRequestDAO customSubscriptionRequestDAO;
 
     @Override
-    public void addCustomSubscriptionRequestToDB(CustomSubscriptionRequest request) {
-        customSubscriptionRequestDAO.addCustomSubscriptionRequestToDB(request);
+    public boolean addCustomSubscriptionRequestToDB(CustomSubscriptionRequest request) {
+        return customSubscriptionRequestDAO.addCustomSubscriptionRequestToDB(request);
     }
 
     @Override
-    public void deleteCustomSubscriptionRequestFromDB(int id) {
-        customSubscriptionRequestDAO.deleteCustomSubscriptionRequestFromDB(id);
+    public boolean deleteCustomSubscriptionRequestFromDB(int id) {
+        return customSubscriptionRequestDAO.deleteCustomSubscriptionRequestFromDB(id);
     }
 
     @Override

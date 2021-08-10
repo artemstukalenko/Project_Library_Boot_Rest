@@ -18,13 +18,14 @@ public class CustomSubscriptionRequestDAOImpl implements CustomSubscriptionReque
 
     @Override
     @Transactional
-    public void addCustomSubscriptionRequestToDB(CustomSubscriptionRequest request) {
+    public boolean addCustomSubscriptionRequestToDB(CustomSubscriptionRequest request) {
         entityManager.persist(request);
+        return true;
     }
 
     @Override
     @Transactional
-    public void deleteCustomSubscriptionRequestFromDB(int id) {
+    public boolean deleteCustomSubscriptionRequestFromDB(int id) {
         Query queryForDeletingCustomSubscriptionRequest =
                 entityManager.createQuery("delete from CustomSubscriptionRequest " +
                         "where customSubscriptionId =: id");
@@ -32,6 +33,8 @@ public class CustomSubscriptionRequestDAOImpl implements CustomSubscriptionReque
         queryForDeletingCustomSubscriptionRequest.setParameter("id", id);
 
         queryForDeletingCustomSubscriptionRequest.executeUpdate();
+
+        return true;
     }
 
     @Override

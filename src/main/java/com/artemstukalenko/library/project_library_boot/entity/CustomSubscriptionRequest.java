@@ -2,6 +2,7 @@ package com.artemstukalenko.library.project_library_boot.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "custom_subscription_requests")
@@ -102,5 +103,18 @@ public class CustomSubscriptionRequest {
                 ", startOfThePeriod=" + startOfThePeriod +
                 ", endOfThePeriod=" + endOfThePeriod +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CustomSubscriptionRequest that = (CustomSubscriptionRequest) o;
+        return customSubscriptionId == that.customSubscriptionId && bookId == that.bookId && username.equals(that.username) && title.equals(that.title) && author.equals(that.author) && startOfThePeriod.equals(that.startOfThePeriod) && endOfThePeriod.equals(that.endOfThePeriod);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customSubscriptionId, username, bookId, title, author, startOfThePeriod, endOfThePeriod);
     }
 }

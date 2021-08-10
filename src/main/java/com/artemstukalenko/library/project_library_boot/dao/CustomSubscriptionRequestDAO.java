@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface CustomSubscriptionRequestDAO {
 
-    public void addCustomSubscriptionRequestToDB(CustomSubscriptionRequest request);
+    public boolean addCustomSubscriptionRequestToDB(CustomSubscriptionRequest request);
 
-    public void deleteCustomSubscriptionRequestFromDB(int id);
+    public boolean deleteCustomSubscriptionRequestFromDB(int id);
 
     public List<CustomSubscriptionRequest> getAllRequests();
 
