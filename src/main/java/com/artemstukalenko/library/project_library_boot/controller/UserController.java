@@ -32,7 +32,6 @@ public class UserController {
     public void addEssentialAttributes(Model model) {
         model.addAttribute("locale", controlledView);
         currentUser = mainController.getCurrentUser();
-        System.out.println("USER IN USER CONTROLLER: " + currentUser);
         model.addAttribute("currentUser", currentUser);
     }
 

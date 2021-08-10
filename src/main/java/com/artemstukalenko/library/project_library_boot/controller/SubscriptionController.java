@@ -50,8 +50,7 @@ public class SubscriptionController {
     public void addTextInformation(Model model) {
         model.addAttribute("locale", controlledView);
         currentUser = mainController.getCurrentUser();
-        System.out.println("USER IN SUBSCRIPTION CONTROLLER: " + currentUser);
-        model.addAttribute("currnetUser", currentUser);
+        model.addAttribute("currentUser", currentUser);
     }
 
     @RequestMapping("/arrangeSubscription")
