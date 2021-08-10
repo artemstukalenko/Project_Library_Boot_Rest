@@ -21,13 +21,13 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void deleteBook(int bookId) {
-        bookDAO.deleteBook(bookId);
+    public boolean deleteBook(int bookId) {
+        return bookDAO.deleteBook(bookId);
     }
 
     @Override
-    public void addNewBook(Book bookToAdd) {
-        bookDAO.addNewBook(bookToAdd);
+    public boolean addNewBook(Book bookToAdd) {
+        return bookDAO.addNewBook(bookToAdd);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void setTaken(int id, boolean taken) {
-        bookDAO.setTaken(id, taken);
+    public boolean setTaken(int id, boolean taken) {
+        return bookDAO.setTaken(id, taken);
     }
 }

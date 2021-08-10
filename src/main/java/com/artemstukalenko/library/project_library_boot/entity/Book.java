@@ -1,7 +1,11 @@
 package com.artemstukalenko.library.project_library_boot.entity;
 
-import javax.persistence.*;
+import org.springframework.stereotype.Component;
 
+import javax.persistence.*;
+import java.util.Objects;
+
+@Component
 @Entity
 @Table(name = "books")
 public class Book {
@@ -74,5 +78,19 @@ public class Book {
                 ", bookYearOfPublishing='" + bookYearOfPublishing + '\'' +
                 ", taken=" + taken +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return bookId == book.bookId && taken == book.taken && bookTitle.equals(book.bookTitle)
+                && bookAuthor.equals(book.bookAuthor) && bookYearOfPublishing.equals(book.bookYearOfPublishing);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bookId, bookTitle, bookAuthor, bookYearOfPublishing, taken);
     }
 }

@@ -25,17 +25,19 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     @Transactional
-    public void deleteBook(int bookId) {
+    public boolean deleteBook(int bookId) {
         Query queryForDeletingBook = entityManager.createQuery("delete from Book where bookId =: bookId");
         queryForDeletingBook.setParameter("bookId", bookId);
 
         queryForDeletingBook.executeUpdate();
+        return true;
     }
 
     @Override
     @Transactional
-    public void addNewBook(Book bookToAdd) {
+    public boolean addNewBook(Book bookToAdd) {
         entityManager.persist(bookToAdd);
+        return true;
     }
 
     @Override
@@ -45,11 +47,12 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     @Transactional
-    public void setTaken(int id, boolean takenToSet) {
+    public boolean setTaken(int id, boolean takenToSet) {
         Query queryForSettingTaken = entityManager.createQuery("update Book set taken =: takenToSet where bookId =: id");
         queryForSettingTaken.setParameter("takenToSet", takenToSet);
         queryForSettingTaken.setParameter("id", id);
 
         queryForSettingTaken.executeUpdate();
+        return findBookById(id).getTaken();
     }
 }
