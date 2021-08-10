@@ -23,13 +23,11 @@ public class SubscriptionDAOImpl implements SubscriptionDAO {
     }
 
     @Override
-    @Transactional
     public List<Subscription> getAllSubscriptions() {
         return entityManager.createQuery("from Subscription").getResultList();
     }
 
     @Override
-    @Transactional
     public Subscription findSubscriptionById(int id) {
         return entityManager.find(Subscription.class, id);
     }
@@ -45,7 +43,6 @@ public class SubscriptionDAOImpl implements SubscriptionDAO {
     }
 
     @Override
-    @Transactional
     public Subscription findSubscriptionByBookId(int bookId) {
         Query queryForFindingSubscriptionByBookId =
                 entityManager.createQuery("from Subscription where bookId =: bookId");

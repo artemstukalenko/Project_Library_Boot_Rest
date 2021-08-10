@@ -35,7 +35,6 @@ public class CustomSubscriptionRequestDAOImpl implements CustomSubscriptionReque
     }
 
     @Override
-    @Transactional
     public List<CustomSubscriptionRequest> getAllRequests() {
         Query queryForGettingAllRequests = entityManager.createQuery("from CustomSubscriptionRequest");
 
@@ -43,7 +42,6 @@ public class CustomSubscriptionRequestDAOImpl implements CustomSubscriptionReque
     }
 
     @Override
-    @Transactional
     public CustomSubscriptionRequest findRequestById(int id) {
         return entityManager.find(CustomSubscriptionRequest.class, id);
     }

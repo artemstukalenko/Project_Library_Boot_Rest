@@ -17,25 +17,21 @@ public class CustomSubscriptionRequestServiceImpl
     CustomSubscriptionRequestDAO customSubscriptionRequestDAO;
 
     @Override
-    @Transactional
     public void addCustomSubscriptionRequestToDB(CustomSubscriptionRequest request) {
         customSubscriptionRequestDAO.addCustomSubscriptionRequestToDB(request);
     }
 
     @Override
-    @Transactional
     public void deleteCustomSubscriptionRequestFromDB(int id) {
         customSubscriptionRequestDAO.deleteCustomSubscriptionRequestFromDB(id);
     }
 
     @Override
-    @Transactional
     public List<CustomSubscriptionRequest> getAllRequests() {
         return customSubscriptionRequestDAO.getAllRequests();
     }
 
     @Override
-    @Transactional
     public CustomSubscriptionRequest findRequestById(int id) {
         return customSubscriptionRequestDAO.findRequestById(id);
     }
