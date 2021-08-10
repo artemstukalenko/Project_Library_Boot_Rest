@@ -18,8 +18,9 @@ public class SubscriptionDAOImpl implements SubscriptionDAO {
 
     @Override
     @Transactional
-    public void registerSubscriptionInDB(Subscription subscriptionToRegister) {
+    public boolean registerSubscriptionInDB(Subscription subscriptionToRegister) {
         entityManager.persist(subscriptionToRegister);
+        return true;
     }
 
     @Override
@@ -34,12 +35,13 @@ public class SubscriptionDAOImpl implements SubscriptionDAO {
 
     @Override
     @Transactional
-    public void deleteSubscriptionFromDB(int id) {
+    public boolean deleteSubscriptionFromDB(int id) {
         Query queryForDeletingSubscription = entityManager.createQuery("delete from Subscription " +
                 "where subscriptionId =: id");
         queryForDeletingSubscription.setParameter("id", id);
 
         queryForDeletingSubscription.executeUpdate();
+        return true;
     }
 
     @Override

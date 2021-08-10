@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
-//@Component
 @Entity
 @Table(name = "subscriptions")
 public class Subscription {
@@ -132,5 +132,18 @@ public class Subscription {
                 ", startOfThePeriod=" + startOfThePeriod +
                 ", endOfThePeriod=" + endOfThePeriod +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Subscription that = (Subscription) o;
+        return subscriptionId == that.subscriptionId && bookId == that.bookId && expired == that.expired && fined == that.fined && username.equals(that.username) && title.equals(that.title) && author.equals(that.author) && startOfThePeriod.equals(that.startOfThePeriod) && endOfThePeriod.equals(that.endOfThePeriod);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(subscriptionId, username, bookId, title, author, startOfThePeriod, endOfThePeriod, expired, fined);
     }
 }

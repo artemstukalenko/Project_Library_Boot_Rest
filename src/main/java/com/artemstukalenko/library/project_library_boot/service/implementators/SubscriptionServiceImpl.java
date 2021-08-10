@@ -16,8 +16,8 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     SubscriptionDAO subscriptionDAO;
 
     @Override
-    public void registerSubscriptionInDB(Subscription subscriptionToRegister) {
-        subscriptionDAO.registerSubscriptionInDB(subscriptionToRegister);
+    public boolean registerSubscriptionInDB(Subscription subscriptionToRegister) {
+        return subscriptionDAO.registerSubscriptionInDB(subscriptionToRegister);
     }
 
     @Override
@@ -31,8 +31,8 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Override
-    public void deleteSubscriptionFromDB(int id) {
-        subscriptionDAO.deleteSubscriptionFromDB(id);
+    public boolean deleteSubscriptionFromDB(int id) {
+        return subscriptionDAO.deleteSubscriptionFromDB(id);
     }
 
     @Override

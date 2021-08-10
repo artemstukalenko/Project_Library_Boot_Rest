@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface SubscriptionDAO {
 
-    public void registerSubscriptionInDB(Subscription subscriptionToRegister);
+    public boolean registerSubscriptionInDB(Subscription subscriptionToRegister);
 
     public List<Subscription> getAllSubscriptions();
 
     public Subscription findSubscriptionById(int id);
 
-    public void deleteSubscriptionFromDB(int id);
+    public boolean deleteSubscriptionFromDB(int id);
 
     public Subscription findSubscriptionByBookId(int bookId);
 }
