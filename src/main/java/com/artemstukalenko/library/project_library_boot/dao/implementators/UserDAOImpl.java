@@ -19,7 +19,6 @@ public class UserDAOImpl implements UserDAO {
     private EntityManager entityManager;
 
     @Override
-    @Transactional
     public List<User> getAllUsers() {
         Query queryForGettingAllUsers = entityManager.createQuery("from User where username not in (from Authority where authority = 'ROLE_ADMIN')");
 
@@ -45,7 +44,6 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    @Transactional
     public String getUserRole(String username) {
         Query queryForGettingUserRole = entityManager.createQuery("select authority from Authority where username in " +
                 "(select username from User where username =: usernameForSearch)");
@@ -56,7 +54,6 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    @Transactional
     public User findUserByUsername(String username) {
         return entityManager.find(User.class, username);
     }
@@ -81,21 +78,18 @@ public class UserDAOImpl implements UserDAO {
         queryForDeletingUser.executeUpdate();
     }
 
-    @Transactional
     protected void deleteAuthority(String username) {
         Query queryForDeletingAuthority = entityManager.createQuery("delete from Authority where username =: username");
         queryForDeletingAuthority.setParameter("username", username);
         queryForDeletingAuthority.executeUpdate();
     }
 
-    @Transactional
     protected void deleteUserDetails(String username) {
         Query queryForDeletingUserDetails = entityManager.createQuery("delete from UserDetails where username =: username");
         queryForDeletingUserDetails.setParameter("username", username);
         queryForDeletingUserDetails.executeUpdate();
     }
-
-    @Transactional
+    
     protected void deleteUserSubscriptions(String username) {
         Query queryForUpdatingBookInfo = entityManager.createQuery("update Book set taken = false " +
                 "where bookId in (select bookId from Subscription where username =: username)");

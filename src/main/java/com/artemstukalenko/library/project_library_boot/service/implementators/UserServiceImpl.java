@@ -16,7 +16,6 @@ public class UserServiceImpl implements UserService {
     UserDAO userDAO;
 
     @Override
-    @Transactional
     public List<User> getAllUsers() {
         return userDAO.getAllUsers();
     }
@@ -34,7 +33,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public String getUserRole(String username) {
         return userDAO.getUserRole(username);
     }
@@ -46,7 +44,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public User findUserByUsername(String username) {
         return userDAO.findUserByUsername(username);
     }
