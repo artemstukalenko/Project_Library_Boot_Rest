@@ -5,7 +5,7 @@
 <html>
 
 <body>
-
+<h1>${today}</h1>
 <h2>${locale.bookTitle}: ${currentBook.bookTitle}</h2>
 <h2>${locale.bookAuthor}: ${currentBook.bookAuthor}</h2>
 <h3>${locale.requestChoosePeriod}</h3>
@@ -13,14 +13,11 @@
 <form:form action="/registerRequest">
 
     <input type="date" name="startDate"
-        <c:if test="${currentBook.taken}"><c:out value="min=${currentSubscription.endOfThePeriod}"/></c:if>
-        <c:if test="${currentBook.taken}"><c:out value="value=${currentSubscription.endOfThePeriod}"/></c:if>
-        <c:if test="${notTaken}"><c:out value="value=${today}"/></c:if>>
-    <input type="date" min="" name="endDate"
-        <c:if test="${currentBook.taken}"><c:out value="min=${currentSubscription.endOfThePeriod}"/></c:if>
-        <c:if test="${currentBook.taken}"><c:out value="value=${currentSubscription.endOfThePeriod}"/></c:if>
-        <c:if test="${notTaken}"><c:out value="value=${today}"/></c:if>>
-
+        <c:if test="${!currentBook.taken}"><c:out value="min=${today} value=${today}"/></c:if>
+        <c:if test="${currentBook.taken}"><c:out value="min=${currentSubscription.endOfThePeriod} value=${currentSubscription.endOfThePeriod}"/></c:if>>
+    <input type="date" name="endDate"
+        <c:if test="${!currentBook.taken}"><c:out value="min=${today} value=${today}"/></c:if>
+        <c:if test="${currentBook.taken}"><c:out value="min=${currentSubscription.endOfThePeriod} value=${currentSubscription.endOfThePeriod}"/></c:if>>
     <br>
     <br>
     <input type="submit" value="${locale.arrangeCustomRequest}"/>
