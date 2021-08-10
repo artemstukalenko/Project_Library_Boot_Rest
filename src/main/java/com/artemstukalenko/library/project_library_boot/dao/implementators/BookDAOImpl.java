@@ -16,7 +16,6 @@ public class BookDAOImpl implements BookDAO {
     @Autowired
     private EntityManager entityManager;
 
-    @Transactional
     @Override
     public List<Book> getAllBooks() {
         Query queryForGettingAllBooks = entityManager.createQuery("from Book");
@@ -40,7 +39,6 @@ public class BookDAOImpl implements BookDAO {
     }
 
     @Override
-    @Transactional
     public Book findBookById(int bookId) {
         return entityManager.find(Book.class, bookId);
     }

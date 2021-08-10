@@ -16,31 +16,26 @@ public class BookServiceImpl implements BookService {
     BookDAO bookDAO;
 
     @Override
-    @Transactional
     public List<Book> getAllBooks() {
         return bookDAO.getAllBooks();
     }
 
     @Override
-    @Transactional
     public void deleteBook(int bookId) {
         bookDAO.deleteBook(bookId);
     }
 
     @Override
-    @Transactional
     public void addNewBook(Book bookToAdd) {
         bookDAO.addNewBook(bookToAdd);
     }
 
     @Override
-    @Transactional
     public Book findBookById(int bookId) {
         return bookDAO.findBookById(bookId);
     }
 
     @Override
-    @Transactional
     public void setTaken(int id, boolean taken) {
         bookDAO.setTaken(id, taken);
     }

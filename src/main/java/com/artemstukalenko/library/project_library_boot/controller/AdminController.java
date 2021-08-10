@@ -77,12 +77,7 @@ public class AdminController {
         return "user-list-page";
     }
 
-    @RequestMapping("/deleteBook")
-    public String deleteBook(@RequestParam("bookId") int bookId) {
-        bookService.deleteBook(bookId);
 
-        return "book-list-page";
-    }
 
     @RequestMapping("/enterInfoForNewBook")
     public String enterInfoForNewBook(Model model) {
@@ -91,12 +86,7 @@ public class AdminController {
         return "enter-info-for-new-book";
     }
 
-    @RequestMapping("/addNewBook")
-    public String addNewBook(@ModelAttribute("newBook") Book bookToAdd) {
-        bookService.addNewBook(bookToAdd);
 
-        return "book-list-page";
-    }
 
     @RequestMapping("/makeUserLibrarian")
     public String makeUserLibrarian(@RequestParam("userName") String username,

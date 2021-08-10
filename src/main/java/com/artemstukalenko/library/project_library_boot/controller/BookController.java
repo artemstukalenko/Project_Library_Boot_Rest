@@ -79,4 +79,22 @@ public class BookController {
 
         return "book-list-page";
     }
+
+    @RequestMapping("/addNewBook")
+    public String addNewBook(@ModelAttribute("newBook") Book bookToAdd, Model model) {
+        bookService.addNewBook(bookToAdd);
+
+        model.addAttribute("allBooks", bookService.getAllBooks());
+
+        return "book-list-page";
+    }
+
+    @RequestMapping("/deleteBook")
+    public String deleteBook(@RequestParam("bookId") int bookId, Model model) {
+        bookService.deleteBook(bookId);
+
+        model.addAttribute("allBooks", bookService.getAllBooks());
+
+        return "book-list-page";
+    }
 }
