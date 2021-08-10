@@ -21,13 +21,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public void blockUser(String username) {
         userDAO.blockUser(username);
     }
 
     @Override
-    @Transactional
     public void unblockUser(String username) {
         userDAO.unblockUser(username);
     }
@@ -38,7 +36,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public void updateUser(User user) {
         userDAO.updateUser(user);
     }
@@ -49,31 +46,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public void registerUser(User user) {
         userDAO.registerUser(user);
     }
 
     @Override
-    @Transactional
     public void deleteUser(String username) {
         userDAO.deleteUser(username);
     }
 
     @Override
-    @Transactional
     public void makeUserLibrarian(String username) {
         userDAO.makeUserLibrarian(username);
     }
 
     @Override
-    @Transactional
     public void updatePenaltyInfo(String username, int updateSum) {
         userDAO.updatePenaltyInfo(username, updateSum);
     }
 
     @Override
-    @Transactional
     public void depriveLibrarianPrivileges(String username) {
         userDAO.depriveLibrarianPrivileges(username);
     }

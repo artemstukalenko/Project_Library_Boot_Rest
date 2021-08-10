@@ -89,7 +89,7 @@ public class UserDAOImpl implements UserDAO {
         queryForDeletingUserDetails.setParameter("username", username);
         queryForDeletingUserDetails.executeUpdate();
     }
-    
+
     protected void deleteUserSubscriptions(String username) {
         Query queryForUpdatingBookInfo = entityManager.createQuery("update Book set taken = false " +
                 "where bookId in (select bookId from Subscription where username =: username)");
