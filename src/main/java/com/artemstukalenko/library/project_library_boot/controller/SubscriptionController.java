@@ -47,7 +47,7 @@ public class SubscriptionController {
     Subscription processedSubscription;
 
     @ModelAttribute
-    public void addTextInformation(Model model) {
+    public void addEssentialAttributes(Model model) {
         model.addAttribute("locale", controlledView);
         currentUser = mainController.getCurrentUser();
         model.addAttribute("currentUser", currentUser);

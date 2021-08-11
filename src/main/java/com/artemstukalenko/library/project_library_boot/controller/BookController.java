@@ -35,7 +35,7 @@ public class BookController {
     List<Book> currentBookList;
 
     @ModelAttribute
-    public void addTextInformation(Model model) {
+    public void addEssentialAttributes(Model model) {
         model.addAttribute("locale", controlledView);
         model.addAttribute("listSorter", sorter);
         model.addAttribute("allBooks", currentBookList);

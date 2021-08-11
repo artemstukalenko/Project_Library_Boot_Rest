@@ -26,12 +26,12 @@ public class LibrarianController {
     CustomSubscriptionRequestService customSubscriptionRequestService;
 
     @ModelAttribute
-    public void addAttributes(Model model) {
+    public void addTextInformation(Model model) {
         model.addAttribute("locale", controlledView);
     }
 
     @RequestMapping("/asLibrarian")
-    public String getLibrarianEntryPage(Model model) {
+    public String getSubscriptionsListPage(Model model) {
 
         List<Subscription> allSubscriptions = subscriptionService.getAllSubscriptions();
         model.addAttribute("allSubscriptions", allSubscriptions);

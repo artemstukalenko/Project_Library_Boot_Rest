@@ -40,7 +40,7 @@ public class MainController {
     PenaltyCalculator penaltyCalculator;
 
     @ModelAttribute
-    public void addTextInformation(Model model) {
+    public void addEssentialAttributes(Model model) {
         model.addAttribute("locale", controlledView);
         model.addAttribute("listSorter", sorter);
     }
