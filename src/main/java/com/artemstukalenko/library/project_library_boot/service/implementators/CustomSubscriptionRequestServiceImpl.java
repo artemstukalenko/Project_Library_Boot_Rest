@@ -1,6 +1,6 @@
 package com.artemstukalenko.library.project_library_boot.service.implementators;
 
-import com.artemstukalenko.library.project_library_boot.dao.CustomSubscriptionRequestRepository;
+import com.artemstukalenko.library.project_library_boot.repositories.CustomSubscriptionRequestRepository;
 import com.artemstukalenko.library.project_library_boot.entity.CustomSubscriptionRequest;
 import com.artemstukalenko.library.project_library_boot.service.CustomSubscriptionRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +36,7 @@ public class CustomSubscriptionRequestServiceImpl
     @Override
     public CustomSubscriptionRequest findRequestById(int id) {
         Optional<CustomSubscriptionRequest> foundRequest = customSubscriptionRequestRepository.findById(id);
-        if(foundRequest.isPresent()) {
-            return foundRequest.get();
-        } else {
-            return new CustomSubscriptionRequest();
-        }
+        return Optional.ofNullable(foundRequest.get()).orElse(new CustomSubscriptionRequest());
     }
 
 }

@@ -1,6 +1,6 @@
 package com.artemstukalenko.library.project_library_boot.service.implementators;
 
-import com.artemstukalenko.library.project_library_boot.dao.SubscriptionRepository;
+import com.artemstukalenko.library.project_library_boot.repositories.SubscriptionRepository;
 import com.artemstukalenko.library.project_library_boot.entity.Subscription;
 import com.artemstukalenko.library.project_library_boot.service.SubscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +29,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     @Override
     public Subscription findSubscriptionById(int id) {
         Optional<Subscription> foundSubscription = subscriptionRepository.findById(id);
-        if(foundSubscription.isPresent()) {
-            return foundSubscription.get();
-        } else {
-            return new Subscription();
-        }
+        return Optional.ofNullable(foundSubscription.get()).orElse(new Subscription());
     }
 
     @Override

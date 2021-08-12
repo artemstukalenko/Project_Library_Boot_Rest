@@ -1,7 +1,7 @@
 package com.artemstukalenko.library.project_library_boot.service.implementators;
 
 
-import com.artemstukalenko.library.project_library_boot.dao.BookRepository;
+import com.artemstukalenko.library.project_library_boot.repositories.BookRepository;
 import com.artemstukalenko.library.project_library_boot.entity.Book;
 import com.artemstukalenko.library.project_library_boot.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,11 +38,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book findBookById(int bookId) {
         Optional<Book> foundBook = bookRepository.findById(bookId);
-        if (foundBook.isPresent()) {
-            return foundBook.get();
-        } else {
-            return new Book();
-        }
+        return Optional.ofNullable(foundBook.get()).orElse(new Book());
     }
 
     @Override

@@ -1,13 +1,10 @@
-package com.artemstukalenko.library.project_library_boot.dao;
+package com.artemstukalenko.library.project_library_boot.repositories;
 
 import com.artemstukalenko.library.project_library_boot.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
-import javax.persistence.EntityManager;
-import java.util.List;
 
 public interface BookRepository extends JpaRepository<Book, Integer> {
 

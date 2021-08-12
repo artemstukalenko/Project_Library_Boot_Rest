@@ -1,6 +1,6 @@
 package com.artemstukalenko.library.project_library_boot.service.implementators;
 
-import com.artemstukalenko.library.project_library_boot.dao.UserRepository;
+import com.artemstukalenko.library.project_library_boot.repositories.UserRepository;
 import com.artemstukalenko.library.project_library_boot.entity.Authority;
 import com.artemstukalenko.library.project_library_boot.entity.User;
 import com.artemstukalenko.library.project_library_boot.service.UserService;
@@ -55,11 +55,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUserByUsername(String username) {
         Optional<User> foundUser = userRepository.findById(username);
-        if(foundUser.isPresent()) {
-            return foundUser.get();
-        } else {
-            return new User();
-        }
+        return Optional.ofNullable(foundUser.get()).orElse(new User());
     }
 
     @Override
