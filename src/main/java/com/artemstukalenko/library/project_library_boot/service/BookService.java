@@ -1,6 +1,5 @@
 package com.artemstukalenko.library.project_library_boot.service;
 
-import com.artemstukalenko.library.project_library_boot.dao.BookDAO;
 import com.artemstukalenko.library.project_library_boot.entity.Book;
 
 import java.util.List;
