@@ -7,7 +7,8 @@ import com.artemstukalenko.library.project_library_boot.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+//import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,8 +46,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public boolean setTaken(int id, boolean taken) {
-//        bookRepository.setTakenValue(id);
-        return true;
+    @Transactional
+    public void setTaken(int id, boolean taken) {
+        bookRepository.setTakenValue(id, taken);
     }
 }

@@ -73,7 +73,7 @@ public class BookController {
 
         Book currentBook = bookService.findBookById(bookId);
 
-        currentBook.setTaken(!currentBook.getTaken());
+        bookService.setTaken(currentBook.getBookId(), !currentBook.getTaken());
 
         model.addAttribute("allBooks", bookService.getAllBooks());
 

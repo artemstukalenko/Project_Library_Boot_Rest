@@ -14,5 +14,5 @@ public interface BookService {
 
     public Book findBookById(int bookId);
 
-    public boolean setTaken(int id, boolean taken);
+    public void setTaken(int id, boolean taken);
 }
