@@ -39,12 +39,16 @@ public class BookServiceTest {
         Assert.assertTrue(existingBooks.contains(foundBook));
     }
 
-//    @Test
-//    public void testSetTaken() {
-//        bookForTest = bookService.findBookById(5);
-//        boolean beforeSet = bookForTest.getTaken();
-//        boolean afterSet = bookService.setTaken(bookForTest.getBookId(), !bookForTest.getTaken());
-//        Assert.assertTrue(beforeSet != afterSet);
-//        bookService.setTaken(bookForTest.getBookId(), beforeSet);
-//    }
+    @Test
+    public void testSetTaken() {
+        int id = 2;
+        boolean beforeSet = bookService.findBookById(id).getTaken();
+
+        bookService.setTaken(id, !(bookService.findBookById(id).getTaken()));
+
+        boolean afterSet = bookService.findBookById(id).getTaken();
+
+        Assert.assertTrue(beforeSet != afterSet);
+        bookService.setTaken(id, beforeSet);
+    }
 }
