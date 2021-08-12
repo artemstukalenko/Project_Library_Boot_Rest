@@ -1,72 +1,114 @@
 package com.artemstukalenko.library.project_library_boot.service.implementators;
 
-import com.artemstukalenko.library.project_library_boot.dao.UserDAO;
+import com.artemstukalenko.library.project_library_boot.dao.UserRepository;
+import com.artemstukalenko.library.project_library_boot.entity.Authority;
 import com.artemstukalenko.library.project_library_boot.entity.User;
 import com.artemstukalenko.library.project_library_boot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserDAO userDAO;
+    EntityManager entityManager;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public List<User> getAllUsers() {
-        return userDAO.getAllUsers();
+        return userRepository.findAll();
     }
 
     @Override
+    @Transactional
     public boolean blockUser(String username) {
-        return userDAO.blockUser(username);
+        userRepository.blockUser(username);
+        return true;
     }
 
     @Override
+    @Transactional
     public boolean unblockUser(String username) {
-        return userDAO.unblockUser(username);
+        userRepository.unblockUser(username);
+        return true;
     }
 
     @Override
     public String getUserRole(String username) {
-        return userDAO.getUserRole(username);
+        return userRepository.getUserRole(username);
     }
 
     @Override
     public boolean updateUser(User user) {
-        return userDAO.updateUser(user);
+        userRepository.save(user);
+        return true;
     }
 
     @Override
     public User findUserByUsername(String username) {
-        return userDAO.findUserByUsername(username);
+        Optional<User> foundUser = userRepository.findById(username);
+        if(foundUser.isPresent()) {
+            return foundUser.get();
+        } else {
+            return new User();
+        }
     }
 
     @Override
+    @Transactional
     public boolean registerUser(User user) {
-        return userDAO.registerUser(user);
+        Authority newUserAuthority = new Authority(user.getUsername(), "ROLE_USER");
+        user.setPassword(getEncodedPassword(user.getPassword()));
+
+        userRepository.save(user);
+        entityManager.persist(newUserAuthority);
+
+        return true;
     }
 
     @Override
+    @Transactional
     public boolean deleteUser(String username) {
-        return userDAO.deleteUser(username);
+        userRepository.deleteAuthorityByUsername(username);
+        userRepository.deleteUserDetailsByUsername(username);
+        userRepository.updateSubscriptionBooksInfo(username);
+        userRepository.deleteUserSubscriptionsByUsername(username);
+        userRepository.deleteById(username);
+
+        return true;
     }
 
     @Override
+    @Transactional
     public boolean makeUserLibrarian(String username) {
-        return userDAO.makeUserLibrarian(username);
+        userRepository.makeUserLibrarian(username);
+        return true;
     }
 
     @Override
-    public void updatePenaltyInfo(String username, int updateSum) {
-        userDAO.updatePenaltyInfo(username, updateSum);
-    }
-
-    @Override
+    @Transactional
     public boolean depriveLibrarianPrivileges(String username) {
-        return userDAO.depriveLibrarianPrivileges(username);
+        userRepository.depriveLibrarianPrivileges(username);
+        return true;
+    }
+
+    @Override
+    @Transactional
+    public void updatePenaltyInfo(String username, int updateSum) {
+        userRepository.updatePenaltyInfo(username, updateSum);
+    }
+
+    private String getEncodedPassword(String rawPassword) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
+
+        return "{bcrypt}" + encoder.encode(rawPassword);
     }
 }
