@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +22,8 @@ import org.springframework.web.context.WebApplicationContext;
 import javax.servlet.http.HttpServletRequest;
 
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
-@Controller
+@RestController
+@RequestMapping("/api")
 public class MainController {
 
     @Autowired
@@ -45,16 +48,16 @@ public class MainController {
         model.addAttribute("listSorter", sorter);
     }
 
-    @RequestMapping("/homepage")
-    public String getHomePage(Model model, HttpServletRequest request) {
-        currentUser = userService.findUserByUsername(request.getParameter("username"));
+    @RequestMapping("/homepage/{username}")
+    public User getHomePage(@PathVariable String username) {
+
+        currentUser = userService.findUserByUsername(username);
 
         currentUser.getUserDetails().setPenalty(penaltyCalculator.calculateUsersPenalty(currentUser));
         currentUser.getUserDetails().setAuthorityString(userService.getUserRole(currentUser.getUsername()));
 
-        model.addAttribute("currentUser", currentUser);
 
-        return "homepage";
+        return currentUser;
     }
 
     @RequestMapping("/homepage_again")

@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequestMapping("/api")
 public class LoginController {
 
     @Autowired
@@ -20,7 +22,7 @@ public class LoginController {
         model.addAttribute("error", error != null);
         model.addAttribute("logout", logout != null);
         model.addAttribute("locale", controlledView);
-        return "login";
+        return "ABCDEFG";
     }
 
     @RequestMapping("/logout")
