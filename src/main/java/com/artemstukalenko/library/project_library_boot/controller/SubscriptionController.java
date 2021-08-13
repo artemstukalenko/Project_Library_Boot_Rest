@@ -9,10 +9,8 @@ import com.artemstukalenko.library.project_library_boot.service.BookService;
 import com.artemstukalenko.library.project_library_boot.service.CustomSubscriptionRequestService;
 import com.artemstukalenko.library.project_library_boot.service.SubscriptionService;
 import com.artemstukalenko.library.project_library_boot.service.UserService;
-import com.artemstukalenko.library.project_library_boot.view.FirstView;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;

@@ -5,12 +5,9 @@ import com.artemstukalenko.library.project_library_boot.entity.UserDetails;
 import com.artemstukalenko.library.project_library_boot.service.UserService;
 import com.artemstukalenko.library.project_library_boot.view.FirstView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController

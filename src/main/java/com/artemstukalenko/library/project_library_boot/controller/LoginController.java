@@ -2,7 +2,6 @@ package com.artemstukalenko.library.project_library_boot.controller;
 
 import com.artemstukalenko.library.project_library_boot.view.FirstView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +21,7 @@ public class LoginController {
         model.addAttribute("error", error != null);
         model.addAttribute("logout", logout != null);
         model.addAttribute("locale", controlledView);
-        return "ABCDEFG";
+        return "homepage";
     }
 
     @RequestMapping("/logout")
