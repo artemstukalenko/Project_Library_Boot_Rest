@@ -32,21 +32,15 @@ public class UserController {
         return userService.findUserByUsername(username).getSubscriptionList();
     }
 
-    @RequestMapping("/payPenalty")
-    public String payPenalty(Model model) {
-        currentUser = mainController.getCurrentUser();
-        model.addAttribute("userPenaltySum", currentUser.getUserDetails().getUserPenalty());
-
-        return "pay-penalty-form";
-    }
-
-    @RequestMapping("/confirmPayment")
-    public String confirmPayment(@RequestParam("userSum") int userSum, Model model) {
+    @PutMapping("/confirmPayment/{username}/{updateSum}")
+    public User confirmPayment(@PathVariable("username") String username,
+                                 @PathVariable("updateSum") String updateSum) {
+        int userSum = Integer.parseInt(updateSum);
+        currentUser = userService.findUserByUsername(username);
         userService.updatePenaltyInfo(currentUser.getUsername(), currentUser.getUserDetails().getUserPenalty() - userSum);
-        currentUser = userService.findUserByUsername(currentUser.getUsername());
-        model.addAttribute("currentUser", currentUser);
 
-        return "homepage";
+        return currentUser;
+
     }
 
 }
