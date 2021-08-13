@@ -20,15 +20,7 @@ public class LibrarianController {
     SubscriptionService subscriptionService;
 
     @Autowired
-    FirstView controlledView;
-
-    @Autowired
     CustomSubscriptionRequestService customSubscriptionRequestService;
-
-//    @ModelAttribute
-//    public void addTextInformation(Model model) {
-//        model.addAttribute("locale", controlledView);
-//    }
 
     @GetMapping("/getSubscriptionList")
     public List<Subscription> getSubscriptionsListPage(Model model) {
@@ -43,18 +35,12 @@ public class LibrarianController {
 
         customSubscriptionRequestService.deleteCustomSubscriptionRequestFromDB(requestId);
 
-//        model.addAttribute("allSubscriptions", subscriptionService.getAllSubscriptions());
-//        model.addAttribute("allRequests", customSubscriptionRequestService.getAllRequests());
-
         return subscriptionService.getAllSubscriptions();
     }
 
-    @RequestMapping("/denyRequest/{requestId}")
+    @DeleteMapping("/denyRequest/{requestId}")
     public List<Subscription> denyRequest(@PathVariable("requestId") int requestId) {
         customSubscriptionRequestService.deleteCustomSubscriptionRequestFromDB(requestId);
-
-//        model.addAttribute("allSubscriptions", subscriptionService.getAllSubscriptions());
-//        model.addAttribute("allRequests", customSubscriptionRequestService.getAllRequests());
 
         return subscriptionService.getAllSubscriptions();
     }

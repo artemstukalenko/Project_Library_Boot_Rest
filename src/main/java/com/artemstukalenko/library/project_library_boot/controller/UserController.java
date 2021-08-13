@@ -27,13 +27,6 @@ public class UserController {
 
     User currentUser;
 
-//    @ModelAttribute
-//    public void addEssentialAttributes(Model model) {
-//        model.addAttribute("locale", controlledView);
-//        currentUser = mainController.getCurrentUser();
-//        model.addAttribute("currentUser", currentUser);
-//    }
-
     @RequestMapping("/viewSubscriptions/{username}")
     public List<Subscription> getUserSubscriptionsPage(@PathVariable("username") String username) {
         return userService.findUserByUsername(username).getSubscriptionList();

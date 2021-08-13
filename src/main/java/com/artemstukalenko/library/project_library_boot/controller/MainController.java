@@ -32,21 +32,12 @@ public class MainController {
     BookService bookService;
 
     @Autowired
-    FirstView controlledView;
-
-    @Autowired
     Sorter sorter;
 
     User currentUser;
 
     @Autowired
     PenaltyCalculator penaltyCalculator;
-
-//    @ModelAttribute
-//    public void addEssentialAttributes(Model model) {
-//        model.addAttribute("locale", controlledView);
-//        model.addAttribute("listSorter", sorter);
-//    }
 
     @RequestMapping("/homepage/{username}")
     public User getCurrentUser(@PathVariable String username) {

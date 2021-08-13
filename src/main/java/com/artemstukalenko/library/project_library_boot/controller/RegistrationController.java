@@ -28,11 +28,6 @@ public class RegistrationController {
 
     private boolean detailsAreNotValid;
 
-//    @ModelAttribute
-//    public void addTextInformation(Model model) {
-//        model.addAttribute("locale", controlledView);
-//    }
-
     @RequestMapping("/register")
     public String getRegistrationPage(Model model) {
         model.addAttribute("potentialUser", potentialUser);

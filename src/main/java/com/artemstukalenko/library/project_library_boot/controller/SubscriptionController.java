@@ -4,22 +4,22 @@ import com.artemstukalenko.library.project_library_boot.entity.Book;
 import com.artemstukalenko.library.project_library_boot.entity.CustomSubscriptionRequest;
 import com.artemstukalenko.library.project_library_boot.entity.Subscription;
 import com.artemstukalenko.library.project_library_boot.entity.User;
-import com.artemstukalenko.library.project_library_boot.exceptions.BookIsTakenException;
+
 import com.artemstukalenko.library.project_library_boot.service.BookService;
 import com.artemstukalenko.library.project_library_boot.service.CustomSubscriptionRequestService;
 import com.artemstukalenko.library.project_library_boot.service.SubscriptionService;
 import com.artemstukalenko.library.project_library_boot.service.UserService;
 import com.artemstukalenko.library.project_library_boot.view.FirstView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/api/subscription")
 public class SubscriptionController {
 
     @Autowired
@@ -35,9 +35,6 @@ public class SubscriptionController {
     BookService bookService;
 
     @Autowired
-    FirstView controlledView;
-
-    @Autowired
     MainController mainController;
 
     User currentUser;
@@ -46,16 +43,11 @@ public class SubscriptionController {
 
     Subscription processedSubscription;
 
-//    @ModelAttribute
-//    public void addEssentialAttributes(Model model) {
-//        model.addAttribute("locale", controlledView);
-//        currentUser = mainController.getCurrentUser();
-//        model.addAttribute("currentUser", currentUser);
-//    }
-
-    @RequestMapping("/arrangeSubscription")
-    public String arrangeSubscription(int bookId, Model model) {
+    @PostMapping("/arrangeSubscription/{username}/{bookId}")
+    public List<Subscription> arrangeSubscription(@PathVariable("username") String username,
+                                                  @PathVariable("bookId") int bookId) {
         currentBook = bookService.findBookById(bookId);
+        currentUser = userService.findUserByUsername(username);
 
         processedSubscription = new Subscription(currentUser.getUsername(), bookId,
                 currentBook.getBookTitle(), currentBook.getBookAuthor());
@@ -65,58 +57,35 @@ public class SubscriptionController {
         bookService.setTaken(bookId, true);
         currentUser.addSubscription(processedSubscription);
 
-        model.addAttribute("userSubscriptionList", userService.
-                findUserByUsername(currentUser.getUsername()).getSubscriptionList());
-
-        return "my-subscriptions";
+        return subscriptionService.getAllSubscriptions();
     }
 
-    @RequestMapping("/returnBook")
-    public String returnBook(@RequestParam("subscriptionId") int id, Model model) {
+    @PutMapping("/returnBook/{subscriptionId}")
+    public List<Subscription> returnBook(@PathVariable("subscriptionId") int id) {
         processedSubscription = subscriptionService.findSubscriptionById(id);
 
         subscriptionService.deleteSubscriptionFromDB(processedSubscription
                 .getSubscriptionId());
         bookService.setTaken(processedSubscription.getBookId(), false);
 
-        model.addAttribute("userSubscriptionList", userService.
-                findUserByUsername(currentUser.getUsername()).getSubscriptionList());
-
-        return "my-subscriptions";
+        return subscriptionService.getAllSubscriptions();
     }
 
-    @RequestMapping("/arrangeCustomRequest")
-    public String getCustomSubscriptionRequestArrangeForm(int bookId,
-                                                          Model model) {
-        currentBook = bookService.findBookById(bookId);
+    @PostMapping("/registerRequest/{username}/{bookId}/{startDate}/{endDate}")
+    public List<CustomSubscriptionRequest> registerCustomRequest(@PathVariable("startDate") String startDate,
+                                        @PathVariable("endDate") String endDate,
+                                        @PathVariable("username") String username,
+                                        @PathVariable("bookId") int bookId) {
 
-        if (currentBook.getTaken()) {
-            model.addAttribute("currentSubscription",
-                    subscriptionService.findSubscriptionByBookId(bookId));
-        }
-
-        model.addAttribute("currentBook", currentBook);
-        model.addAttribute("today", LocalDate.now());
-        model.addAttribute("notTaken", !(currentBook.getTaken()));
-
-        return "custom-subscription-request-arrange-form";
-    }
-
-    @RequestMapping("/registerRequest")
-    public String registerCustomRequest(@RequestParam("startDate") String startDate,
-                                        @RequestParam("endDate") String endDate,
-                                        Model model) {
+        Book bookToMakeRequestOn = bookService.findBookById(bookId);
 
         CustomSubscriptionRequest processedRequest =
-                new CustomSubscriptionRequest(currentUser.getUsername(), currentBook.getBookId(),
-                        currentBook.getBookTitle(), currentBook.getBookAuthor(),
+                new CustomSubscriptionRequest(username, bookId,
+                        bookToMakeRequestOn.getBookTitle(), bookToMakeRequestOn.getBookAuthor(),
                         LocalDate.parse(startDate), LocalDate.parse(endDate));
 
         customSubscriptionRequestService.addCustomSubscriptionRequestToDB(processedRequest);
 
-        model.addAttribute("userSubscriptionList", userService.
-                findUserByUsername(currentUser.getUsername()).getSubscriptionList());
-
-        return "my-subscriptions";
+        return customSubscriptionRequestService.getAllRequests();
     }
 }
