@@ -69,6 +69,10 @@ public class Book {
         this.taken = taken;
     }
 
+    public boolean isTaken() {
+        return taken;
+    }
+
     @Override
     public String toString() {
         return "Book{" +

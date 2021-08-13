@@ -42,10 +42,9 @@ public class BookController {
 //    }
 
     @GetMapping("/booksList")
-    public List<Book> getUserEntryPage() {
+    public List<Book> getBookList() {
         currentBookList = bookService.getAllBooks();
-
-        return currentBookList;
+        return bookService.getAllBooks();
     }
 
     @GetMapping("/getSortedBooksList/{sortMethod}")
@@ -66,34 +65,24 @@ public class BookController {
         return currentBookList;
     }
 
-    @RequestMapping("/changeTakenValue")
-    public String changeTakenValueOfBook(@RequestParam("bookId") int bookId,
-                                         Model model) {
+    @RequestMapping("/changeTakenValue/{bookId}")
+    public Book changeTakenValueOfBook(@PathVariable("bookId") int bookId) {
+        bookService.setTaken(bookId, !bookService.findBookById(bookId).getTaken());
 
-        Book currentBook = bookService.findBookById(bookId);
-
-        bookService.setTaken(currentBook.getBookId(), !currentBook.getTaken());
-
-        model.addAttribute("allBooks", bookService.getAllBooks());
-
-        return "book-list-page";
+        return bookService.findBookById(bookId);
     }
 
-    @RequestMapping("/addNewBook")
-    public String addNewBook(@ModelAttribute("newBook") Book bookToAdd, Model model) {
+    @PostMapping("/addNewBook")
+    public Book addNewBook(@RequestBody Book bookToAdd) {
         bookService.addNewBook(bookToAdd);
 
-        model.addAttribute("allBooks", bookService.getAllBooks());
-
-        return "book-list-page";
+        return bookToAdd;
     }
 
-    @RequestMapping("/deleteBook")
-    public String deleteBook(@RequestParam("bookId") int bookId, Model model) {
+    @DeleteMapping("/deleteBook/{bookId}")
+    public List<Book> deleteBook(@PathVariable("bookId") int bookId) {
         bookService.deleteBook(bookId);
 
-        model.addAttribute("allBooks", bookService.getAllBooks());
-
-        return "book-list-page";
+        return bookService.getAllBooks();
     }
 }
