@@ -65,7 +65,7 @@ public class BookController {
         return currentBookList;
     }
 
-    @RequestMapping("/changeTakenValue/{bookId}")
+    @PutMapping("/changeTakenValue/{bookId}")
     public Book changeTakenValueOfBook(@PathVariable("bookId") int bookId) {
         bookService.setTaken(bookId, !bookService.findBookById(bookId).getTaken());
 

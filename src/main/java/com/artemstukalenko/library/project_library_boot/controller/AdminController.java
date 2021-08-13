@@ -40,26 +40,26 @@ public class AdminController {
                 .collect(Collectors.toList());
     }
 
-    @RequestMapping("/getAllUsers")
+    @GetMapping("/getAllUsers")
     public List<User> getAdminEntryPage(Model model) {
         return getUserListWithUpdatedPenalty();
     }
 
-    @RequestMapping("/blockUser/{username}")
+    @PutMapping("/blockUser/{username}")
     public User blockUser(@PathVariable("username") String username) {
         userService.blockUser(username);
 
         return userService.findUserByUsername(username);
     }
 
-    @RequestMapping("/unblockUser/{username}")
+    @PutMapping("/unblockUser/{username}")
     public User unblockUser(@PathVariable("username") String username) {
         userService.unblockUser(username);
 
         return userService.findUserByUsername(username);
     }
 
-    @RequestMapping("/deleteUser/{username}")
+    @DeleteMapping("/deleteUser/{username}")
     public List<User> deleteUser(@PathVariable("username") String username) {
         userService.deleteUser(username);
 
@@ -68,16 +68,16 @@ public class AdminController {
 
 
 
-    @RequestMapping("/enterInfoForNewBook")
-    public String enterInfoForNewBook(Model model) {
-        model.addAttribute("newBook", new Book());
+//    @RequestMapping("/enterInfoForNewBook")
+//    public String enterInfoForNewBook(Model model) {
+//        model.addAttribute("newBook", new Book());
+//
+//        return "enter-info-for-new-book";
+//    }
 
-        return "enter-info-for-new-book";
-    }
 
 
-
-    @RequestMapping("/makeUserLibrarian/{username}")
+    @PutMapping("/makeUserLibrarian/{username}")
     public User makeUserLibrarian(@PathVariable("username") String username) {
 
         User currentUser = userService.findUserByUsername(username);
@@ -88,7 +88,7 @@ public class AdminController {
         return currentUser;
     }
 
-    @RequestMapping("/depriveLibrarianRole/{username}")
+    @PutMapping("/depriveLibrarianRole/{username}")
     public User depriveLibrarianPrivilegesFromUser(@PathVariable("username") String username) {
 
         User currentUser = userService.findUserByUsername(username);

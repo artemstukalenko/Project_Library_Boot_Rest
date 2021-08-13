@@ -69,7 +69,7 @@ public class RegistrationController {
 
     @PostMapping("/registerNewUser")
     public List<User> registerNewUser(@RequestBody User potentialUser1) {
-        System.out.println("SVETLANA: " + potentialUser1);
+
         userService.registerUser(potentialUser1);
 
         potentialUser1.setUserDetails(new UserDetails(potentialUser1));
