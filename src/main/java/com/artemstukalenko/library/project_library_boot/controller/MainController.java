@@ -49,7 +49,7 @@ public class MainController {
 //    }
 
     @RequestMapping("/homepage/{username}")
-    public User getHomePage(@PathVariable String username) {
+    public User getCurrentUser(@PathVariable String username) {
 
         currentUser = userService.findUserByUsername(username);
 
@@ -60,31 +60,6 @@ public class MainController {
         return currentUser;
     }
 
-//    @RequestMapping("/homepage_again")
-//    public String getHomePageAgain(Model model) {
-//        model.addAttribute("currentUser", currentUser);
-//
-//        return "homepage";
-//    }
-//
-//    @RequestMapping("en")
-//    public String getPageWithEnLang(Model model) {
-//        model.addAttribute("currentUser", currentUser);
-//
-//        FirstView.changeLanguageToEn();
-//
-//        return "homepage";
-//    }
-//
-//    @RequestMapping("ua")
-//    public String getPageWithUaLang(Model model) {
-//        model.addAttribute("currentUser", currentUser);
-//
-//        FirstView.changeLanguageToUa();
-//
-//        return "homepage";
-//    }
-//
     public User getCurrentUser() {
         return currentUser;
     }

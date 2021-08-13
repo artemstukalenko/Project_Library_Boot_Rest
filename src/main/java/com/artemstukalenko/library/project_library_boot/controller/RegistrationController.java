@@ -8,12 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/api/register")
 public class RegistrationController {
 
     @Autowired
@@ -27,10 +28,10 @@ public class RegistrationController {
 
     private boolean detailsAreNotValid;
 
-    @ModelAttribute
-    public void addTextInformation(Model model) {
-        model.addAttribute("locale", controlledView);
-    }
+//    @ModelAttribute
+//    public void addTextInformation(Model model) {
+//        model.addAttribute("locale", controlledView);
+//    }
 
     @RequestMapping("/register")
     public String getRegistrationPage(Model model) {
@@ -66,17 +67,16 @@ public class RegistrationController {
         return "redirect:/login";
     }
 
-    @RequestMapping("/registerNewUser")
-    public String registerNewUser(@ModelAttribute("potentialUser") User potentialUser1, Model model) {
+    @PostMapping("/registerNewUser")
+    public List<User> registerNewUser(@RequestBody User potentialUser1) {
+        System.out.println("SVETLANA: " + potentialUser1);
         userService.registerUser(potentialUser1);
 
         potentialUser1.setUserDetails(new UserDetails(potentialUser1));
 
         potentialUser = potentialUser1;
 
-        model.addAttribute("newUserDetails", potentialUser.getUserDetails());
-
-        return "register-details-page";
+        return userService.getAllUsers();
     }
 
 }

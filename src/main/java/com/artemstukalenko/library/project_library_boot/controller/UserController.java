@@ -8,13 +8,12 @@ import com.artemstukalenko.library.project_library_boot.view.FirstView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/api/user")
 public class UserController {
 
     @Autowired
@@ -28,20 +27,16 @@ public class UserController {
 
     User currentUser;
 
-    @ModelAttribute
-    public void addEssentialAttributes(Model model) {
-        model.addAttribute("locale", controlledView);
-        currentUser = mainController.getCurrentUser();
-        model.addAttribute("currentUser", currentUser);
-    }
+//    @ModelAttribute
+//    public void addEssentialAttributes(Model model) {
+//        model.addAttribute("locale", controlledView);
+//        currentUser = mainController.getCurrentUser();
+//        model.addAttribute("currentUser", currentUser);
+//    }
 
-    @RequestMapping("/viewSubscriptions")
-    public String getUserSubscriptionsPage(Model model) {
-        currentUser = mainController.getCurrentUser();
-        model.addAttribute("userSubscriptionList", userService.
-                findUserByUsername(currentUser.getUsername()).getSubscriptionList());
-
-        return "my-subscriptions";
+    @RequestMapping("/viewSubscriptions/{username}")
+    public List<Subscription> getUserSubscriptionsPage(@PathVariable("username") String username) {
+        return userService.findUserByUsername(username).getSubscriptionList();
     }
 
     @RequestMapping("/payPenalty")

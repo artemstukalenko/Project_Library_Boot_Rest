@@ -9,13 +9,12 @@ import com.artemstukalenko.library.project_library_boot.view.FirstView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("api/books")
 public class BookController {
 
     @Autowired
@@ -34,37 +33,37 @@ public class BookController {
 
     List<Book> currentBookList;
 
-    @ModelAttribute
-    public void addEssentialAttributes(Model model) {
-        model.addAttribute("locale", controlledView);
-        model.addAttribute("listSorter", sorter);
-        model.addAttribute("allBooks", currentBookList);
-        model.addAttribute("searcher", searcher);
-    }
+//    @ModelAttribute
+//    public void addEssentialAttributes(Model model) {
+//        model.addAttribute("locale", controlledView);
+//        model.addAttribute("listSorter", sorter);
+//        model.addAttribute("allBooks", currentBookList);
+//        model.addAttribute("searcher", searcher);
+//    }
 
-    @RequestMapping("/booksList")
-    public String getUserEntryPage(Model model) {
+    @GetMapping("/booksList")
+    public List<Book> getUserEntryPage() {
         currentBookList = bookService.getAllBooks();
-        model.addAttribute("allBooks", currentBookList);
-        return "book-list-page";
+
+        return currentBookList;
     }
 
-    @RequestMapping("/sort")
-    public String getSortedPage(@ModelAttribute("listSorter") Sorter sorter,
-                                Model model) {
-
-        model.addAttribute("allBooks", sorter.sortList(currentBookList));
-        return "book-list-page";
+    @GetMapping("/getSortedBooksList/{sortMethod}")
+    public List<Book> getSortedPage(@PathVariable("sortMethod") String sortMethod) {
+        this.sorter.setSortMethod(sortMethod);
+        return sorter.sortList(bookService.getAllBooks());
     }
 
-    @RequestMapping("/searchBook")
-    public String searchForBooks(@ModelAttribute("searcher") Searcher searcher,
-                                 Model model) {
+    @GetMapping("/searchBook/{searchCriteria}/{searchString}")
+    public List<Book> searchForBooks(@PathVariable("searchCriteria") String searchCriteria,
+                                 @PathVariable("searchString") String searchString) {
+        searcher.setSearchCriteria(searchCriteria);
+        searcher.setUserInput(searchString);
+
         currentBookList = searcher
                 .getResultOfTheBookSearch(bookService.getAllBooks());
-        model.addAttribute("allBooks", currentBookList);
 
-        return "book-list-page";
+        return currentBookList;
     }
 
     @RequestMapping("/changeTakenValue")
