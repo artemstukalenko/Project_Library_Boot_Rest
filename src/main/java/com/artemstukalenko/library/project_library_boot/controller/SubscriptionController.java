@@ -46,12 +46,12 @@ public class SubscriptionController {
 
     Subscription processedSubscription;
 
-    @ModelAttribute
-    public void addEssentialAttributes(Model model) {
-        model.addAttribute("locale", controlledView);
-        currentUser = mainController.getCurrentUser();
-        model.addAttribute("currentUser", currentUser);
-    }
+//    @ModelAttribute
+//    public void addEssentialAttributes(Model model) {
+//        model.addAttribute("locale", controlledView);
+//        currentUser = mainController.getCurrentUser();
+//        model.addAttribute("currentUser", currentUser);
+//    }
 
     @RequestMapping("/arrangeSubscription")
     public String arrangeSubscription(int bookId, Model model) {

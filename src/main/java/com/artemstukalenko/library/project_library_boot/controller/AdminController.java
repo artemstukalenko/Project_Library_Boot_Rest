@@ -9,15 +9,13 @@ import com.artemstukalenko.library.project_library_boot.view.FirstView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("/api/admin")
 public class AdminController {
 
     @Autowired
@@ -42,40 +40,30 @@ public class AdminController {
                 .collect(Collectors.toList());
     }
 
-    @ModelAttribute
-    public void addTextInformation(Model model) {
-        model.addAttribute("locale", controlledView);
+    @RequestMapping("/getAllUsers")
+    public List<User> getAdminEntryPage(Model model) {
+        return getUserListWithUpdatedPenalty();
     }
 
-    @RequestMapping("/asAdmin")
-    public String getAdminEntryPage(Model model) {
-        model.addAttribute("allUsers", getUserListWithUpdatedPenalty());
-
-        return "user-list-page";
-    }
-
-    @RequestMapping("/blockUser")
-    public String blockUser(@RequestParam("userName") String username, Model model) {
+    @RequestMapping("/blockUser/{username}")
+    public User blockUser(@PathVariable("username") String username) {
         userService.blockUser(username);
-        model.addAttribute("allUsers", getUpdatedUserList());
 
-        return "user-list-page";
+        return userService.findUserByUsername(username);
     }
 
-    @RequestMapping("/unblockUser")
-    public String unblockUser(@RequestParam("userName") String username, Model model) {
+    @RequestMapping("/unblockUser/{username}")
+    public User unblockUser(@PathVariable("username") String username) {
         userService.unblockUser(username);
-        model.addAttribute("allUsers", getUpdatedUserList());
 
-        return "user-list-page";
+        return userService.findUserByUsername(username);
     }
 
-    @RequestMapping("/deleteUser")
-    public String deleteUser(@RequestParam("userName") String username, Model model) {
+    @RequestMapping("/deleteUser/{username}")
+    public List<User> deleteUser(@PathVariable("username") String username) {
         userService.deleteUser(username);
-        model.addAttribute("allUsers", getUpdatedUserList());
 
-        return "user-list-page";
+        return userService.getAllUsers();
     }
 
 
@@ -89,29 +77,25 @@ public class AdminController {
 
 
 
-    @RequestMapping("/makeUserLibrarian")
-    public String makeUserLibrarian(@RequestParam("userName") String username,
-                                    Model model) {
+    @RequestMapping("/makeUserLibrarian/{username}")
+    public User makeUserLibrarian(@PathVariable("username") String username) {
 
         User currentUser = userService.findUserByUsername(username);
 
         userService.makeUserLibrarian(currentUser.getUsername());
         currentUser.setAuthorityString("ROLE_LIBRARIAN");
 
-        model.addAttribute("allUsers", getUpdatedUserList());
-        return "user-list-page";
+        return currentUser;
     }
 
-    @RequestMapping("/depriveLibrarianRole")
-    public String depriveLibrarianPrivilegesFromUser(@RequestParam("userName") String username,
-                                                     Model model) {
+    @RequestMapping("/depriveLibrarianRole/{username}")
+    public User depriveLibrarianPrivilegesFromUser(@PathVariable("username") String username) {
 
         User currentUser = userService.findUserByUsername(username);
 
         userService.depriveLibrarianPrivileges(username);
         currentUser.setAuthorityString("ROLE_USER");
 
-        model.addAttribute("allUsers", getUpdatedUserList());
-        return "user-list-page";
+        return currentUser;
     }
 }
