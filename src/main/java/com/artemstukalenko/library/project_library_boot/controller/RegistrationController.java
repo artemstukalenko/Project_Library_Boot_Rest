@@ -26,8 +26,6 @@ public class RegistrationController {
     @Autowired
     User potentialUser;
 
-    private boolean detailsAreNotValid;
-
     @RequestMapping("/register")
     public String getRegistrationPage(Model model) {
         model.addAttribute("potentialUser", potentialUser);
@@ -35,43 +33,23 @@ public class RegistrationController {
         return "register-page";
     }
 
-    @RequestMapping("/registerDetails")
-    public String registerDetails(@Valid @ModelAttribute("newUserDetails") UserDetails newUserDetails,
-                                  BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            detailsAreNotValid = true;
-            return "register-details-page";
-        }
-        detailsAreNotValid = false;
-        newUserDetails.setUsername(potentialUser.getUsername());
-        potentialUser.setUserDetails(newUserDetails);
-        userService.updateUser(potentialUser);
-
-        if(detailsAreNotValid) {
-            userService.deleteUser(potentialUser.getUsername());
-        }
-
-        return "redirect:/login";
-    }
-
-    @RequestMapping("/deletePotentialUser")
-    public String deletePotentialUser() {
-        userService.deleteUser(potentialUser.getUsername());
-
-        return "redirect:/login";
-    }
-
     @PostMapping("/registerNewUser")
-    public List<User> registerNewUser(@RequestBody User potentialUser1) {
+    public List<User> registerNewUser(@RequestBody User potentialUser) {
 
-        userService.registerUser(potentialUser1);
-
-        potentialUser1.setUserDetails(new UserDetails(potentialUser1));
-
-        potentialUser = potentialUser1;
+        userService.registerUser(potentialUser);
 
         return userService.getAllUsers();
     }
 
+    @PostMapping("/registerNewDetails/{username}")
+    public User registerUserDetails(@RequestBody UserDetails newUserDetails,
+                                    @PathVariable("username") String username) {
+
+        User currentUser = userService.findUserByUsername(username);
+        currentUser.setUserDetails(newUserDetails);
+
+        userService.updateUser(currentUser);
+
+        return currentUser;
+    }
 }
